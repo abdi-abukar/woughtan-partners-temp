@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Invena – A modern and responsive HTML template for consulting businesses. Perfect for finance, corporate, and agency websites. SEO-friendly, fast-loading, and easy to customize. Create a professional online presence today!">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png">
+    <title>Invena Business Consulting HTML Template</title>
+    <link rel="stylesheet preload" href="assets/css/plugins/fontawesome.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/swiper.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/metismenu.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/magnifying-popup.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/odometer.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/vendor/bootstrap.min.css" as="style">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet preload" as="style">
+    <link rel="preload" as="image" href="assets/images/banner/21.webp" />
+    <link rel="stylesheet preload" href="assets/css/style.css" as="style">
+</head>
+
+<body>
+<header class="header-two header--sticky">
+    <div class="header-top">
+        <div class="content">
+            <div class="left-header-top">
+                <p class="top-details">
+                    Ready to unlock emerging market opportunities? <a href="contact-us.html">Contact Us <i class="fal fa-arrow-right"></i></a>
+                </p>
+            </div>
+            <div class="right-header-top">
+                <div class="ht-social">
+                    <span>Follow Us:</span>
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-header">
+        <div class="content">
+            <div class="header-left">
+                <a class="thumbnail" href="index.html">
+                    <img src="assets/images/logo.png" alt="Woughton Global">
+                </a>
+                
+                <div class="nav-area">
+                    <ul class="">
+                        <li class="main-nav">
+                            <a href="index.html">Home</a>
+                        </li>
+                        
+                        <li class="main-nav has-dropdown project-a-after">
+                            <a href="services.html">Services</a>
+                            <ul class="submenu parent-nav">
+                                <li><a href="services.html">Transactional Advisory</a></li>
+                                <li><a href="services.html">Market Entry</a></li>
+                                <li><a href="services.html">Asset Valuation</a></li>
+                                <li><a href="services.html">Capital Asset Sales Brokerage</a></li>
+                                <li><a href="services.html">Fundraising</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="main-nav">
+                            <a href="reports.html">Reports</a>
+                        </li>
+                        
+                        <li class="main-nav">
+                            <a href="research-hub.html">Research Hub</a>
+                        </li>
+                        
+                        <li class="main-nav">
+                            <a href="contact-us.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="loader-wrapper">
+                    <div class="loader"></div>
+                    <div class="loader-section section-left"></div>
+                    <div class="loader-section section-right"></div>
+                </div>
+            </div>
+            <div class="header-right">
+                <a class="rts-btn btn-primary" href="contact-us.html">Get In Touch</a>
+            </div>
+        </div>
+    </div>
+</header>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const hamburger = document.getElementById('hamburger');
+    
+    function toggleMobileMenu() {
+        const isOpen = mobileNav.style.right === '0px';
+        
+        if (isOpen) {
+            // Close menu
+            mobileNav.style.right = '-100%';
+            mobileOverlay.style.opacity = '0';
+            mobileOverlay.style.visibility = 'hidden';
+            hamburger.style.transform = 'rotate(0deg)';
+            document.body.style.overflow = 'auto';
+        } else {
+            // Open menu
+            mobileNav.style.right = '0px';
+            mobileOverlay.style.opacity = '1';
+            mobileOverlay.style.visibility = 'visible';
+            hamburger.style.transform = 'rotate(90deg)';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    mobileOverlay.addEventListener('click', toggleMobileMenu);
+    
+    // Close menu when clicking on menu links
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (!this.nextElementSibling || !this.nextElementSibling.tagName === 'UL') {
+                toggleMobileMenu();
+            }
+        });
+    });
+});
+
+function toggleSubmenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    const submenu = document.getElementById('servicesSubmenu');
+    const toggle = event.target;
+    const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px';
+    
+    if (isOpen) {
+        submenu.style.maxHeight = '0px';
+        toggle.textContent = '+';
+        toggle.style.transform = 'translateY(-50%) rotate(0deg)';
+    } else {
+        submenu.style.maxHeight = '300px';
+        toggle.textContent = '−';
+        toggle.style.transform = 'translateY(-50%) rotate(180deg)';
+    }
+}
+</script>
+
+
+
+<!-- about us area wrapper main -->
+<div class="rts-breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-area-left center">
+                    <span class="bg-title">Insights</span>
+                    <h1 class="title rts-text-anime-style-1">
+                        Market Intelligence & Analysis
+                    </h1>
+                    <p class="disc" style="max-width: 600px; margin: 20px auto 0; color: #666;">
+                        Expert insights, live market updates, and strategic analysis for emerging market opportunities
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shape-area">
+        <img src="assets/images/about/shape/01.png" alt="shape" class="one">
+        <img src="assets/images/about/shape/02.png" alt="shape" class="two">
+        <img src="assets/images/about/shape/03.png" alt="shape" class="three">
+    </div>
+</div>
+<!-- about us area wrapper main end -->
+
+<!-- Breaking News Section -->
+<div class="breaking-news-section" style="background: #dc3545; padding: 15px 0; color: white;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-2 col-md-3">
+            </div>
+            <div class="col-lg-10 col-md-9">
+                <div class="breaking-content" style="color: white; font-weight: 600; font-size: 14px; line-height: 1.4;">
+                    Nigeria Central Bank raises interest rates to 18.75% • Ghana GDP growth exceeds expectations at 3.2% • Vietnam FDI reaches record $28.2B
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Latest Market Updates Dashboard -->
+<div class="market-updates-dashboard" style="background: white; padding: 30px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-3">
+                <h3 style="color: #333; margin: 0; font-weight: 700; font-size: 18px;">Latest Market Updates</h3>
+            </div>
+            <div class="col-lg-9">
+                <div class="market-indicators" style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+                    <div class="indicator" style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #666; font-size: 12px; font-weight: 600;">GHS/USD:</span>
+                        <span style="color: #dc3545; font-weight: 700; font-size: 14px;">15.83</span>
+                        <span style="color: #dc3545; font-size: 10px;">↓ 0.12</span>
+                    </div>
+                    <div class="indicator" style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #666; font-size: 12px; font-weight: 600;">NGN/USD:</span>
+                        <span style="color: #28a745; font-weight: 700; font-size: 14px;">742.50</span>
+                        <span style="color: #28a745; font-size: 10px;">↑ 2.1</span>
+                    </div>
+                    <div class="indicator" style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #666; font-size: 12px; font-weight: 600;">NSE Index:</span>
+                        <span style="color: #28a745; font-weight: 700; font-size: 14px;">67,342</span>
+                        <span style="color: #28a745; font-size: 10px;">↑ 1.2%</span>
+                    </div>
+                    <div class="indicator" style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #666; font-size: 12px; font-weight: 600;">Gold:</span>
+                        <span style="color: #ffc107; font-weight: 700; font-size: 14px;">$2,042</span>
+                        <span style="color: #28a745; font-size: 10px;">↑ 0.8%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Main Content Area -->
+<div class="rts-blog-insights-area rts-section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-style-two center">
+                    <span class="pre">Latest Content</span>
+                    <h2 class="title rts-text-anime-style-1">Recent Analysis & Market Updates</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4">
+            <!-- Expert Insights -->
+            <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.1" data-category="insights">
+                <div class="content-card expert-insight" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; height: 100%;">
+                    <div class="content-image" style="height: 180px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-chart-area" style="font-size: 40px; color: white; opacity: 0.8;"></i>
+                        <div style="position: absolute; top: 15px; left: 15px; background: #007bff; color: white; padding: 4px 12px; border-radius: 15px; font-size: 10px; font-weight: 600;">
+                            EXPERT INSIGHT
+                        </div>
+                    </div>
+                    <div class="content-body" style="padding: 25px;">
+                        <div class="content-meta" style="margin-bottom: 12px;">
+                            <span style="background: #e3f2fd; color: #1976d2; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; margin-right: 8px;">Analysis</span>
+                            <span style="color: #888; font-size: 11px;">by Prof Edward Opoku Adusel • Dec 20, 2024</span>
+                        </div>
+                        <a href="">
+                            <h4 style="color: #333; margin-bottom: 12px; font-weight: 700; line-height: 1.4; font-size: 16px;">Navigating Africa's Infrastructure Investment Landscape in 2025</h4>
+                        </a>
+                        <p style="color: #666; font-size: 13px; line-height: 1.5; margin-bottom: 15px;">Key regulatory changes and emerging opportunities across transport, energy, and digital infrastructure sectors...</p>
+                        <div style="display: flex; justify-content: between; align-items: center; font-size: 11px; color: #888;">
+                            <span><i class="far fa-clock"></i> 8 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Market Update -->
+            <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.2" data-category="markets economic">
+                <div class="content-card live-update" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; height: 100%;">
+                    <div class="content-image" style="height: 180px; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); position: relative; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-university" style="font-size: 40px; color: white; opacity: 0.8;"></i>
+                        <div style="position: absolute; top: 15px; left: 15px; background: #dc3545; color: white; padding: 4px 12px; border-radius: 15px; font-size: 10px; font-weight: 600; animation: pulse 2s infinite;">
+                            LIVE UPDATE
+                        </div>
+                    </div>
+                    <div class="content-body" style="padding: 25px;">
+                        <div class="content-meta" style="margin-bottom: 12px;">
+                            <span style="background: #e8f5e8; color: #2e7d32; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; margin-right: 8px;">Central Banking</span>
+                            <span style="color: #888; font-size: 11px;">Reuters • 2 hours ago</span>
+                        </div>
+                        <a href="live-updates.html">
+                            <h4 style="color: #333; margin-bottom: 12px; font-weight: 700; line-height: 1.4; font-size: 16px;">Ghana Central Bank Maintains Policy Rate at 27%</h4>
+                        </a>
+                        <p style="color: #666; font-size: 13px; line-height: 1.5; margin-bottom: 15px;">Bank of Ghana keeps borrowing costs unchanged as inflation remains elevated amid currency pressures...</p>
+                        <div style="display: flex; justify-content: between; align-items: center; font-size: 11px; color: #888;">
+                            <span><i class="far fa-chart-bar"></i> Market Impact: High</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business News -->
+            <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.3" data-category="business">
+                <div class="content-card business-news" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; height: 100%;">
+                    <div class="content-image" style="height: 180px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); position: relative; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-building" style="font-size: 40px; color: white; opacity: 0.8;"></i>
+                        <div style="position: absolute; top: 15px; left: 15px; background: #ffc107; color: #333; padding: 4px 12px; border-radius: 15px; font-size: 10px; font-weight: 600;">
+                            BUSINESS
+                        </div>
+                    </div>
+                    <div class="content-body" style="padding: 25px;">
+                        <div class="content-meta" style="margin-bottom: 12px;">
+                            <span style="background: #fff3e0; color: #ef6c00; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; margin-right: 8px;">Infrastructure</span>
+                            <span style="color: #888; font-size: 11px;">Bloomberg • 4 hours ago</span>
+                        </div>
+                        <a href="#">
+                            <h4 style="color: #333; margin-bottom: 12px; font-weight: 700; line-height: 1.4; font-size: 16px;">Nigeria Plans $15B Infrastructure Investment Package</h4>
+                        </a>
+                        <p style="color: #666; font-size: 13px; line-height: 1.5; margin-bottom: 15px;">Federal government announces massive infrastructure spending focused on ports, railways, and digital connectivity...</p>
+                        <div style="display: flex; justify-content: between; align-items: center; font-size: 11px; color: #888;">
+                            <span><i class="far fa-building"></i> Sector: Infrastructure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Political Analysis -->
+            <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.4" data-category="politics">
+                <div class="content-card political-analysis" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; height: 100%;">
+                    <div class="content-image" style="height: 180px; background: linear-gradient(135deg, #6f42c1 0%, #563d7c 100%); position: relative; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-balance-scale" style="font-size: 40px; color: white; opacity: 0.8;"></i>
+                        <div style="position: absolute; top: 15px; left: 15px; background: #17a2b8; color: white; padding: 4px 12px; border-radius: 15px; font-size: 10px; font-weight: 600;">
+                            POLITICAL
+                        </div>
+                    </div>
+                    <div class="content-body" style="padding: 25px;">
+                        <div class="content-meta" style="margin-bottom: 12px;">
+                            <span style="background: #e1f5fe; color: #0277bd; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; margin-right: 8px;">Policy</span>
+                            <span style="color: #888; font-size: 11px;">by Maxwell Danquah • Dec 18, 2024</span>
+                        </div>
+                        <a href="">
+                            <h4 style="color: #333; margin-bottom: 12px; font-weight: 700; line-height: 1.4; font-size: 16px;">AfCFTA Trade Agreement Shows Early Promise</h4>
+                        </a>
+                        <p style="color: #666; font-size: 13px; line-height: 1.5; margin-bottom: 15px;">African Continental Free Trade Area sees 15% increase in intra-African trade volumes in first year...</p>
+                        <div style="display: flex; justify-content: between; align-items: center; font-size: 11px; color: #888;">
+                            <span><i class="far fa-globe"></i> Regional Impact</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Economic Data -->
+            <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.5" data-category="economic markets">
+                <div class="content-card economic-data" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; height: 100%;">
+                    <div class="content-image" style="height: 180px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); position: relative; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-chart-line" style="font-size: 40px; color: white; opacity: 0.8;"></i>
+                        <div style="position: absolute; top: 15px; left: 15px; background: #28a745; color: white; padding: 4px 12px; border-radius: 15px; font-size: 10px; font-weight: 600;">
+                            ECONOMIC DATA
+                        </div>
+                    </div>
+                    <div class="content-body" style="padding: 25px;">
+                        <div class="content-meta" style="margin-bottom: 12px;">
+                            <span style="background: #e0f7fa; color: #00695c; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; margin-right: 8px;">FDI</span>
+                            <span style="color: #888; font-size: 11px;">Financial Times • 6 hours ago</span>
+                        </div>
+                        <a href="#">
+                            <h4 style="color: #333; margin-bottom: 12px; font-weight: 700; line-height: 1.4; font-size: 16px;">Vietnam FDI Inflows Reach Record $28.2B in 2024</h4>
+                        </a>
+                        <p style="color: #666; font-size: 13px; line-height: 1.5; margin-bottom: 15px;">Foreign direct investment into Vietnam hits all-time high driven by manufacturing and renewable energy sectors...</p>
+                        <div style="display: flex; justify-content: between; align-items: center; font-size: 11px; color: #888;">
+                            <span><i class="far fa-chart-bar"></i> +18% YoY Growth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Insights -->
+            <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.6" data-category="business insights">
+                <div class="content-card tech-insight" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease; height: 100%;">
+                    <div class="content-image" style="height: 180px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); position: relative; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-mobile-alt" style="font-size: 40px; color: #333; opacity: 0.8;"></i>
+                        <div style="position: absolute; top: 15px; left: 15px; background: #6f42c1; color: white; padding: 4px 12px; border-radius: 15px; font-size: 10px; font-weight: 600;">
+                            FINTECH
+                        </div>
+                    </div>
+                    <div class="content-body" style="padding: 25px;">
+                        <div class="content-meta" style="margin-bottom: 12px;">
+                            <span style="background: #fce4ec; color: #c2185b; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; margin-right: 8px;">Technology</span>
+                            <span style="color: #888; font-size: 11px;">by Maxwell Danquah • Dec 16, 2024</span>
+                        </div>
+                        <a href="">
+                            <h4 style="color: #333; margin-bottom: 12px; font-weight: 700; line-height: 1.4; font-size: 16px;">African Fintech Funding Surges 40% in Q4</h4>
+                        </a>
+                        <p style="color: #666; font-size: 13px; line-height: 1.5; margin-bottom: 15px;">Digital payment and lending startups across Nigeria, Kenya, and South Africa attract record investment...</p>
+                        <div style="display: flex; justify-content: between; align-items: center; font-size: 11px; color: #888;">
+                            <span><i class="far fa-lightbulb"></i> 5 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15) !important;
+}
+
+.filter-pill:hover {
+    background: #007bff !important;
+    color: white !important;
+    border-color: #007bff !important;
+}
+
+.filter-pill.active {
+    background: #007bff !important;
+    color: white !important;
+    border-color: #007bff !important;
+}
+
+.breaking-content {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+@media (max-width: 768px) {
+    .market-indicators {
+        gap: 15px !important;
+    }
+    
+    .filter-pills {
+        gap: 8px !important;
+        justify-content: flex-start !important;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .filter-pill {
+        font-size: 11px !important;
+        padding: 8px 14px !important;
+        white-space: nowrap;
+    }
+    
+    .breaking-content {
+        font-size: 12px !important;
+        animation: none;
+        white-space: normal;
+    }
+    
+    .market-indicators {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .content-card .content-body {
+        padding: 20px !important;
+    }
+    
+    .content-card .content-image {
+        height: 150px !important;
+    }
+    
+    .breaking-label {
+        font-size: 10px !important;
+        padding: 6px 12px !important;
+    }
+}
+</style>
+
+<script>
+// Filter functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-pill');
+    const contentCards = document.querySelectorAll('.content-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            contentCards.forEach(card => {
+                const cardCategories = card.parentElement.getAttribute('data-category');
+                
+                if (filter === 'all' || cardCategories.includes(filter)) {
+                    card.parentElement.style.display = 'block';
+                } else {
+                    card.parentElement.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
+
+<div class="rts-footer-area  footer-three footer-bg-three mt--120 mt_md--80 mt_sm--60">
+    <br>
+    <br>
+        <div class="rts-cta-area-one pt-[10px]">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cta-main-area-wrapper-one bg_image">
+                        <div class="left-areas">
+                            <span class="pre">Latest Business Ideas</span>
+                            <h3 class="title">Sign Up Newsletter</h3>
+                        </div>
+                        <div class="right-area">
+                            <div class="inpur-area-main">
+                                <input type="text" placeholder="Enter Email Address">
+                                <button class="rts-btn btn-primary">Subscribe Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rts-footer-area ptb--100   footer-two footer-bg-two" id="contact">
+        <div class="container">
+            <div class="row">
+                <!-- single wized -->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="footer-two-single-wized left">
+                        <h3 class="title animated fadeIn">
+                            <span>Ready To</span> <br>
+                            Work With Us?
+                        </h3>
+                        <p class="disc">
+                            Felis consequat magnis est fames sagittis ultrices placerat sodales porttitor quisque.
+                        </p>
+                        <a class="rts-btn btn-primary" href="contact-us.html">Contact Us</a>
+                    </div>
+                </div>
+                <!-- single wized -->
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 mt_sm--30 mt_md--30">
+                    <div class="footer-two-single-wized">
+                        <div class="wized-title-area">
+                            <h5 class="wized-title">Contact Us</h5>
+                            <img src="assets/images/footer/01.png" alt="Invena_Footer">
+                        </div>
+                        <div class="wized-2-body">
+                            <div class="contact-info-1">
+                                <div class="icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="disc">
+                                    <span>Call Us</span>
+                                    <a href="#">(+256) 2145.2156</a>
+                                </div>
+                            </div>
+                            <div class="contact-info-1">
+                                <div class="icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="disc">
+                                    <span>Email Us</span>
+                                    <a href="#">info@woughtonglobal.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- single wized -->
+                <!-- single wized -->
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="footer-two-single-wized right">
+                        <div class="wized-2-body">
+                            <div class="contact-info-1">
+                                <div class="icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="disc">
+                                    <span>Our Location</span>
+                                    <a href="#">XYZ Hilton Street, 125 Town <br>
+                                        United State</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- single wized -->
+            </div>
+        </div>
+    </div>
+<div class="rts-copy-right-1 ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="copyright-h-2-wrapper">
+                    <p class="disc">
+                        Woughton Global - Copyright
+                        <script>
+                            document.write(
+                                new Date().getFullYear()
+                            )
+                        </script>. All rights reserved.
+                    </p>
+                    <div class="right">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+
+                            <li><a href="reports.html">Reports</a></li>
+                            <li><a href="research-hub.html">Research Hub</a></li>
+                            <li><a href="contact-us.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+@media (min-width: 992px) {
+    .footer-three-single-wized.mid-right {
+        padding-left: 20px;
+    }
+}
+</style>
+
+
+<script defer src="assets/js/plugins/jquery.js"></script>
+
+<script defer src="assets/js/plugins/odometer.js"></script>
+<script defer src="assets/js/plugins/jquery-appear.js"></script>
+
+
+<script defer src="assets/js/plugins/gsap.js"></script>
+<script defer src="assets/js/plugins/split-text.js"></script>
+<script defer src="assets/js/plugins/scroll-trigger.js"></script>
+<script defer src="assets/js/plugins/smooth-scroll.js"></script>
+<script defer src="assets/js/plugins/metismenu.js"></script>
+<script defer src="assets/js/plugins/popup.js"></script>
+
+<script defer src="assets/js/vendor/bootstrap.min.js"></script>
+<script defer src="assets/js/plugins/swiper.js"></script>
+<script defer src="assets/js/plugins/contact.form.js"></script>
+
+<script defer src="assets/js/main.js"></script>
+</body>
+
+</html>

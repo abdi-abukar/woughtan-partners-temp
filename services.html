@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Invena – A modern and responsive HTML template for consulting businesses. Perfect for finance, corporate, and agency websites. SEO-friendly, fast-loading, and easy to customize. Create a professional online presence today!">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png">
+    <title>Invena Business Consulting HTML Template</title>
+    <link rel="stylesheet preload" href="assets/css/plugins/fontawesome.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/swiper.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/metismenu.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/magnifying-popup.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/plugins/odometer.css" as="style">
+    <link rel="stylesheet preload" href="assets/css/vendor/bootstrap.min.css" as="style">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet preload" as="style">
+    <link rel="preload" as="image" href="assets/images/banner/21.webp" />
+    <link rel="stylesheet preload" href="assets/css/style.css" as="style">
+</head>
+
+<body>
+<header class="header-two header--sticky">
+    <div class="header-top">
+        <div class="content">
+            <div class="left-header-top">
+                <p class="top-details">
+                    Ready to unlock emerging market opportunities? <a href="contact-us.html">Contact Us <i class="fal fa-arrow-right"></i></a>
+                </p>
+            </div>
+            <div class="right-header-top">
+                <div class="ht-social">
+                    <span>Follow Us:</span>
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-header">
+        <div class="content">
+            <div class="header-left">
+                <a class="thumbnail" href="index.html">
+                    <img src="assets/images/logo.png" alt="Woughton Global">
+                </a>
+                
+                <div class="nav-area">
+                    <ul class="">
+                        <li class="main-nav">
+                            <a href="index.html">Home</a>
+                        </li>
+                        
+                        <li class="main-nav has-dropdown project-a-after">
+                            <a href="services.html">Services</a>
+                            <ul class="submenu parent-nav">
+                                <li><a href="services.html">Transactional Advisory</a></li>
+                                <li><a href="services.html">Market Entry</a></li>
+                                <li><a href="services.html">Asset Valuation</a></li>
+                                <li><a href="services.html">Capital Asset Sales Brokerage</a></li>
+                                <li><a href="services.html">Fundraising</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="main-nav">
+                            <a href="reports.html">Reports</a>
+                        </li>
+                        
+                        <li class="main-nav">
+                            <a href="research-hub.html">Research Hub</a>
+                        </li>
+                        
+                        <li class="main-nav">
+                            <a href="contact-us.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="loader-wrapper">
+                    <div class="loader"></div>
+                    <div class="loader-section section-left"></div>
+                    <div class="loader-section section-right"></div>
+                </div>
+            </div>
+            <div class="header-right">
+                <a class="rts-btn btn-primary" href="contact-us.html">Get In Touch</a>
+            </div>
+        </div>
+    </div>
+</header>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const hamburger = document.getElementById('hamburger');
+    
+    function toggleMobileMenu() {
+        const isOpen = mobileNav.style.right === '0px';
+        
+        if (isOpen) {
+            // Close menu
+            mobileNav.style.right = '-100%';
+            mobileOverlay.style.opacity = '0';
+            mobileOverlay.style.visibility = 'hidden';
+            hamburger.style.transform = 'rotate(0deg)';
+            document.body.style.overflow = 'auto';
+        } else {
+            // Open menu
+            mobileNav.style.right = '0px';
+            mobileOverlay.style.opacity = '1';
+            mobileOverlay.style.visibility = 'visible';
+            hamburger.style.transform = 'rotate(90deg)';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    mobileOverlay.addEventListener('click', toggleMobileMenu);
+    
+    // Close menu when clicking on menu links
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (!this.nextElementSibling || !this.nextElementSibling.tagName === 'UL') {
+                toggleMobileMenu();
+            }
+        });
+    });
+});
+
+function toggleSubmenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    const submenu = document.getElementById('servicesSubmenu');
+    const toggle = event.target;
+    const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px';
+    
+    if (isOpen) {
+        submenu.style.maxHeight = '0px';
+        toggle.textContent = '+';
+        toggle.style.transform = 'translateY(-50%) rotate(0deg)';
+    } else {
+        submenu.style.maxHeight = '300px';
+        toggle.textContent = '−';
+        toggle.style.transform = 'translateY(-50%) rotate(180deg)';
+    }
+}
+</script>
+
+
+<!-- rts service area start -->
+<div class="rts-service-area pt--40 pb--60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-style-two center">
+                    <span class="bg-content">Services</span>
+                    <span class="pre">Advisory Excellence</span>
+                    <h2 class="title rts-text-anime-style-1">Strategic Solutions for Emerging Markets
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-2 mt--30">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="service-bg-style-one-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="service-style-swiper-wrapper-two">
+                                <div class="swiper mySwiper-service-1">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="single-service-signle-wrapper" id="transactional-advisory" style="background-image: url('assets/images/service/transactional-bg.webp'); background-size: cover; background-position: center; min-height: 300px; position: relative;">
+                                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%); border-radius: inherit;"></div>
+                                                <div style="position: relative; z-index: 2; color: white; padding: 40px 30px;">
+                                                    <div class="icons" style="margin-bottom: 20px;">
+                                                        <i class="fas fa-handshake" style="font-size: 48px; color: white;"></i>
+                                                    </div>
+                                                    <div class="information">
+                                                        <h5 class="title" style="color: white; margin-bottom: 15px;">Transactional Advisory</h5>
+                                                        <p class="disc" style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
+                                                            Expert deal support across emerging markets with precision execution.
+                                                        </p>
+                                                        <a href="contact.html" class="arrow-right" style="color: white; font-weight: 600;">
+                                                            <span>Get Started</span>
+                                                            <i class="fa-sharp fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="single-service-signle-wrapper" id="market-entry" style="background-image: url('assets/images/service/market-entry-bg.webp'); background-size: cover; background-position: center; min-height: 300px; position: relative;">
+                                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(79, 172, 254, 0.85) 0%, rgba(0, 242, 254, 0.85) 100%); border-radius: inherit;"></div>
+                                                <div style="position: relative; z-index: 2; color: white; padding: 40px 30px;">
+                                                    <div class="icons" style="margin-bottom: 20px;">
+                                                        <i class="fas fa-globe-asia" style="font-size: 48px; color: white;"></i>
+                                                    </div>
+                                                    <div class="information">
+                                                        <h5 class="title" style="color: white; margin-bottom: 15px;">Market Entry</h5>
+                                                        <p class="disc" style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
+                                                            Strategic guidance for Africa and Asia market expansion.
+                                                        </p>
+                                                        <a href="contact.html" class="arrow-right" style="color: white; font-weight: 600;">
+                                                            <span>Get Started</span>
+                                                            <i class="fa-sharp fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="single-service-signle-wrapper" id="asset-valuation" style="background-image: url('assets/images/service/valuation-bg.webp'); background-size: cover; background-position: center; min-height: 300px; position: relative;">
+                                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(240, 147, 251, 0.85) 0%, rgba(245, 87, 108, 0.85) 100%); border-radius: inherit;"></div>
+                                                <div style="position: relative; z-index: 2; color: white; padding: 40px 30px;">
+                                                    <div class="icons" style="margin-bottom: 20px;">
+                                                        <i class="fas fa-chart-line" style="font-size: 48px; color: white;"></i>
+                                                    </div>
+                                                    <div class="information">
+                                                        <h5 class="title" style="color: white; margin-bottom: 15px;">Asset Valuation</h5>
+                                                        <p class="disc" style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
+                                                            Data-driven asset assessment with regional expertise.
+                                                        </p>
+                                                        <a href="contact.html" class="arrow-right" style="color: white; font-weight: 600;">
+                                                            <span>Get Started</span>
+                                                            <i class="fa-sharp fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="single-service-signle-wrapper" id="capital-asset-sales" style="background-image: url('assets/images/service/capital-bg.webp'); background-size: cover; background-position: center; min-height: 300px; position: relative;">
+                                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255, 193, 7, 0.85) 0%, rgba(255, 152, 0, 0.85) 100%); border-radius: inherit;"></div>
+                                                <div style="position: relative; z-index: 2; color: white; padding: 40px 30px;">
+                                                    <div class="icons" style="margin-bottom: 20px;">
+                                                        <i class="fas fa-building" style="font-size: 48px; color: white;"></i>
+                                                    </div>
+                                                    <div class="information">
+                                                        <h5 class="title" style="color: white; margin-bottom: 15px;">Asset Sales Brokerage</h5>
+                                                        <p class="disc" style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
+                                                            High-value asset transactions with seamless execution.
+                                                        </p>
+                                                        <a href="contact.html" class="arrow-right" style="color: white; font-weight: 600;">
+                                                            <span>Get Started</span>
+                                                            <i class="fa-sharp fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="single-service-signle-wrapper" id="fundraising" style="background-image: url('assets/images/service/fundraising-bg.webp'); background-size: cover; background-position: center; min-height: 300px; position: relative;">
+                                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(76, 175, 80, 0.85) 0%, rgba(56, 142, 60, 0.85) 100%); border-radius: inherit;"></div>
+                                                <div style="position: relative; z-index: 2; color: white; padding: 40px 30px;">
+                                                    <div class="icons" style="margin-bottom: 20px;">
+                                                        <i class="fas fa-coins" style="font-size: 48px; color: white;"></i>
+                                                    </div>
+                                                    <div class="information">
+                                                        <h5 class="title" style="color: white; margin-bottom: 15px;">Fundraising</h5>
+                                                        <p class="disc" style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
+                                                            Capital connections with optimal terms and strategic partnerships.
+                                                        </p>
+                                                        <a href="contact.html" class="arrow-right" style="color: white; font-weight: 600;">
+                                                            <span>Get Started</span>
+                                                            <i class="fa-sharp fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- service area end -->
+
+<!-- The Woughton Advantage -->
+<div class="rts-woughton-advantage-area rts-section-gap bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-style-two center">
+                    <span class="bg-content">Advantage</span>
+                    <span class="pre">Why Choose Woughton</span>
+                    <h2 class="title rts-text-anime-style-1">The Woughton Advantage</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row g-5 mt--30">
+            <div class="col-lg-4 col-md-6" data-animation="fadeInUp" data-delay="0.2">
+                <div class="advantage-card" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; height: 100%;">
+                    <div class="advantage-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-globe-africa" style="font-size: 32px; color: white;"></i>
+                    </div>
+                    <h4 style="color: #333; margin-bottom: 15px;">Deep Regional Expertise</h4>
+                    <p style="color: #666; line-height: 1.6; font-size: 14px;">Our team understands the nuances of local economies, regulations, and cultures, allowing us to identify and structure opportunities that others miss.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-animation="fadeInUp" data-delay="0.4">
+                <div class="advantage-card" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; height: 100%;">
+                    <div class="advantage-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-chart-network" style="font-size: 32px; color: white;"></i>
+                    </div>
+                    <h4 style="color: #333; margin-bottom: 15px;">Global & Local Hybrid</h4>
+                    <p style="color: #666; line-height: 1.6; font-size: 14px;">We combine decades of local experience with global best practices. Our team's exposure to international finance and technology allows us to apply sophisticated strategies tailored to the African context.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6" data-animation="fadeInUp" data-delay="0.6">
+                <div class="advantage-card" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; height: 100%;">
+                    <div class="advantage-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-handshake" style="font-size: 32px; color: white;"></i>
+                    </div>
+                    <h4 style="color: #333; margin-bottom: 15px;">End-to-End Advisory</h4>
+                    <p style="color: #666; line-height: 1.6; font-size: 14px;">We don't just find capital; we guide our clients through every stage of a deal. From initial feasibility studies to post-deal advisory, we are your partners in building long-term value.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="rts-services-cta-area rts-section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="services-cta-wrapper" style="text-align: center; padding: 60px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; color: white;">
+                    <h2 style="color: white; margin-bottom: 20px; font-weight: 700; font-size: 2.5rem;">Ready to discuss your investment or advisory needs?</h2>
+                    <p style=" color: white;font-size: 18px; margin-bottom: 30px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        Let's explore how our expertise in emerging markets can help you achieve your strategic objectives and unlock new opportunities for growth.
+                    </p>
+                    <a href="contact.html" class="rts-btn btn-primary btn-white" style="background: white; color: #667eea; padding: 16px 32px; font-weight: 600; margin: auto;">
+                        Contact Us Today <i class="fa-light fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="rts-footer-area  footer-three footer-bg-three mt--120 mt_md--80 mt_sm--60">
+    <br>
+    <br>
+        <div class="rts-cta-area-one pt-[10px]">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cta-main-area-wrapper-one bg_image">
+                        <div class="left-areas">
+                            <span class="pre">Latest Business Ideas</span>
+                            <h3 class="title">Sign Up Newsletter</h3>
+                        </div>
+                        <div class="right-area">
+                            <div class="inpur-area-main">
+                                <input type="text" placeholder="Enter Email Address">
+                                <button class="rts-btn btn-primary">Subscribe Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rts-footer-area ptb--100   footer-two footer-bg-two" id="contact">
+        <div class="container">
+            <div class="row">
+                <!-- single wized -->
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="footer-two-single-wized left">
+                        <h3 class="title animated fadeIn">
+                            <span>Ready To</span> <br>
+                            Work With Us?
+                        </h3>
+                        <p class="disc">
+                            Felis consequat magnis est fames sagittis ultrices placerat sodales porttitor quisque.
+                        </p>
+                        <a class="rts-btn btn-primary" href="contact-us.html">Contact Us</a>
+                    </div>
+                </div>
+                <!-- single wized -->
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 mt_sm--30 mt_md--30">
+                    <div class="footer-two-single-wized">
+                        <div class="wized-title-area">
+                            <h5 class="wized-title">Contact Us</h5>
+                            <img src="assets/images/footer/01.png" alt="Invena_Footer">
+                        </div>
+                        <div class="wized-2-body">
+                            <div class="contact-info-1">
+                                <div class="icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="disc">
+                                    <span>Call Us</span>
+                                    <a href="#">(+256) 2145.2156</a>
+                                </div>
+                            </div>
+                            <div class="contact-info-1">
+                                <div class="icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="disc">
+                                    <span>Email Us</span>
+                                    <a href="#">info@woughtonglobal.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- single wized -->
+                <!-- single wized -->
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="footer-two-single-wized right">
+                        <div class="wized-2-body">
+                            <div class="contact-info-1">
+                                <div class="icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="disc">
+                                    <span>Our Location</span>
+                                    <a href="#">XYZ Hilton Street, 125 Town <br>
+                                        United State</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- single wized -->
+            </div>
+        </div>
+    </div>
+<div class="rts-copy-right-1 ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="copyright-h-2-wrapper">
+                    <p class="disc">
+                        Woughton Global - Copyright
+                        <script>
+                            document.write(
+                                new Date().getFullYear()
+                            )
+                        </script>. All rights reserved.
+                    </p>
+                    <div class="right">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+
+                            <li><a href="reports.html">Reports</a></li>
+                            <li><a href="research-hub.html">Research Hub</a></li>
+                            <li><a href="contact-us.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+@media (min-width: 992px) {
+    .footer-three-single-wized.mid-right {
+        padding-left: 20px;
+    }
+}
+</style>
+
+<!-- progress area end -->
+
+<script defer src="assets/js/plugins/jquery.js"></script>
+
+<script defer src="assets/js/plugins/odometer.js"></script>
+<script defer src="assets/js/plugins/jquery-appear.js"></script>
+
+
+<script defer src="assets/js/plugins/gsap.js"></script>
+<script defer src="assets/js/plugins/split-text.js"></script>
+<script defer src="assets/js/plugins/scroll-trigger.js"></script>
+<script defer src="assets/js/plugins/smooth-scroll.js"></script>
+<script defer src="assets/js/plugins/metismenu.js"></script>
+<script defer src="assets/js/plugins/popup.js"></script>
+
+<script defer src="assets/js/vendor/bootstrap.min.js"></script>
+<script defer src="assets/js/plugins/swiper.js"></script>
+<script defer src="assets/js/plugins/contact.form.js"></script>
+
+<script defer src="assets/js/main.js"></script>
+</body>
+
+</html>
