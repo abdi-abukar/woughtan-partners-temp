@@ -610,57 +610,167 @@ function toggleSubmenu(event) {
 
 
     <!-- contact areas main -->
-    <div class="rts-contact-area-in-page" data-animation="fadeInUp" data-delay="0.2">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="contact-info-area-wrapper-p new">
-                        <div class="single-contact-info">
-                            <div class="icon">
-                                <i class="fa-solid fa-phone-flip"></i>
-                            </div>
-                            <div class="info-wrapper">
-                                <span>Call Us 24/7</span>
-                                <a href="#">(+256) 2145.2156</a>
-                            </div>
+<div class="rts-contact-area-in-page" data-animation="fadeInUp" data-delay="0.2">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <!-- Left: Contact details + Office hours + CTA buttons -->
+            <div class="col-lg-6">
+                <div class="contact-info-area-wrapper-p new">
+                    <div class="single-contact-info">
+                        <div class="icon"><i class="fa-solid fa-phone-flip"></i></div>
+                        <div class="info-wrapper">
+                            <span>Call Us 24/7</span>
+                            <a href="tel:+14703015064">+1 (470) 301-5064</a>
                         </div>
-                        <div class="single-contact-info">
-                            <div class="icon">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div class="info-wrapper">
-                                <span>Work with us</span>
-                                <a href="#">info@Invena.com</a>
-                            </div>
+                    </div>
+
+                    <div class="single-contact-info">
+                        <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="info-wrapper">
+                            <span>Work with us</span>
+                            <a href="mailto:info@wroughtonpartners.com">info@wroughtonpartners.com</a>
                         </div>
-                        <div class="single-contact-info">
-                            <div class="icon">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div class="info-wrapper">
-                                <span>Our Location</span>
-                                <a href="#">125 Town, United State</a>
-                            </div>
+                    </div>
+
+                    <div class="single-contact-info">
+                        <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-wrapper">
+                            <span>Accra Office</span>
+                            <a href="#" aria-label="Accra address">Plot NO.21, Airport City, 8th Floor, One Airport Square, Accra, Ghana</a>
                         </div>
+                    </div>
+
+                    <div class="contact-cta-row">
+                        <a class="btn-whatsapp" href="https://wa.me/14703015064?text=Hello%20Woughton%20Partners" target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+
+                        <button type="button" class="btn-calendly" id="openCalendly">
+                            <i class="far fa-calendar"></i> Book 30-Minute Consultation
+                        </button>
+                    </div>
+
+                    <div class="office-hours">
+                        <strong>Office Hours (Local)</strong>
+                        <div>Ghana: 10:00 — 17:00 GMT</div>
+                        <div>Atlanta: 09:00 — 14:00 EST</div>
+                        <div class="response-time">We respond within 48 hours</div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="contact-form-p new">
-                        <form class="form__content" method="post" action="mailer.php" id="contact-form">
-                            <h4 class="title">Get In Touch</h4>
-                            <input name="name" id="name" type="text" placeholder="Your Name">
-                            <input type="email" name="email" id="email" placeholder="Johndoe@gmail.com">
-                            <textarea name="message" id="message" placeholder="Message"></textarea>
+            </div>
 
-                            <div id="form-messages"></div>
-                            <button class="rts-btn btn-primary" type="submit">Get In Touch</button>
-                        </form>
-                    </div>
+            <!-- Right: Smart Contact Form -->
+            <div class="col-lg-6">
+                <div class="contact-form-p new">
+                    <form class="form__content smart-contact-form" method="post" action="mailer.php" id="contact-form">
+                        <h4 class="title">Get In Touch</h4>
+
+                        <input name="name" id="name" type="text" placeholder="Your Name" required>
+                        <input name="organization" id="organization" type="text" placeholder="Organization">
+                        <input name="email" id="email" type="email" placeholder="you@company.com" required>
+                        <input name="phone" id="phone" type="tel" placeholder="+1 (___) ___-____">
+
+                        <select name="interest" id="interest" required>
+                            <option value="">I'M INTERESTED IN</option>
+                            <option>Fundraising</option>
+                            <option>Investment Advisory</option>
+                            <option>Economic Consulting</option>
+                            <option>PPP Structuring</option>
+                            <option>Other</option>
+                        </select>
+
+                        <select name="sector" id="sector" required>
+                            <option value="">PROJECT SECTOR</option>
+                            <option>Infrastructure</option>
+                            <option>Real Estate</option>
+                            <option>Mining</option>
+                            <option>Agriculture & Tech</option>
+                            <option>Government</option>
+                            <option>Other</option>
+                        </select>
+
+                        <select name="capital" id="capital">
+                            <option value="">ESTIMATED CAPITAL NEED</option>
+                            <option>&lt;$10M</option>
+                            <option>$10M - $50M</option>
+                            <option>$50M - $100M</option>
+                            <option>$100M - $500M</option>
+                            <option>$500M+</option>
+                            <option>Not Applicable</option>
+                        </select>
+
+                        <select name="timeline" id="timeline">
+                            <option value="">TIMELINE</option>
+                            <option>Immediate (0-3 months)</option>
+                            <option>Near-term (3-6 months)</option>
+                            <option>Medium-term (6-12 months)</option>
+                            <option>Exploratory</option>
+                        </select>
+
+                        <textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
+
+                        <label class="checkbox-line">
+                            <input type="checkbox" name="newsletter" id="newsletter">
+                            <span>I'd like to receive Woughton's quarterly market insights</span>
+                        </label>
+
+                        <div id="form-messages"></div>
+
+                        <div class="form-actions">
+                            <button class="rts-btn btn-primary" type="submit" id="submitBtn">
+                                <i class="fas fa-paper-plane"></i> Submit
+                            </button>
+
+                            <button class="rts-btn btn-secondary" type="button" id="scheduleBtn">
+                                <i class="far fa-calendar"></i> Schedule a Call
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- contact areas main end -->
+</div>
+<!-- contact areas main end -->
+
+<style>
+  :root {
+    --brand-primary: #071D36;
+    --brand-accent: #B9732F;
+    --brand-accent-hover: #A86A2A;
+    --neutral-surface: #fff;
+    --text-on-primary: #fff;
+    --border-subtle: rgba(7,29,54,0.06);
+    --transition: 0.28s;
+    --muted: #666;
+  }
+
+  .rts-contact-area-in-page { padding:40px 0; font-family:"Inter", sans-serif; }
+
+  .single-contact-info { display:flex; gap:14px; margin-bottom:16px; align-items:flex-start; }
+  .single-contact-info .icon { font-size:20px; color:var(--brand-accent); width:40px; height:40px; display:flex; align-items:center; justify-content:center; background: rgba(185,115,47,0.08); border-radius:8px; }
+  .single-contact-info .info-wrapper span { display:block; font-weight:700; color:var(--brand-primary); }
+  .single-contact-info .info-wrapper a { color:var(--muted); text-decoration:none; font-weight:600; }
+
+  .contact-cta-row { display:flex; gap:12px; flex-wrap:wrap; margin:16px 0; }
+  .btn-whatsapp { background:#25D366; color:#fff; padding:10px 16px; border-radius:8px; font-weight:700; display:inline-flex; align-items:center; gap:8px; text-decoration:none; }
+  .btn-calendly { background:var(--brand-primary); color:var(--text-on-primary); padding:10px 16px; border-radius:8px; font-weight:700; display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer; }
+
+  .office-hours { font-size:14px; color:var(--muted); margin-top:12px; }
+  .office-hours strong { color:var(--brand-primary); display:block; margin-bottom:4px; }
+  .response-time { color:var(--brand-accent); font-weight:700; margin-top:6px; }
+
+  .smart-contact-form { background:var(--neutral-surface); padding:24px; border-radius:12px; border:1px solid var(--border-subtle); box-shadow:0 6px 24px rgba(7,29,54,0.04); display:flex; flex-direction:column; gap:12px; }
+
+  .smart-contact-form input, .smart-contact-form select, .smart-contact-form textarea { width:100%; padding:12px; border-radius:8px; border:1px solid var(--border-subtle); color:var(--brand-primary); font-size:14px; }
+
+  .checkbox-line { display:flex; align-items:center; gap:10px; }
+  .form-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; }
+  .rts-btn.btn-primary { background:var(--brand-accent); color:var(--text-on-primary); padding:10px 18px; border-radius:8px; border:none; font-weight:700; cursor:pointer; }
+  .rts-btn.btn-secondary { background:transparent; border:1px solid var(--border-subtle); color:var(--brand-primary); padding:10px 18px; border-radius:8px; font-weight:700; cursor:pointer; }
+  #form-messages { color:var(--brand-primary); min-height:22px; }
+</style>
+
 
 
 <div class="rts-footer-area  footer-three footer-bg-three mt--120 mt_md--80 mt_sm--60">
@@ -784,9 +894,218 @@ function toggleSubmenu(event) {
 </div>
 
 <style>
-@media (min-width: 992px) {
-    .footer-three-single-wized.mid-right {
-        padding-left: 20px;
+:root {
+  --brand-primary: #071D36;
+  --brand-accent: #B9732F;
+  --brand-accent-hover: #A86A2A;
+  --neutral-surface: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+  --border-subtle: rgba(255,255,255,0.06);
+  --topline-color: rgba(255,255,255,0.92);
+  --transition: 0.28s;
+}
+
+/* ------------------------- Footer Background & Spacing ------------------------- */
+.rts-footer-area.footer-three,
+.rts-footer-area.footer-two {
+    background-color: var(--brand-primary); /* deep navy */
+    color: var(--neutral-surface); /* light text */
+    padding-top: 100px;
+    padding-bottom: 60px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ------------------------- CTA Newsletter Section ------------------------- */
+.rts-cta-area-one .cta-main-area-wrapper-one {
+    background-color: rgba(7,29,54,0.95); /* subtle variation of brand-primary */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+
+.rts-cta-area-one .left-areas .pre {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brand-accent); /* gold accent */
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.rts-cta-area-one .left-areas .title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--neutral-surface);
+    line-height: 1.2;
+}
+
+.rts-cta-area-one .right-area .inpur-area-main {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.rts-cta-area-one input[type="text"] {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    width: 250px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.04);
+    color: var(--neutral-surface);
+}
+
+.rts-cta-area-one input[type="text"]::placeholder {
+    color: rgba(245,247,250,0.6);
+}
+
+.rts-cta-area-one .btn-primary {
+    padding: 12px 28px;
+    background-color: var(--brand-accent);
+    color: var(--neutral-surface);
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform var(--transition);
+}
+
+.rts-cta-area-one .btn-primary:hover {
+    background-color: var(--brand-accent-hover);
+    color: var(--brand-accent);
+    transform: translateY(-2px);
+}
+
+/* ------------------------- Footer Widgets ------------------------- */
+.footer-two-single-wized .title,
+.footer-two-single-wized .wized-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand-primary); /* light titles on dark background */
+    margin-bottom: 15px;
+}
+
+.footer-two-single-wized p.disc {
+    font-size: 14px;
+    color: rgba(245,247,250,0.88); /* slightly muted white */
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.footer-two-single-wized a.rts-btn.btn-primary {
+    background-color: var(--brand-accent);
+    color: var(--neutral-surface);
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform var(--transition);
+}
+
+.footer-two-single-wized a.rts-btn.btn-primary:hover {
+    background-color: var(--brand-accent-hover);
+    transform: translateY(-2px);
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Contact Info ------------------------- */
+.contact-info-1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.contact-info-1 .icon {
+    font-size: 18px;
+    color: var(--brand-accent);
+    margin-top: 2px;
+}
+
+.contact-info-1 .disc span {
+    display: block;
+    font-size: 12px;
+    color: var(--neutral-surface);
+    font-weight: 700;
+}
+
+.contact-info-1 .disc a {
+    color: rgba(245,247,250,0.9);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.contact-info-1 .disc a:hover {
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Copy-right ------------------------- */
+.rts-copy-right-1 {
+    background-color: rgba(7,25,46,0.95); /* slightly darker strip */
+    padding: 20px 0;
+    color: rgba(245,247,250,0.86);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.rts-copy-right-1 .right ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.rts-copy-right-1 .right ul li a {
+    color: rgba(245,247,250,0.86);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.rts-copy-right-1 .right ul li a:hover {
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Misc small helpers to keep contrast readable ------------------------- */
+a,
+a:link,
+a:visited {
+  color: var(--neutral-surface);
+}
+
+.rts-footer-area .bg-image,
+.rts-footer-area .shape {
+  /* ensure any decorative elements keep the same tonal family */
+  opacity: 0.06;
+  filter: grayscale(20%);
+}
+
+/* ------------------------- Responsive ------------------------- */
+@media(max-width:992px) {
+    .rts-cta-area-one .cta-main-area-wrapper-one {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .rts-cta-area-one .right-area .inpur-area-main {
+        width: 100%;
+        flex-direction: column;
+    }
+    .rts-cta-area-one input[type="text"] {
+        width: 100%;
+    }
+    .rts-copy-right-1 {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
     }
 }
 </style>

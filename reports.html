@@ -664,10 +664,10 @@ function toggleSubmenu(event) {
   mix-blend-mode: multiply;
 }
 
-/* If you want the header title to exactly match the site's H1 rule across pages, keep var(--h1-size)=64px;
-   adjust above if you prefer slightly smaller on this page. */
+
 
 </style>
+
 <!-- Reports Grid -->
 <div class="reports-grid-section" style="padding: 60px 0; background: white;">
     <div class="container">
@@ -1323,6 +1323,173 @@ function toggleSubmenu(event) {
     </div>
 </div>
 
+<style>
+    :root{
+  --brand-primary: #071D36;
+  --brand-accent: #B9732F;
+  --brand-accent-hover: #A86A2A;
+  --neutral-surface: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+  --border-subtle: rgba(7,29,54,0.06);
+  --transition: 0.28s;
+  /* adjusted sizes to ensure buttons fit */
+  --card-w: 400px;
+  --card-h: 550px;   /* increased from 500 -> 560 to give room for CTA */
+  --img-h: 150px;
+  --pad-desktop: 40px;
+  --pad-tablet: 28px;
+  --pad-mobile: 20px;
+  --h-size: 24px;
+  --body-size: 16px;
+  --muted: #666666;
+}
+
+
+/* enforce center and sizing per item */
+.reports-grid-section .report-item {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin-bottom: 28px;
+}
+
+/* card container: slightly taller to avoid overflow */
+.reports-grid-section .report-card {
+  width: var(--card-w) !important;
+  height: var(--card-h) !important;
+  border-radius: 16px !important;
+  overflow: visible !important; /* ensure buttons with shadow aren't clipped */
+  box-shadow: 0 10px 30px rgba(7,29,54,0.08);
+  transition: transform var(--transition) ease, box-shadow var(--transition) ease, border-color var(--transition) ease;
+  border: 1px solid var(--border-subtle) !important;
+  background: var(--neutral-surface) !important;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* hover lift */
+.reports-grid-section .report-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(7,29,54,0.20);
+  border-color: rgba(7,29,54,0.08);
+  z-index: 3;
+}
+
+/* image area kept at required height */
+.reports-grid-section .report-image {
+  height: var(--img-h) !important;
+  min-height: var(--img-h) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent) 100%) !important;
+  color: var(--text-on-primary);
+}
+
+/* icon styling */
+.reports-grid-section .report-image i {
+  color: rgba(255,255,255,0.95) !important;
+  font-size: 56px !important;
+}
+
+/* content area becomes flexible column so footer can stick to bottom */
+.reports-grid-section .report-content {
+  padding: var(--pad-desktop) !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px;
+  flex: 1 1 auto;
+  min-height: 0; /* allow proper scrolling/overflow handling in flex */
+}
+
+/* ensure excerpt doesn't grow and push CTA out — allow it to truncate visually if needed */
+.reports-grid-section .report-content p {
+  font-size: var(--body-size) !important;
+  color: var(--muted) !important;
+  margin: 0 0 8px 0 !important;
+  line-height: 1.5 !important;
+  flex: 0 1 auto; /* don't force full expansion */
+  max-height: 3.6em; /* ~2 lines of text */
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+}
+
+/* meta row and title */
+.reports-grid-section .report-meta { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.reports-grid-section .report-content h3 { font-size: var(--h-size) !important; margin:0 0 8px 0; line-height:1.25; }
+
+/* report footer pinned to bottom of card content */
+.reports-grid-section .report-footer {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top: auto; /* pushes footer to bottom of flexible content area */
+  padding-top: 6px;
+}
+
+/* price & buttons */
+.reports-grid-section .report-footer .price { color: var(--brand-accent); font-weight:800; font-size:20px; }
+.reports-grid-section .action-buttons { display:flex; gap:8px; align-items:center; }
+
+/* ensure buttons visible and clickable */
+.reports-grid-section .btn-preview {
+  background: transparent !important;
+  border: 1px solid rgba(7,29,54,0.06) !important;
+  color: #222 !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  font-weight:700 !important;
+  font-size:13px !important;
+  white-space:nowrap;
+  z-index: 4;
+}
+
+.reports-grid-section .btn-buy,
+.reports-grid-section .btn-buy:visited {
+  background: var(--brand-accent) !important;
+  color: var(--text-on-primary) !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  font-weight:700 !important;
+  font-size:13px !important;
+  border:none !important;
+  z-index: 4;
+  box-shadow: 0 6px 16px rgba(185,115,47,0.12);
+}
+.reports-grid-section .btn-buy:hover { background: var(--brand-accent-hover) !important; transform: translateY(-2px); }
+
+/* smaller screens — reduce padding and height so content fits */
+@media (max-width: 991px) {
+  :root { --card-w: 100%; --card-h: 520px; --img-h: 220px; }
+  .reports-grid-section .report-card { width: 100% !important; height: var(--card-h) !important; }
+  .reports-grid-section .report-content { padding: var(--pad-tablet) !important; }
+  .reports-grid-section .report-content h3 { font-size: 20px !important; }
+  .reports-grid-section .report-content p { font-size: 15px !important; max-height: 4.2em; }
+}
+
+/* mobile — let cards auto height and keep footer visible */
+@media (max-width: 576px) {
+  :root { --card-h: auto; --img-h: 180px; }
+  .reports-grid-section .report-card { height: auto !important; }
+  .reports-grid-section .report-content { padding: var(--pad-mobile) !important; }
+  .reports-grid-section .report-content h3 { font-size: 18px !important; }
+  .reports-grid-section .report-content p { max-height: none; white-space: normal; overflow: visible; }
+  .reports-grid-section .report-footer { position: relative; margin-top: 12px; }
+}
+
+/* ensure no clipping for shadowed buttons */
+.reports-grid-section .report-card,
+.reports-grid-section .report-card * { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+
+</style>
+
+
 <div class="rts-footer-area  footer-three footer-bg-three mt--120 mt_md--80 mt_sm--60">
     <br>
     <br>
@@ -1444,154 +1611,219 @@ function toggleSubmenu(event) {
 </div>
 
 <style>
-@media (min-width: 992px) {
-    .footer-three-single-wized.mid-right {
-        padding-left: 20px;
-    }
+:root {
+  --brand-primary: #071D36;
+  --brand-accent: #B9732F;
+  --brand-accent-hover: #A86A2A;
+  --neutral-surface: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+  --border-subtle: rgba(255,255,255,0.06);
+  --topline-color: rgba(255,255,255,0.92);
+  --transition: 0.28s;
 }
-</style>
 
+/* ------------------------- Footer Background & Spacing ------------------------- */
+.rts-footer-area.footer-three,
+.rts-footer-area.footer-two {
+    background-color: var(--brand-primary); /* deep navy */
+    color: var(--neutral-surface); /* light text */
+    padding-top: 100px;
+    padding-bottom: 60px;
+    font-family: 'Inter', sans-serif;
+}
 
-<!-- Preview Modal -->
-<div id="previewModal" style="
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    display: none;
-    justify-content: center;
+/* ------------------------- CTA Newsletter Section ------------------------- */
+.rts-cta-area-one .cta-main-area-wrapper-one {
+    background-color: rgba(7,29,54,0.95); /* subtle variation of brand-primary */
+    border-radius: 15px;
+    display: flex;
     align-items: center;
-    z-index: 10000;
-">
-    <div style="
-        background: white;
-        border-radius: 20px;
-        max-width: 600px;
-        width: 90%;
-        max-height: 80vh;
-        overflow-y: auto;
-        position: relative;
-    ">
-        <div style="padding: 30px;">
-            <button onclick="closePreview()" style="
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                background: none;
-                border: none;
-                font-size: 24px;
-                cursor: pointer;
-                color: #999;
-            ">&times;</button>
-            
-            <h3 id="previewTitle" style="color: #333; margin-bottom: 20px; font-size: 24px; font-weight: 700;"></h3>
-            
-            <div id="previewContent" style="color: #666; line-height: 1.6;">
-                <!-- Preview content will be inserted here -->
-            </div>
-            
-            <div style="margin-top: 30px; text-align: center;">
-                <a id="previewBuyButton" href="#" style="
-                    background: #007bff;
-                    color: white;
-                    padding: 12px 30px;
-                    border-radius: 25px;
-                    text-decoration: none;
-                    font-weight: 600;
-                    display: inline-block;
-                ">Purchase Full Report</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<style>
-/* Media Queries for Mobile */
-@media (max-width: 768px) {
-    .nav-area {
-        display: none !important;
-    }
-    
-    #mobileMenuBtn {
-        display: block !important;
-    }
-    
-    .header-right {
-        display: none;
-    }
-    
-    .header-top {
-        display: none;
-    }
-    
-    .reports-header h1 {
-        font-size: 2.5rem !important;
-    }
-    
-    .filter-controls {
-        justify-content: center !important;
-    }
-    
-    .search-wrapper {
-        margin-bottom: 20px;
-    }
-    
-    .action-buttons {
-        flex-direction: column !important;
-        gap: 8px !important;
-    }
-    
-    .action-buttons .btn-preview,
-    .action-buttons .btn-buy {
-        width: 100% !important;
-        text-align: center !important;
-    }
+    justify-content: space-between;
+    padding: 30px;
+    flex-wrap: wrap;
 }
 
-/* Hover effects for mobile menu */
-#mobileNav a:hover {
-    background: #f8f9fa !important;
-    color: #007bff !important;
-    padding-left: 35px !important;
+.rts-cta-area-one .left-areas .pre {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brand-accent); /* gold accent */
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
 }
 
-#mobileNav ul ul a:hover {
-    background: #e9ecef !important;
-    padding-left: 55px !important;
+.rts-cta-area-one .left-areas .title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--neutral-surface);
+    line-height: 1.2;
 }
 
-/* Report card hover effects */
-.report-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important;
+.rts-cta-area-one .right-area .inpur-area-main {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
 }
 
-.btn-preview:hover {
-    background: #e9ecef !important;
-    color: #007bff !important;
+.rts-cta-area-one input[type="text"] {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    width: 250px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.04);
+    color: var(--neutral-surface);
 }
 
-.btn-buy:hover {
-    background: #0056b3 !important;
+.rts-cta-area-one input[type="text"]::placeholder {
+    color: rgba(245,247,250,0.6);
+}
+
+.rts-cta-area-one .btn-primary {
+    padding: 12px 28px;
+    background-color: var(--brand-accent);
+    color: var(--neutral-surface);
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform var(--transition);
+}
+
+.rts-cta-area-one .btn-primary:hover {
+    background-color: var(--brand-accent-hover);
+    color: var(--brand-accent);
     transform: translateY(-2px);
 }
 
-.custom-report-section a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+/* ------------------------- Footer Widgets ------------------------- */
+.footer-two-single-wized .title,
+.footer-two-single-wized .wized-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand-primary); /* light titles on dark background */
+    margin-bottom: 15px;
 }
 
-#searchInput:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 2px 20px rgba(0,123,255,0.2);
+.footer-two-single-wized p.disc {
+    font-size: 14px;
+    color: rgba(245,247,250,0.88); /* slightly muted white */
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
-#clearFilters:hover {
-    background: #c82333 !important;
+.footer-two-single-wized a.rts-btn.btn-primary {
+    background-color: var(--brand-accent);
+    color: var(--neutral-surface);
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform var(--transition);
+}
+
+.footer-two-single-wized a.rts-btn.btn-primary:hover {
+    background-color: var(--brand-accent-hover);
     transform: translateY(-2px);
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Contact Info ------------------------- */
+.contact-info-1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.contact-info-1 .icon {
+    font-size: 18px;
+    color: var(--brand-accent);
+    margin-top: 2px;
+}
+
+.contact-info-1 .disc span {
+    display: block;
+    font-size: 12px;
+    color: var(--neutral-surface);
+    font-weight: 700;
+}
+
+.contact-info-1 .disc a {
+    color: rgba(245,247,250,0.9);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.contact-info-1 .disc a:hover {
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Copy-right ------------------------- */
+.rts-copy-right-1 {
+    background-color: rgba(7,25,46,0.95); /* slightly darker strip */
+    padding: 20px 0;
+    color: rgba(245,247,250,0.86);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.rts-copy-right-1 .right ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.rts-copy-right-1 .right ul li a {
+    color: rgba(245,247,250,0.86);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.rts-copy-right-1 .right ul li a:hover {
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Misc small helpers to keep contrast readable ------------------------- */
+a,
+a:link,
+a:visited {
+  color: var(--neutral-surface);
+}
+
+.rts-footer-area .bg-image,
+.rts-footer-area .shape {
+  /* ensure any decorative elements keep the same tonal family */
+  opacity: 0.06;
+  filter: grayscale(20%);
+}
+
+/* ------------------------- Responsive ------------------------- */
+@media(max-width:992px) {
+    .rts-cta-area-one .cta-main-area-wrapper-one {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .rts-cta-area-one .right-area .inpur-area-main {
+        width: 100%;
+        flex-direction: column;
+    }
+    .rts-cta-area-one input[type="text"] {
+        width: 100%;
+    }
+    .rts-copy-right-1 {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
 }
 </style>
 
