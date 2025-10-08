@@ -91,15 +91,30 @@
       </div>
 
       <!-- ===== Right Section: CTA + Hamburger ===== -->
-      <div class="header-right">
-        <a href="https://calendly.com/your-placeholder" id="ScheduleCTA" class="rts-btn btn-primary schedule-cta">
-          Schedule Consultation
-        </a>
+      <!-- ===== Right Section: CTA + Hamburger ===== -->
+<div class="header-right">
+  <a href="https://calendly.com/your-placeholder" 
+     id="ScheduleCTA" 
+     class="rts-btn btn-primary schedule-cta"
+     style="display:inline-block;"
+  >
+    Schedule Consultation
+  </a>
 
-        <button id="mobileMenuBtn" class="mobile-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
-          &#9776;
-        </button>
-      </div>
+  <button id="mobileMenuBtn" style=" background-color:var(--brand-primary);border-radius: 10px ;" class="mobile-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+    &#9776;
+  </button>
+</div>
+
+<!-- Inline media query to hide CTA on mobile -->
+<style>
+  @media (max-width: 980px) {
+    #ScheduleCTA {
+      display: none !important;
+    }
+  }
+</style>
+
     </div>
   </div>
 
@@ -170,7 +185,7 @@
     .rts-btn.schedule-cta:hover { background:var(--brand-accent-hover); }
 
     /* Mobile */
-    .mobile-hamburger { display:none; font-size:24px; background:none; border:none; color:#fff; cursor:pointer; }
+    .mobile-hamburger { display:none; font-size:24px; background-color:var(--brand-primary); border:none; color:#fff; cursor:pointer; }
     .mobile-nav-panel { position:fixed; top:0; right:-100%; width:280px; height:100%; background:var(--brand-primary); color:#fff; z-index:99999; padding:20px; transition:right var(--transition); display:flex; flex-direction:column; }
     .mobile-nav-panel[aria-hidden="false"] { right:0; }
     .mobile-close { align-self:flex-end; background:none; border:none; font-size:24px; color:#fff; cursor:pointer; }
@@ -238,8 +253,8 @@
       </p>
 
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://calendly.com/your-placeholder" id="cta-schedule">Schedule a Consultation</a>
-        <a class="btn btn-ghost" href="reports.html#executive-summary" id="cta-report">Download Executive Summary</a>
+        <a class="btn btn-primary rts-btn btn-primary schedule-cta" href="https://calendly.com/your-placeholder" id="cta-schedule">Schedule a Consultation</a>
+        <a class="btn btn-ghost rts-btn btn-primary " href="reports.html#executive-summary" id="cta-report">Download Executive Summary</a>
       </div>
 
       <div class="hero-stats" role="list" aria-label="Key statistics">
@@ -366,6 +381,7 @@
   }
 
   .btn {
+    font-size: medium;
     padding: 12px 24px;
     border-radius: 8px;
     font-weight: 700;
@@ -374,20 +390,22 @@
   }
 
   .btn-primary {
-    background: var(--accent);
-    color: var(--primary);
+    background: var(--accent); color: var(--primary); border: 1px solid rgba(7,29,54,0.04); font-weight:700;
   }
   .btn-primary:hover {
-    background: var(--accent-2);
+    background: var(--brand-accent-hover);
     transform: translateY(-2px);
   }
 
   .btn-ghost {
     border: 2px solid rgba(255,255,255,0.1);
-    color: var(--text-on-primary);
+    background-color: var(--brand-primary);
+    color: var(--neutral);
   }
   .btn-ghost:hover {
     background: rgba(255,255,255,0.05);
+    color: var(--neutral);
+    transform: translateY(-2px);
   }
 
   .hero-stats {
@@ -460,10 +478,23 @@
   }
 
   /* ===== Responsive ===== */
-  @media (max-width: 1024px) {
+ @media (max-width: 1024px) {
     :root { --h1-size: 48px; }
-    .hero-inner { flex-direction: column; text-align: center; }
-    .hero-right { width: 100%; }
+    .hero-inner { 
+      flex-direction: column; 
+      text-align: center; 
+      gap: 32px;
+    }
+    .hero-right { 
+      width: 100%; 
+      transform: translateY(0); /* remove shift for smaller screens */
+    }
+    .hero-left { 
+      max-width: 100%; 
+    }
+    .hero-ctas {
+      justify-content: center; /* center buttons horizontally */
+    }
   }
 
   @media (max-width: 768px) {
@@ -471,6 +502,14 @@
     .portrait-flex { flex-direction: column; }
     .portrait-main img,
     .portrait-placeholder img { height: 300px; }
+    .hero-left h1.hero-h1 {
+      font-size: var(--h1-size);
+      word-wrap: break-word; /* ensure heading wraps on smaller screens */
+    }
+    .hero-ctas {
+      flex-direction: column; /* stack buttons */
+      gap: 12px; /* smaller gap for mobile */
+    }
   }
 
   @media (max-width: 480px) {
@@ -478,7 +517,12 @@
     .hero-h1 { font-size: var(--h1-size); }
     .portrait-main img,
     .portrait-placeholder img { height: 260px; }
+    .hero-ctas a {
+      width: 100%; /* full width for buttons on very small screens */
+      text-align: center;
+    }
   }
+
 </style>
 
 <!-- ===== JS: Hide image containers if missing ===== -->
@@ -500,9 +544,9 @@
             <div class="col-lg-6">
                 <div class="left-thumbnail-about-area-two">
                     <img src="assets/images/about/02.webp" alt="Woughton Partners office - Strategic advisory firm">
-                    <div class="small-image">
+                    <!-- <div class="small-image">
                         <img src="assets/images/about/07.webp" alt="African emerging markets">
-                    </div>
+                    </div> -->
                     <div class="counter-about-area">
                         <h2 class="counter title"><span class="odometer" data-count="35">00</span>+
                         </h2>
@@ -632,39 +676,12 @@
   display: block;
 }
 
-/* Counter — visually prominent and legible on white */
-.counter-about-area {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: linear-gradient(180deg, var(--primary), rgba(7,29,54,0.95));
-  color: #fff;
-  padding: 10px 14px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(7,29,54,0.12);
-  min-width: 96px;
-  text-align: center;
-}
-.counter-about-area .counter.title {
-  font-size: var(--h3-size);
-  font-weight: 800;
-  color: var(--accent);
-  margin: 0;
-  line-height: 1;
-}
-.counter-about-area span {
-  display: block;
-  margin-top: 6px;
-  font-size: 28px;
-  font-weight: 600;
-  color: rgba(245,247,250,0.95);
-}
 
 /* Title block (right column) — keep your markup but apply palette and type scale */
 .about-inner-content-two { padding-left: 20px; }
 .title-style-two .bg-content {
   color: var(--muted);
-  font-size: var(--small-size);
+  font-size: var(--h2);
   display: block;
 }
 .title-style-two .pre {
@@ -942,10 +959,10 @@
     <!-- CTA -->
     <div style="flex:0 0 auto; min-width:200px; text-align:right;">
       <a href="team.html"
-         class="team-brief__cta"
+         class="team-brief__cta rts-btn btn-primary"
          role="button"
          aria-label="View full team page"
-         style="display:inline-block; background:#B9732F; color:#071D36; padding:12px 18px; border-radius:8px; font-weight:700; text-decoration:none; font-size:16px; box-shadow:0 6px 18px rgba(11,21,38,0.08);">
+         style="display:inline-block; background:#B9732F; ">
         Meet the Full Team
       </a>
 
@@ -1303,7 +1320,7 @@
                     <p style="color:#5D666F; margin-bottom: 30px; font-size: 18px; max-width: 650px; margin-left: auto; margin-right: auto; line-height:1.7;">
                         Explore our comprehensive collection of market intelligence reports covering all major emerging economies
                     </p>
-                    <a href="reports.html" class="rts-btn btn-primary" style="padding: 14px 32px; margin-left: auto; margin-right: auto; background:var(--accent); border-color:var(--accent); color:var(--primary);">
+                    <a href="reports.html" class="rts-btn btn-primary" id="showMore" style="">
                         Show More Reports <i class="fa-light fa-arrow-right"></i>
                     </a>
                 </div>
@@ -1342,6 +1359,10 @@
       transform: translateY(-6px);
       box-shadow: 0 18px 40px rgba(7,29,54,0.08);
   }
+
+  #showMore :hover{
+color: var(--brand-accent) !important;
+}
 
   #reports-preview-option1 .rts-single-report-card .title {
       color: var(--text);
@@ -1409,284 +1430,238 @@
 
 <!-- Thought Leadership & Insights Hub start -->
 <div class="rts-blog-news-area rts-section-gap">
-    <div class="container">
-        <!-- Header -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="title-style-three center">
-                    <span class="pre" style="color:#B8860B; font-weight:700;">Thought Leadership</span>
-                    <div class="bg-title" style="color: rgba(0,0,0,0.05);">Insights</div>
-                    <h2 class="title rts-text-anime-style-1" style="font-size: 36px; line-height:1.3; color:#0B1F3F;">
-                        Market Intelligence from the Ground Up
-                    </h2>
-                    <p class="description" style="max-width: 650px; margin: 20px auto 0; color: #5D666F; font-size: 16px; line-height:1.6;">
-                        Proprietary research combining on-the-ground insights with rigorous economic analysis
-                    </p>
-                </div>
-            </div>
+  <div class="container">
+    <!-- Header -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="title-style-three center">
+          <span class="pre" style="color:var(--brand-accent); font-weight:700;">Thought Leadership</span>
+          <div class="bg-title" style="color: rgba(0,0,0,0.05);">Insights</div>
+          <h2 class="title rts-text-anime-style-1" style="font-size: 36px; line-height:1.3; color:var(--brand-primary);">
+            Market Intelligence from the Ground Up
+          </h2>
+          <p class="description" style="max-width: 650px; margin: 20px auto 0; color: #5D666F; font-size: 16px; line-height:1.6;">
+            Proprietary research combining on-the-ground insights with rigorous economic analysis
+          </p>
         </div>
-
-        <!-- Featured Flagship Report -->
-        <div class="row g-5 mt--10">
-            <div class="col-lg-12" data-animation="fadeInUp" data-delay="0.1">
-                <div class="single-blog-area-one featured-report">
-                    <div class="bottom-detail">
-                        <a href="" class="thumbnail">
-                            <img src="assets/images/blog/01.webp" alt="2025 GHANA INFRASTRUCTURE INVESTMENT OUTLOOK">
-                        </a>
-                    </div>
-                    <a href="">
-                        <h4 class="title">2025 GHANA INFRASTRUCTURE INVESTMENT OUTLOOK</h4>
-                    </a>
-                    <p class="excerpt" style="margin: 12px 0; color:#666; font-size: 14px; line-height:1.5;">
-                        Comprehensive analysis of planned infrastructure projects, regulatory updates, and investment opportunities across transport, energy, and urban sectors.
-                    </p>
-                    <ul class="credibility-metrics">
-                        <li>120 pages of data-driven insights</li>
-                        <li>45 projects analyzed</li>
-                        <li>25 institutional investors interviewed</li>
-                    </ul>
-                    <div class="report-cta">
-                        <a href="#" class="btn-primary">Download Full Report</a>
-                        <a href="#" class="btn-secondary">Download Executive Summary</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Insights Library -->
-        <div class="row g-5 mt--10">
-            <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.2">
-                <div class="single-blog-area-one insight-card">
-                    <div class="bottom-detail">
-                        <a href="" class="thumbnail">
-                            <img src="assets/images/blog/02.webp" alt="Sector Snapshot">
-                        </a>
-                    </div>
-                    <div class="blog-tags" style="margin: 15px 0;">
-                        <span class="tag analysis">Research Report</span>
-                        <span class="tag report">Sector Snapshot</span>
-                    </div>
-                    <a href="">
-                        <h4 class="title">Sector Snapshots: Q1 2025</h4>
-                    </a>
-                    <p class="excerpt">
-                        Quarterly update on key sectors with macroeconomic insights and forecasts.
-                    </p>
-                    <p class="category">Research / <span>by Woughton Team</span></p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.3">
-                <div class="single-blog-area-one insight-card">
-                    <div class="bottom-detail">
-                        <a href="" class="thumbnail">
-                            <img src="assets/images/blog/03.webp" alt="Economic Commentary">
-                        </a>
-                    </div>
-                    <div class="blog-tags" style="margin: 15px 0;">
-                        <span class="tag news">Economic Commentary</span>
-                        <span class="tag report">Monthly Brief</span>
-                    </div>
-                    <a href="">
-                        <h4 class="title">Economic Commentary: March 2025</h4>
-                    </a>
-                    <p class="excerpt">
-                        Monthly brief on macro trends and market implications across Africa.
-                    </p>
-                    <p class="category">Economic Insights / <span>by Woughton Team</span></p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.4">
-                <div class="single-blog-area-one insight-card">
-                    <div class="bottom-detail">
-                        <a href="" class="thumbnail">
-                            <img src="assets/images/blog/01.webp" alt="Deal Flow Report">
-                        </a>
-                    </div>
-                    <div class="blog-tags" style="margin: 15px 0;">
-                        <span class="tag research">Deal Flow</span>
-                        <span class="tag report">M&A Activity</span>
-                    </div>
-                    <a href="">
-                        <h4 class="title">Deal Flow Report: Q1 2025</h4>
-                    </a>
-                    <p class="excerpt">
-                        Anonymized M&A activity highlighting emerging market trends.
-                    </p>
-                    <p class="category">Market Intelligence / <span>by Woughton Team</span></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="row mt--50">
-            <div class="col-lg-12" style="text-align: center;">
-                <a href="" class="rts-btn btn-primary" style="padding: 14px 32px; margin: auto;">
-                    Explore All Insights <i class="fa-light fa-arrow-right" style="padding-left: 10px;"></i>
-                </a>
-            </div>
-        </div>
+      </div>
     </div>
+
+    <!-- Featured Flagship Report -->
+    <div class="row g-5 mt--10">
+      <div class="col-lg-12" data-animation="fadeInUp" data-delay="0.1">
+        <div class="single-blog-area-one featured-report">
+          <div class="bottom-detail">
+            <a href="#" class="thumbnail">
+              <img src="assets/images/blog/01.webp" alt="2025 GHANA INFRASTRUCTURE INVESTMENT OUTLOOK">
+            </a>
+          </div>
+          <a href="#">
+            <h4 class="title">2025 GHANA INFRASTRUCTURE INVESTMENT OUTLOOK</h4>
+          </a>
+          <p class="excerpt">
+            Comprehensive analysis of planned infrastructure projects, regulatory updates, and investment opportunities across transport, energy, and urban sectors.
+          </p>
+          <ul class="credibility-metrics">
+            <li>120 pages of data-driven insights</li>
+            <li>45 projects analyzed</li>
+            <li>25 institutional investors interviewed</li>
+          </ul>
+          <div class="report-cta">
+            <a href="#" class="rts-btn btn-primary">Download Full Report</a>
+            <a href="#" class="rts-btn btn-primary">Download Executive Summary</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insights Library -->
+    <div class="row g-5 mt--10">
+      <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.2">
+        <div class="single-blog-area-one insight-card">
+          <div class="bottom-detail">
+            <a href="#" class="thumbnail">
+              <img src="assets/images/blog/02.webp" alt="Sector Snapshot">
+            </a>
+          </div>
+          <div class="blog-tags" style="margin: 15px 0;">
+            <span class="tag analysis">Research Report</span>
+            <span class="tag report">Sector Snapshot</span>
+          </div>
+          <a href="#">
+            <h4 class="title">Sector Snapshots: Q1 2025</h4>
+          </a>
+          <p class="excerpt">
+            Quarterly update on key sectors with macroeconomic insights and forecasts.
+          </p>
+          <p class="category">Research / <span>by Woughton Team</span></p>
+          <a href="#" class="rts-btn btn-primary" style="margin-top: 12px;">Read Report</a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.3">
+        <div class="single-blog-area-one insight-card">
+          <div class="bottom-detail">
+            <a href="#" class="thumbnail">
+              <img src="assets/images/blog/03.webp" alt="Economic Commentary">
+            </a>
+          </div>
+          <div class="blog-tags" style="margin: 15px 0;">
+            <span class="tag news">Economic Commentary</span>
+            <span class="tag report">Monthly Brief</span>
+          </div>
+          <a href="#">
+            <h4 class="title">Economic Commentary: March 2025</h4>
+          </a>
+          <p class="excerpt">
+            Monthly brief on macro trends and market implications across Africa.
+          </p>
+          <p class="category">Economic Insights / <span>by Woughton Team</span></p>
+          <a href="#" class="rts-btn btn-primary" style="margin-top: 12px;">Read Report</a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12" data-animation="fadeInUp" data-delay="0.4">
+        <div class="single-blog-area-one insight-card">
+          <div class="bottom-detail">
+            <a href="#" class="thumbnail">
+              <img src="assets/images/blog/01.webp" alt="Deal Flow Report">
+            </a>
+          </div>
+          <div class="blog-tags" style="margin: 15px 0;">
+            <span class="tag research">Deal Flow</span>
+            <span class="tag report">M&A Activity</span>
+          </div>
+          <a href="#">
+            <h4 class="title">Deal Flow Report: Q1 2025</h4>
+          </a>
+          <p class="excerpt">
+            Anonymized M&A activity highlighting emerging market trends.
+          </p>
+          <p class="category">Market Intelligence / <span>by Woughton Team</span></p>
+          <a href="#" class="rts-btn btn-primary" style="margin-top: 12px;">Read Report</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="row mt--50">
+      <div class="col-lg-12" style="text-align: center;">
+        <a href="#" class="rts-btn btn-primary">
+          Explore All Insights <i class="fa-light fa-arrow-right" style="padding-left: 10px;"></i>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- Thought Leadership & Insights Hub end -->
 
-<style>/* ------------------------- Featured Report ------------------------- */
+
+<style>
+:root {
+  --brand-primary: #071D36;
+  --brand-accent: #B9732F;
+  --brand-accent-hover: #A86A2A;
+  --neutral-surface: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+  --border-subtle: rgba(255,255,255,0.06);
+  --topline-color: rgba(255,255,255,0.92);
+  --transition: 0.28s;
+}
+
+/* -------- Featured Report -------- */
 .single-blog-area-one.featured-report {
-    width: 100%;
-    background: #fff;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 8px 30px rgba(0,31,63,0.1);
-    margin-bottom: 30px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
+  width: 100%;
+  background: var(--neutral-surface);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 30px rgba(7,29,54,0.1);
+  margin-bottom: 30px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
 }
-.single-blog-area-one.featured-report:hover { 
-    transform: translateY(-8px); 
-    box-shadow: 0 15px 40px rgba(0,31,63,0.15); 
+.single-blog-area-one.featured-report:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(7,29,54,0.15);
 }
-.featured-report .thumbnail img { 
-    width: 100%; 
-    height: 250px; 
-    border-radius: 12px; 
-    object-fit: cover; 
-    margin-bottom: 20px; 
+.featured-report .thumbnail {
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
 }
-.featured-report h4.title { 
-    font-size: 24px; 
-    font-weight: 700; 
-    color: #0B1F3F; 
-    margin: 0 0 15px 0; 
-    text-decoration: none;
-    word-wrap: break-word;
+.featured-report .thumbnail img {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  transition: transform 0.6s ease;
+  object-fit: cover;
 }
-.featured-report .excerpt { 
-    font-size: 16px; 
-    color: #5D666F; 
-    margin-bottom: 15px; 
-    word-wrap: break-word;
-}
-.featured-report .credibility-metrics { 
-    list-style: none; 
-    padding: 0; 
-    margin-bottom: 20px; 
-    font-size: 14px; 
-    color: #888; 
-}
-.featured-report .credibility-metrics li { 
-    margin-bottom: 6px; 
-}
-.report-cta a { 
-    margin: 5px; 
-    padding: 12px 28px; 
-    border-radius: 8px; 
-    font-weight: 700; 
-    text-decoration: none; 
-    display: inline-block; 
-    white-space: normal; 
+.featured-report:hover .thumbnail img {
+  transform: scale(1.03);
 }
 
-/* ------------------------- Insight Cards ------------------------- */
-.single-blog-area-one.insight-card {
-    width: 100%;
-    min-height: 500px;
-    background: #fff;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 8px 30px rgba(0,31,63,0.1);
-    transition: all 0.3s ease;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-start;
-    box-sizing: border-box;
-}
-.single-blog-area-one.insight-card:hover { 
-    transform: translateY(-8px); 
-    box-shadow: 0 15px 40px rgba(0,31,63,0.15); 
-}
-.single-blog-area-one.insight-card .thumbnail img { 
-    width: 100%; 
-    height: 250px; 
-    border-radius: 12px; 
-    object-fit: cover; 
-    margin-bottom: 20px; 
-}
-.insight-card .title { 
-    font-size: 24px; 
-    font-weight: 700; 
-    color: #0B1F3F; 
-    margin: 0 0 12px 0; 
-    text-decoration: none;
-    word-wrap: break-word;
-}
-.insight-card .excerpt { 
-    font-size: 16px; 
-    color: #5D666F; 
-    flex: 1; 
-    word-wrap: break-word;
-}
-.insight-card .tag { 
-    display: inline-block; 
-    margin-top: 12px; 
-    background: #B8860B; 
-    color: #fff; 
-    padding: 6px 14px; 
-    font-size: 12px; 
-    font-weight: 700; 
-    border-radius: 12px; 
-    word-wrap: break-word;
-}
-
-/* ------------------------- Category ------------------------- */
-.single-blog-area-one .category { 
-    font-size: 12px; 
-    color: #007bff; 
-    margin-top: 12px; 
-    word-wrap: break-word;
-}
-.single-blog-area-one .category span { 
-    color: #888; 
-}
-
-/* ------------------------- CTA Button ------------------------- */
+/* -------- General Button Styles -------- */
 .rts-btn.btn-primary {
-    color: #f5f5f5; /* light text */
-    background-color: #0B1F3F;
-    padding: 14px 32px;
-    border-radius: 8px;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s ease;
+  display: inline-block;
+  background: var(--brand-accent);
+  color: var(--text-on-primary);
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  transition: all var(--transition) ease;
+  cursor: pointer;
 }
 .rts-btn.btn-primary:hover {
-    background-color: #16335a;
-    color: #000;
+  background: var(--brand-accent-hover);
+  color: var(--neutral-surface);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
 }
 
-/* ------------------------- Links & Titles Fix ------------------------- */
-.single-blog-area-one a,
-.single-blog-area-one h4.title {
-    text-decoration: none;
-    border: none;
+/* -------- Insight Cards -------- */
+.single-blog-area-one.insight-card {
+  background: var(--neutral-surface);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 30px rgba(7,29,54,0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.single-blog-area-one.insight-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(7,29,54,0.15);
+}
+.insight-card .thumbnail img {
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.insight-card:hover .thumbnail img {
+  transform: scale(1.03);
+}
+.insight-card .tag {
+  background: var(--brand-accent);
+  color: var(--text-on-primary);
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 12px;
+  margin-right: 6px;
 }
 
-/* ------------------------- Responsive ------------------------- */
-@media(max-width:1200px){
-    .insight-card, .featured-report { padding: 20px; min-height: auto; }
-}
-@media(max-width:992px){
-    .insight-card, .featured-report { padding: 15px; }
-}
+/* -------- Responsive -------- */
 @media(max-width:768px){
-    .insight-card, .featured-report { padding: 10px; min-height: auto; }
-    .insight-card .title, .featured-report .title { font-size: 20px; }
+  .featured-report, .insight-card { padding: 15px; }
+  .featured-report h4.title, .insight-card .title { font-size: 20px; }
 }
-
 </style>
+
 
 
 <div class="rts-footer-area  footer-three footer-bg-three mt--120 mt_md--80 mt_sm--60">
