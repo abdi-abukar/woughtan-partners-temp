@@ -6267,7 +6267,7 @@ section.main-wrapper-sticky .sticky-statement .right .arrow i {
   min-width: max-content;
   color: transparent;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: rgba(0, 0, 0, 0.1);
+  -webkit-text-stroke-color: rgba(0, 0, 1, 0.1);
   line-height: 1;
 }
 .title-style-three .bg-title::after {
