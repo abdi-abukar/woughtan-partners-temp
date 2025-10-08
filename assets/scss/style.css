@@ -7356,7 +7356,6 @@ section.main-wrapper-sticky .sticky-statement .right .arrow i {
   transition: 0.3s;
 }
 .footer-two-single-wized .contact-info-1 .disc a:hover {
-  color: var(--color-primary-2);
   margin-left: 10px;
 }
 
@@ -7366,7 +7365,7 @@ section.main-wrapper-sticky .sticky-statement .right .arrow i {
 }
 .rts-copy-right-1 .copyright-h-2-wrapper p.disc {
   margin-bottom: 0;
-  color: #1C2539;
+  color: #ffff;
   font-weight: 500;
 }
 .rts-copy-right-1 .copyright-h-2-wrapper .right {
@@ -7385,7 +7384,7 @@ section.main-wrapper-sticky .sticky-statement .right .arrow i {
 }
 .rts-copy-right-1 .copyright-h-2-wrapper .right ul li a {
   transition: 0.3s;
-  color: #1C2539;
+  color: #fff;
   font-weight: 500;
 }
 

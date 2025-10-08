@@ -44,24 +44,52 @@
 ==============================================  */
 /* Default  */
 :root {
-  --color-primary: #20282D;
-  --color-secondary: #1F1F25;
-  --color-blue: #0b4df5;
-  --color-sky: #82b440;
-  --color-body: #5D666F;
-  --color-heading-1: #1C2539;
+  /* ------------------------------------------------------------
+     Brand System (Option 1 - Conservative)
+     Deep Navy primary + Gold/Copper accent.
+     60% primary (deep navy), 30% neutral surfaces, 10% accent (gold)
+     ------------------------------------------------------------ */
+
+  /* -- Primary / Brand (60% usage) ---------------------------------- */
+  --brand-primary: #071D36;       /* Deep navy (use for hero, header, primary headings) */
+  --brand-primary-90: #0A2741;
+  --brand-primary-70: #123352;
+
+  /* Legacy mapping (keeps your existing variable names usable) */
+  --color-primary: var(--brand-primary);    /* formerly #20282D, now deep-navy */
+  --color-secondary: #1F1F25;               /* keep darker neutral for small surfaces */
+
+  /* -- Accent (10% usage) ------------------------------------------ */
+  --brand-accent: #B9732F;       /* Gold / Copper (primary CTA & micro interaction) */
+  --brand-accent-hover: #A8662A;
+  --brand-accent-contrast: #FFF9F2; /* light tint if needed for contrast blocks */
+
+  /* Legacy accent-ish/utility (kept for compatibility) */
+  --color-sky: var(--brand-accent); /* repurposed to accent */
+
+  /* -- Neutrals & Surfaces (30% usage) ----------------------------- */
+  --neutral-100: #FFFFFF;        /* content cards, light surfaces (30% area) */
+  --neutral-200: #F5F7F9;        /* page background / large neutral areas */
+  --neutral-300: #E6EEF4;        /* subtle borders and dividers */
+  --neutral-400: #CED9E6;        /* muted surfaces / alt card bg */
+
+  /* Legacy tokens mapped to neutrals */
+  --color-border: #DDD8F9;       /* you can keep this or replace with neutral-300 */
+  --bg-dark-1: #1E1E20;          /* dark surface for modals/overlays */
+
+  /* -- Typography & text colors ----------------------------------- */
+  --color-heading-1: #F6FAFF;    /* on-dark headings when over deep navy hero (light) */
+  --color-heading-dark: #141416; /* main heading color on neutral surfaces */
   --color-title: #141416;
-  --color-heading-dark: #141416;
-  --transition: .3s;
-  --bg-dark-1: #1E1E20;
-  --color-white: #fff;
-  --color-border: #DDD8F9;
-  --border-width: 1px;
-  --radius: 10px;
+  --color-body: #5D666F;         /* body / paragraph copy on neutral surfaces */
+
+  /* -- Feedback colors (keep your values) -------------------------- */
   --color-success: #3EB75E;
   --color-danger: #FF0003;
   --color-warning: #FF8F3C;
   --color-info: #1BA2DB;
+
+  /* -- Social / legacy brand colors (kept for icons/links) --------- */
   --color-facebook: #3B5997;
   --color-twitter: #1BA1F2;
   --color-youtube: #ED4141;
@@ -71,6 +99,28 @@
   --color-vimeo: #00ADEF;
   --color-twitch: #6441A3;
   --color-discord: #7289da;
+
+  /* -- UI tokens --------------------------------------------------- */
+  --color-white: #FFFFFF;
+  --color-black: #071417;
+  --radius: 10px;
+  --border-width: 1px;
+  --transition: .3s;
+
+  /* -- Shadows / elevation ---------------------------------------- */
+  --shadow-soft: 0 8px 30px rgba(2,6,23,0.08);
+  --shadow-strong: 0 12px 48px rgba(2,6,23,0.12);
+
+  /* -- Accessibility helpers -------------------------------------- */
+  --focus-ring: rgba(185,115,47,0.18); /* accent-based focus ring */
+  --cta-contrast-text: #FFFFFF;        /* CTA text color on brand-accent */
+
+  /* -- Quick derived tokens (use these in components) ------------- */
+  --cta-bg: var(--brand-accent);
+  --cta-bg-hover: var(--brand-accent-hover);
+  --hero-bg: linear-gradient(180deg, rgba(7,29,54,0.85) 0%, rgba(7,29,54,0.75) 60%);
+  --surface-bg: var(--neutral-100);
+  --page-bg: var(--neutral-200);
   --p-light: 300;
   --p-regular: 400;
   --p-medium: 500;
@@ -10316,8 +10366,8 @@ header.header--sticky.sticky .nav-area ul li.main-nav {
   padding: 50px 33px;
   background: #20282D;
   position: absolute;
-  top: 50px;
-  left: -75px;
+  top: -40px;
+  left: -150px;
   text-align: center;
   border-radius: 15px;
 }
@@ -15067,7 +15117,7 @@ section.main-wrapper-sticky .sticky-statement.narrow .left-side img {
   transition: 0.3s;
 }
 .footer-two-single-wized .contact-info-1 .disc a:hover {
-  color: var(--color-primary-2);
+  color: var(--color-primary);
   margin-left: 10px;
 }
 
@@ -15083,7 +15133,7 @@ section.main-wrapper-sticky .sticky-statement.narrow .left-side img {
 }
 .rts-copy-right-1 .copyright-h-2-wrapper p.disc {
   margin-bottom: 0;
-  color: #1C2539;
+  /* color: #1C2539; */
   font-weight: 500;
 }
 @media only screen and (max-width: 575px) {
@@ -15113,7 +15163,7 @@ section.main-wrapper-sticky .sticky-statement.narrow .left-side img {
 }
 .rts-copy-right-1 .copyright-h-2-wrapper .right ul li a {
   transition: 0.3s;
-  color: #1C2539;
+  /* color: #1C2539; */
   font-weight: 500;
 }
 

@@ -25,77 +25,337 @@
 </head>
 
 <body>
-<header class="header-two header--sticky">
-    <div class="header-top">
-        <div class="content">
-            <div class="left-header-top">
-                <p class="top-details">
-                    Ready to unlock emerging market opportunities? <a href="contact-us.html">Contact Us <i class="fal fa-arrow-right"></i></a>
-                </p>
-            </div>
-            <div class="right-header-top">
-                <div class="ht-social">
-                    <span>Follow Us:</span>
-                    <ul>
-                        <li>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="main-header">
-        <div class="content">
-            <div class="header-left">
-                <a class="thumbnail" href="index.html">
-                    <img src="assets/images/logo.png" alt="Woughton Global">
-                </a>
-                
-                <div class="nav-area">
-                    <ul class="">
-                        <li class="main-nav">
-                            <a href="index.html">Home</a>
-                        </li>
-                        
-                        <li class="main-nav has-dropdown project-a-after">
-                            <a href="services.html">Services</a>
-                            <ul class="submenu parent-nav">
-                                <li><a href="services.html">Transactional Advisory</a></li>
-                                <li><a href="services.html">Market Entry</a></li>
-                                <li><a href="services.html">Asset Valuation</a></li>
-                                <li><a href="services.html">Capital Asset Sales Brokerage</a></li>
-                                <li><a href="services.html">Fundraising</a></li>
-                            </ul>
-                        </li>
-                        
-                        <li class="main-nav">
-                            <a href="reports.html">Reports</a>
-                        </li>
-                        
-                        <li class="main-nav">
-                            <a href="research-hub.html">Research Hub</a>
-                        </li>
-                        
-                        <li class="main-nav">
-                            <a href="contact-us.html">Contact Us</a>
-                        </li>
-                    </ul>
-                </div>
 
-                <div class="loader-wrapper">
-                    <div class="loader"></div>
-                    <div class="loader-section section-left"></div>
-                    <div class="loader-section section-right"></div>
-                </div>
-            </div>
-            <div class="header-right">
-                <a class="rts-btn btn-primary" href="contact-us.html">Get In Touch</a>
-            </div>
+<header class="header-two header--sticky" role="banner" aria-label="Main header">
+  <!-- ===== Topline ===== -->
+  <div class="header-top">
+    <div class="content">
+      <div class="left-header-top">
+        <p class="top-details" style="color:var(--topline-color,rgba(255,255,255,0.92));">
+          Ready to unlock emerging market opportunities?
+          <a href="contact-us.html" style="color:var(--brand-accent); text-decoration:underline;">Contact Us <i class="fal fa-arrow-right"></i></a>
+        </p>
+      </div>
+      <div class="right-header-top">
+        <div class="ht-social" style="color:var(--topline-color,rgba(255,255,255,0.92));">
+          <span>Follow Us:</span>
+          <ul>
+            <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+          </ul>
         </div>
+      </div>
     </div>
+  </div>
+
+  <!-- ===== Main Header ===== -->
+  <div class="main-header" id="mainHeader">
+    <div class="content">
+      <div class="header-left">
+        <a class="thumbnail" href="index.html" aria-label="Woughton Global home">
+          <img src="assets/images/logo.png" alt="Woughton Global">
+        </a>
+
+        <!-- ===== Desktop Navigation ===== -->
+        <nav class="nav-area" aria-label="Primary navigation" role="navigation">
+          <ul class="main-nav-list">
+            <li class="main-nav"><a href="index.html">Home</a></li>
+
+            <li class="main-nav has-dropdown">
+              <a href="#">Services</a>
+              <ul class="submenu parent-nav">
+                <li><a href="services.html#transactional">Transactional Advisory</a></li>
+                <li><a href="services.html#market-entry">Market Entry</a></li>
+                <li><a href="services.html#capital-markets">Capital Markets</a></li>
+              </ul>
+            </li>
+
+            <li class="main-nav has-dropdown">
+              <a href="#">Sectors</a>
+              <ul class="submenu parent-nav">
+                <li><a href="sectors.html#technology">Technology</a></li>
+                <li><a href="sectors.html#energy">Energy</a></li>
+                <li><a href="sectors.html#financial-services">Financial Services</a></li>
+                <li><a href="sectors.html#infrastructure">Infrastructure</a></li>
+              </ul>
+            </li>
+
+            <li class="main-nav"><a href="research-hub.html">Insights</a></li>
+
+            <li class="main-nav has-dropdown">
+              <a href="#">About</a>
+              <ul class="submenu parent-nav">
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="approach.html">Our Approach</a></li>
+                <li><a href="why-africa.html">Why Africa</a></li>
+              </ul>
+            </li>
+
+            <li class="main-nav"><a href="contact-us.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="loader-wrapper" aria-hidden="true">
+          <div class="loader"></div>
+          <div class="loader-section section-left"></div>
+          <div class="loader-section section-right"></div>
+        </div>
+      </div>
+
+      <!-- ===== Right Section: CTA + Hamburger ===== -->
+      <div class="header-right">
+        <a href="https://calendly.com/your-placeholder" class="rts-btn btn-primary schedule-cta">
+          Schedule Consultation
+        </a>
+
+        <button id="mobileMenuBtn" class="mobile-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+          <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="22" height="2" rx="1" fill="currentColor"/>
+            <rect y="6" width="22" height="2" rx="1" fill="currentColor"/>
+            <rect y="12" width="22" height="2" rx="1" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Mobile Nav (Sidebar) ===== -->
+  <nav id="mobileNav" class="mobile-nav-panel" aria-hidden="true" aria-label="Mobile navigation">
+    <div class="mobile-nav-inner">
+      <button id="mobileCloseBtn" class="mobile-close" aria-label="Close menu">✕</button>
+      <ul class="mobile-links" role="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="sectors.html">Sectors</a></li>
+        <li><a href="research-hub.html">Insights</a></li>
+        <li><a href="team.html">Our Team</a></li>
+        <li><a href="contact-us.html">Contact</a></li>
+        <li><a href="https://calendly.com/your-placeholder" class="mobile-cta">Schedule Consultation</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== Styles ===== -->
+  <style>
+    :root {
+      --brand-primary: #071D36;
+      --brand-accent: #B9732F;
+      --brand-accent-hover: #A86A2A;
+      --neutral-surface: #FFFFFF;
+      --text-on-primary: #FFFFFF;
+      --border-subtle: rgba(255,255,255,0.06);
+      --topline-color: rgba(255,255,255,0.92);
+      --transition: 0.28s;
+    }
+
+    .header-two.header--sticky {
+      position: sticky;
+      top: 0;
+      z-index: 99999;
+      background: linear-gradient(180deg, rgba(7,29,54,0.98), rgba(7,29,54,0.92));
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(6px);
+    }
+
+    .header-top { padding: 6px 0; }
+    .header-top .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 18px;
+    }
+
+    .main-header .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+    }
+
+    .nav-area .main-nav-list {
+      display: flex;
+      gap: 14px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-nav > a {
+      color: var(--text-on-primary);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    .main-nav > a:hover {
+      color: var(--brand-accent);
+      background: rgba(255,255,255,0.02);
+      transition: var(--transition);
+    }
+
+    /* Dropdown */
+    .has-dropdown {
+      position: relative;
+    }
+    .submenu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: var(--neutral-surface);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.18);
+      border-radius: 8px;
+      padding: 8px;
+      display: none;
+      min-width: 220px;
+    }
+    .has-dropdown:hover .submenu {
+      display: block;
+    }
+    .submenu a {
+      display: block;
+      padding: 8px 12px;
+      color: #1C2539;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .submenu a:hover {
+      background: #F4F7FB;
+      color: var(--brand-primary);
+    }
+
+    /* CTA */
+    .rts-btn.btn-primary.schedule-cta {
+      background: var(--brand-accent);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      border: none;
+      transition: var(--transition);
+    }
+    .rts-btn.btn-primary.schedule-cta:hover {
+      background: var(--brand-accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ===== Mobile Menu ===== */
+    .mobile-hamburger {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-on-primary);
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Sidebar (Mobile Nav) */
+    .mobile-nav-panel {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      height: 100%;
+      width: 320px;
+      background: var(--brand-primary);
+      color: var(--text-on-primary);
+      z-index: 100000;
+      transition: right var(--transition) ease;
+      box-shadow: -10px 0 30px rgba(2,6,23,0.3);
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+    }
+
+    .mobile-nav-panel[aria-hidden="false"] {
+      display: flex;
+      right: 0;
+    }
+
+    .mobile-close {
+      align-self: flex-end;
+      background: transparent;
+      border: none;
+      color: var(--text-on-primary);
+      font-size: 22px;
+    }
+
+    .mobile-links {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mobile-links a {
+      color: var(--text-on-primary);
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .mobile-cta {
+      background: var(--brand-accent);
+      color: #fff;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    /* Hide nav + show hamburger on small screens */
+    @media (max-width: 980px) {
+      .nav-area { display: none; }
+      .mobile-hamburger { display: flex; }
+    }
+
+    /* Hide mobile sidebar on desktop */
+    @media (min-width: 981px) {
+      .mobile-nav-panel {
+        display: none !important;
+        right: -100%;
+      }
+    }
+  </style>
+
+  <!-- ===== JS for Toggle ===== -->
+  <script>
+    (function(){
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileClose = document.getElementById('mobileCloseBtn');
+
+      const openMenu = () => {
+        mobileNav.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+        mobileBtn.setAttribute('aria-expanded','true');
+      };
+
+      const closeMenu = () => {
+        mobileNav.setAttribute('aria-hidden','true');
+        document.body.style.overflow='';
+        mobileBtn.setAttribute('aria-expanded','false');
+      };
+
+      mobileBtn.addEventListener('click', openMenu);
+      mobileClose.addEventListener('click', closeMenu);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.getAttribute('aria-hidden') === 'false') {
+          closeMenu();
+        }
+      });
+    })();
+  </script>
 </header>
+
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -159,30 +419,158 @@ function toggleSubmenu(event) {
 
 
 
-<!-- about us area wrapper main -->
-<div class="rts-breadcrumb-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="title-area-left center">
-                    <span class="bg-title">Insights</span>
-                    <h1 class="title rts-text-anime-style-1">
-                        Market Intelligence & Analysis
-                    </h1>
-                    <p class="disc" style="max-width: 600px; margin: 20px auto 0; color: #666;">
-                        Expert insights, live market updates, and strategic analysis for emerging market opportunities
-                    </p>
-                </div>
-            </div>
+<!-- about us area wrapper main (updated to meet Research Hub requirements) -->
+<div class="rts-breadcrumb-area" role="banner" aria-label="Research Hub header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="title-area-left center">
+          <span class="bg-title" aria-hidden="true">Insights</span>
+
+          <!-- main headline required by doc -->
+          <h1 class="title rts-text-anime-style-1" id="research-hub-title">
+            Market Intelligence from the Ground Up
+          </h1>
+
+          <p class="disc" id="research-hub-subhead">
+            Proprietary research combining on-the-ground insights with rigorous economic analysis
+          </p>
         </div>
+      </div>
     </div>
-    <div class="shape-area">
-        <img src="assets/images/about/shape/01.png" alt="shape" class="one">
-        <img src="assets/images/about/shape/02.png" alt="shape" class="two">
-        <img src="assets/images/about/shape/03.png" alt="shape" class="three">
-    </div>
+  </div>
+
+  <div class="shape-area" aria-hidden="true">
+    <img src="assets/images/about/shape/01.png" alt="" class="one">
+    <img src="assets/images/about/shape/02.png" alt="" class="two">
+    <img src="assets/images/about/shape/03.png" alt="" class="three">
+  </div>
 </div>
 <!-- about us area wrapper main end -->
+
+<style>
+  :root{
+    --brand-primary: #071D36;
+    --brand-accent: #B9732F;
+    --brand-accent-hover: #A86A2A;
+    --neutral-surface: #FFFFFF;
+    --text-on-primary: #FFFFFF;
+    --muted-700: #5D666F;
+    --muted-500: #9AA6B6;
+    --max-width: 1200px;
+
+    /* typography tokens */
+    --h1-size: 64px;   /* Hero H1 */
+    --h2-size: 42px;
+    --h3-size: 28px;
+    --body-size: 18px;
+    --small-size: 14px;
+    --line-h-hero: 1.2;
+    --line-h-sect: 1.3;
+    --line-h-body: 1.7;
+  }
+
+  /* container alignment consistent with site */
+  .rts-breadcrumb-area { position: relative; background: var(--neutral-surface); color: #222; padding: 72px 18px; overflow: visible; }
+  .rts-breadcrumb-area .container { max-width: var(--max-width); margin: 0 auto; }
+
+  .title-area-left { text-align: center; position: relative; z-index: 2; }
+
+  /* decorative bg title (large faint word behind) */
+  .title-area-left .bg-title {
+    font-size: 96px;
+    font-weight: 800;
+    color: rgba(7,29,54,0.04);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 8px;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* Pre / eyebrow (small) */
+  .title-area-left .pre {
+    display: inline-block;
+    color: var(--brand-accent);
+    font-weight: 700;
+    font-size: var(--small-size);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* H1 (matches requirement: 64px, Bold, line-height 1.2) */
+  .title-area-left .title {
+    margin: 0;
+    font-family: 'Red Hat Display', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    font-size: var(--h1-size);
+    font-weight: 800;
+    color: var(--brand-primary);
+    line-height: var(--line-h-hero);
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
+
+  /* subheadline / description */
+  .title-area-left .disc {
+    margin: 0 auto;
+    max-width: 720px;
+    color: var(--muted-700);
+    font-size: var(--body-size);
+    line-height: var(--line-h-body);
+    font-weight: 400;
+  }
+
+  /* Shapes positioning */
+  .rts-breadcrumb-area .shape-area img.one {
+    position: absolute;
+    left: -40px;
+    top: 8%;
+    width: 160px;
+    opacity: 0.95;
+    transform: translateY(-10%);
+    pointer-events: none;
+  }
+  .rts-breadcrumb-area .shape-area img.two {
+    position: absolute;
+    right: -40px;
+    top: 30%;
+    width: 220px;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+  .rts-breadcrumb-area .shape-area img.three {
+    position: absolute;
+    left: 50%;
+    bottom: -40px;
+    width: 260px;
+    transform: translateX(-50%);
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  /* Accessibility: ensure heading scales well on smaller screens */
+  @media (max-width: 1200px) {
+    .title-area-left .bg-title { font-size: 72px; }
+    :root { --h1-size: 56px; }
+  }
+
+  @media (max-width: 992px) {
+    .rts-breadcrumb-area { padding: 56px 14px; }
+    :root { --h1-size: 48px; --body-size: 16px; }
+    .rts-breadcrumb-area .shape-area img.one { display: none; }
+    .rts-breadcrumb-area .shape-area img.two { display: none; }
+  }
+
+  @media (max-width: 576px) {
+    :root { --h1-size: 36px; --body-size: 15px; }
+    .rts-breadcrumb-area { padding: 40px 12px; }
+    .title-area-left .bg-title { display: none; }
+    .rts-breadcrumb-area .shape-area img.three { display: none; }
+  }
+</style>
+
 
 <!-- Breaking News Section -->
 <div class="breaking-news-section" style="background: #dc3545; padding: 15px 0; color: white;">
@@ -233,6 +621,140 @@ function toggleSubmenu(event) {
         </div>
     </div>
 </div>
+<style>
+  :root{
+    --brand-primary: #071D36;
+    --brand-accent: #B9732F;
+    --brand-accent-hover: #A86A2A;
+    --neutral-surface: #FFFFFF;
+    --text-on-primary: #FFFFFF;
+    --border-subtle: rgba(255,255,255,0.06);
+    --topline-color: rgba(255,255,255,0.92);
+    --muted-700: #5D666F;
+    --muted-500: #9AA6B6;
+    --transition: .28s;
+    --gap: 24px;
+  }
+
+  /* ---------- Breaking news ---------- */
+  .breaking-news-section {
+    background: var(--brand-accent) !important;
+    color: var(--text-on-primary) !important;
+    padding: 12px 0 !important;
+    box-shadow: 0 2px 6px rgba(7,29,54,0.06);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+  .breaking-news-section .container { max-width: 1200px; margin: 0 auto; padding: 0 18px; }
+  .breaking-news-section .breaking-content {
+    color: var(--text-on-primary) !important;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* keep single-line on large screens */
+  }
+
+  /* allow wrapping on smaller viewports */
+  @media (max-width: 768px) {
+    .breaking-news-section .breaking-content {
+      white-space: normal;
+      font-size: 13px;
+    }
+  }
+
+  /* center alignment and spacing */
+  .breaking-news-section .row { align-items: center; }
+  .breaking-news-section .col-lg-2,
+  .breaking-news-section .col-lg-10 { padding-left: 6px; padding-right: 6px; }
+
+  /* ---------- Market updates dashboard ---------- */
+  .market-updates-dashboard {
+    background: var(--neutral-surface) !important;
+    padding: 24px 0 !important;
+    box-shadow: 0 2px 10px rgba(7,29,54,0.04);
+    border-radius: 8px;
+    margin-top: 14px;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+  .market-updates-dashboard .container { max-width: 1200px; margin: 0 auto; padding: 0 18px; }
+  .market-updates-dashboard h3 {
+    color: var(--brand-primary) !important;
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .market-updates-dashboard .market-indicators {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .market-updates-dashboard .indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(7,29,54,0.03);
+    min-width: 150px;
+    box-sizing: border-box;
+  }
+
+  .market-updates-dashboard .indicator .label {
+    color: var(--muted-700);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .market-updates-dashboard .indicator .value {
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--brand-primary);
+    min-width: 56px;
+    text-align: left;
+  }
+  .market-updates-dashboard .indicator .delta {
+    font-size: 11px;
+    font-weight: 700;
+    opacity: 0.95;
+  }
+
+  /* Up / Down states (use classes .up / .down on the delta element if possible) */
+  .market-updates-dashboard .indicator .delta.up { color: #28a745; }
+  .market-updates-dashboard .indicator .delta.down { color: #dc3545; }
+
+  /* If markup uses inline color styles for numbers, the styles above will still apply for elements that use the classes .value and .delta.
+     To override inline colors (if you want), add !important to .value and .delta declarations. */
+
+  /* smaller viewports: full width indicators */
+  @media (max-width: 768px) {
+    .market-updates-dashboard { padding: 18px 0 !important; }
+    .market-updates-dashboard .market-indicators { gap: 12px; }
+    .market-updates-dashboard .indicator { min-width: 100%; justify-content: space-between; padding: 12px; }
+    .market-updates-dashboard .indicator .label { flex: 1; }
+    .market-updates-dashboard .indicator .value { text-align: right; }
+  }
+
+  /* ensure no overflow from container rows */
+  .breaking-news-section .container,
+  .market-updates-dashboard .container {
+    overflow: visible;
+    width: 100%;
+  }
+
+  /* small utility tweaks so inline styles don't break layout */
+  .breaking-news-section .col-lg-2 { display: none; } /* previously empty column; hide on all screens to avoid layout shift */
+  @media (max-width: 992px) {
+    .breaking-news-section .col-lg-2 { display: none; } /* keep hidden on small screens */
+  }
+
+</style>
 
 
 <!-- Main Content Area -->
@@ -402,85 +924,136 @@ function toggleSubmenu(event) {
 </div>
 
 <style>
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    :root {
+  --brand-primary: #071D36;
+  --brand-accent: #B9732F;
+  --brand-accent-hover: #A86A2A;
+  --neutral-surface: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+  --border-subtle: rgba(255,255,255,0.06);
+  --topline-color: rgba(255,255,255,0.92);
+  --transition: 0.28s;
 }
 
+/* Ensure content cards use the palette gradients (override inline backgrounds) */
+.content-card .content-image,
+.content-card .content-image::before {
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+/* Expert insight (was purple-blue) */
+.expert-insight .content-image {
+  /* background: linear-gradient(135deg, var(--neutral-surface) 0%, var(--brand-accent) 100%) !important; */
+background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%) !important;
+}
+
+/* Live update (attention: accent -> accent-hover) */
+.live-update .content-image {
+  background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%) !important;
+}
+
+/* Business news (primary -> accent-hover for contrast) */
+.business-news .content-image {
+  /* background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent-hover) 100%) !important; */
+  background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%) !important;
+}
+
+/* Political analysis (accent-hover -> primary) */
+.political-analysis .content-image {
+  /* background: linear-gradient(135deg, var(--brand-accent-hover) 0%, var(--brand-primary) 100%) !important; */
+  background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%) !important;
+}
+
+/* Economic data (accent -> primary) */
+.economic-data .content-image {
+  /* background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-primary) 100%) !important; */
+  background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%) !important;
+}
+
+/* Tech / Fintech (primary -> accent) */
+.tech-insight .content-image {
+  /* background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent) 100%) !important; */
+  background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%) !important;
+}
+
+/* Icon color inside the gradient blocks */
+.content-image i.fa,
+.content-image i.fas,
+.content-image i.far {
+  color: var(--text-on-primary) !important;
+  opacity: 0.95 !important;
+}
+
+/* Label pill in top-left of the image: light translucent background for legibility */
+.content-image > div[style],
+.content-image .label,
+.content-image .breaking-label {
+  background: rgba(255,255,255,0.92) !important;
+  color: var(--brand-primary) !important;
+  padding: 4px 10px !important;
+  border-radius: 12px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(7,29,54,0.08);
+}
+
+/* If you prefer dark pill on lighter gradients, uncomment these instead:
+.content-image .label { background: rgba(0,0,0,0.16) !important; color: var(--text-on-primary) !important; }
+*/
+
+/* Ensure the thumbnail image fallback is centered and doesn't stretch */
+.content-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Card hover remains consistent with your design system */
 .content-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15) !important;
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(7,29,54,0.14) !important;
+  transition: transform var(--transition) ease, box-shadow var(--transition) ease;
 }
 
-.filter-pill:hover {
-    background: #007bff !important;
-    color: white !important;
-    border-color: #007bff !important;
+/* Keep text colors consistent */
+.content-card .content-body h4,
+.content-card .content-body a h4.title {
+  color: #0B1F3F; /* strong navy for headings */
 }
 
-.filter-pill.active {
-    background: #007bff !important;
-    color: white !important;
-    border-color: #007bff !important;
+.content-card .content-body p,
+.content-card .content-body .content-meta span,
+.content-card .content-body .content-meta {
+  color: #5D666F; /* muted copy color */
 }
 
-.breaking-content {
-    overflow: hidden;
-    white-space: nowrap;
-    animation: marquee 30s linear infinite;
-}
-
-@keyframes marquee {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
-
+/* Responsive tweaks: keep pill readable on small screens */
 @media (max-width: 768px) {
-    .market-indicators {
-        gap: 15px !important;
-    }
-    
-    .filter-pills {
-        gap: 8px !important;
-        justify-content: flex-start !important;
-        overflow-x: auto;
-        padding-bottom: 10px;
-    }
-    
-    .filter-pill {
-        font-size: 11px !important;
-        padding: 8px 14px !important;
-        white-space: nowrap;
-    }
-    
-    .breaking-content {
-        font-size: 12px !important;
-        animation: none;
-        white-space: normal;
-    }
-    
-    .market-indicators {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 10px !important;
-    }
+  .content-image > div[style],
+  .content-image .label,
+  .content-image .breaking-label {
+    top: 12px !important;
+    left: 12px !important;
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+
+  .content-card .content-image { height: 160px !important; }
 }
 
-@media (max-width: 576px) {
-    .content-card .content-body {
-        padding: 20px !important;
-    }
-    
-    .content-card .content-image {
-        height: 150px !important;
-    }
-    
-    .breaking-label {
-        font-size: 10px !important;
-        padding: 6px 12px !important;
-    }
+/* Optional: if any inline color styles still fight these rules, uncomment the lines below to force them */
+/*
+.expert-insight .content-image,
+.live-update .content-image,
+.business-news .content-image,
+.political-analysis .content-image,
+.economic-data .content-image,
+.tech-insight .content-image {
+  background-image: none !important;
 }
+*/
+
 </style>
 
 <script>
@@ -633,9 +1206,218 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <style>
-@media (min-width: 992px) {
-    .footer-three-single-wized.mid-right {
-        padding-left: 20px;
+:root {
+  --brand-primary: #071D36;
+  --brand-accent: #B9732F;
+  --brand-accent-hover: #A86A2A;
+  --neutral-surface: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+  --border-subtle: rgba(255,255,255,0.06);
+  --topline-color: rgba(255,255,255,0.92);
+  --transition: 0.28s;
+}
+
+/* ------------------------- Footer Background & Spacing ------------------------- */
+.rts-footer-area.footer-three,
+.rts-footer-area.footer-two {
+    background-color: var(--brand-primary); /* deep navy */
+    color: var(--neutral-surface); /* light text */
+    padding-top: 100px;
+    padding-bottom: 60px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ------------------------- CTA Newsletter Section ------------------------- */
+.rts-cta-area-one .cta-main-area-wrapper-one {
+    background-color: rgba(7,29,54,0.95); /* subtle variation of brand-primary */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+
+.rts-cta-area-one .left-areas .pre {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brand-accent); /* gold accent */
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.rts-cta-area-one .left-areas .title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--neutral-surface);
+    line-height: 1.2;
+}
+
+.rts-cta-area-one .right-area .inpur-area-main {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.rts-cta-area-one input[type="text"] {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    width: 250px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.04);
+    color: var(--neutral-surface);
+}
+
+.rts-cta-area-one input[type="text"]::placeholder {
+    color: rgba(245,247,250,0.6);
+}
+
+.rts-cta-area-one .btn-primary {
+    padding: 12px 28px;
+    background-color: var(--brand-accent);
+    color: var(--neutral-surface);
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform var(--transition);
+}
+
+.rts-cta-area-one .btn-primary:hover {
+    background-color: var(--brand-accent-hover);
+    color: var(--brand-accent);
+    transform: translateY(-2px);
+}
+
+/* ------------------------- Footer Widgets ------------------------- */
+.footer-two-single-wized .title,
+.footer-two-single-wized .wized-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand-primary); /* light titles on dark background */
+    margin-bottom: 15px;
+}
+
+.footer-two-single-wized p.disc {
+    font-size: 14px;
+    color: rgba(245,247,250,0.88); /* slightly muted white */
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.footer-two-single-wized a.rts-btn.btn-primary {
+    background-color: var(--brand-accent);
+    color: var(--neutral-surface);
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform var(--transition);
+}
+
+.footer-two-single-wized a.rts-btn.btn-primary:hover {
+    background-color: var(--brand-accent-hover);
+    transform: translateY(-2px);
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Contact Info ------------------------- */
+.contact-info-1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.contact-info-1 .icon {
+    font-size: 18px;
+    color: var(--brand-accent);
+    margin-top: 2px;
+}
+
+.contact-info-1 .disc span {
+    display: block;
+    font-size: 12px;
+    color: var(--neutral-surface);
+    font-weight: 700;
+}
+
+.contact-info-1 .disc a {
+    color: rgba(245,247,250,0.9);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.contact-info-1 .disc a:hover {
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Copy-right ------------------------- */
+.rts-copy-right-1 {
+    background-color: rgba(7,25,46,0.95); /* slightly darker strip */
+    padding: 20px 0;
+    color: rgba(245,247,250,0.86);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.rts-copy-right-1 .right ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.rts-copy-right-1 .right ul li a {
+    color: rgba(245,247,250,0.86);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.rts-copy-right-1 .right ul li a:hover {
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Misc small helpers to keep contrast readable ------------------------- */
+a,
+a:link,
+a:visited {
+  color: var(--neutral-surface);
+}
+
+.rts-footer-area .bg-image,
+.rts-footer-area .shape {
+  /* ensure any decorative elements keep the same tonal family */
+  opacity: 0.06;
+  filter: grayscale(20%);
+}
+
+/* ------------------------- Responsive ------------------------- */
+@media(max-width:992px) {
+    .rts-cta-area-one .cta-main-area-wrapper-one {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .rts-cta-area-one .right-area .inpur-area-main {
+        width: 100%;
+        flex-direction: column;
+    }
+    .rts-cta-area-one input[type="text"] {
+        width: 100%;
+    }
+    .rts-copy-right-1 {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
     }
 }
 </style>

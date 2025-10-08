@@ -25,7 +25,7 @@
 </head>
 
 <body>
-<header class="header-two header--sticky">
+<!-- <header class="header-two header--sticky">
     <div class="header-top">
         <div class="content">
             <div class="left-header-top">
@@ -95,7 +95,338 @@
             </div>
         </div>
     </div>
+</header> -->
+
+<header class="header-two header--sticky" role="banner" aria-label="Main header">
+  <!-- ===== Topline ===== -->
+  <div class="header-top">
+    <div class="content">
+      <div class="left-header-top">
+        <p class="top-details" style="color:var(--topline-color,rgba(255,255,255,0.92));">
+          Ready to unlock emerging market opportunities?
+          <a href="contact-us.html" style="color:var(--brand-accent); text-decoration:underline;">Contact Us <i class="fal fa-arrow-right"></i></a>
+        </p>
+      </div>
+      <div class="right-header-top">
+        <div class="ht-social" style="color:var(--topline-color,rgba(255,255,255,0.92));">
+          <span>Follow Us:</span>
+          <ul>
+            <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Main Header ===== -->
+  <div class="main-header" id="mainHeader">
+    <div class="content">
+      <div class="header-left">
+        <a class="thumbnail" href="index.html" aria-label="Woughton Global home">
+          <img src="assets/images/logo.png" alt="Woughton Global">
+        </a>
+
+        <!-- ===== Desktop Navigation ===== -->
+        <nav class="nav-area" aria-label="Primary navigation" role="navigation">
+          <ul class="main-nav-list">
+            <li class="main-nav"><a href="index.html">Home</a></li>
+
+            <li class="main-nav has-dropdown">
+              <a href="#">Services</a>
+              <ul class="submenu parent-nav">
+                <li><a href="services.html#transactional">Transactional Advisory</a></li>
+                <li><a href="services.html#market-entry">Market Entry</a></li>
+                <li><a href="services.html#capital-markets">Capital Markets</a></li>
+              </ul>
+            </li>
+
+            <li class="main-nav has-dropdown">
+              <a href="#">Sectors</a>
+              <ul class="submenu parent-nav">
+                <li><a href="sectors.html#technology">Technology</a></li>
+                <li><a href="sectors.html#energy">Energy</a></li>
+                <li><a href="sectors.html#financial-services">Financial Services</a></li>
+                <li><a href="sectors.html#infrastructure">Infrastructure</a></li>
+              </ul>
+            </li>
+
+            <li class="main-nav"><a href="research-hub.html">Insights</a></li>
+
+            <li class="main-nav has-dropdown">
+              <a href="#">About</a>
+              <ul class="submenu parent-nav">
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="approach.html">Our Approach</a></li>
+                <li><a href="why-africa.html">Why Africa</a></li>
+              </ul>
+            </li>
+
+            <li class="main-nav"><a href="contact-us.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="loader-wrapper" aria-hidden="true">
+          <div class="loader"></div>
+          <div class="loader-section section-left"></div>
+          <div class="loader-section section-right"></div>
+        </div>
+      </div>
+
+      <!-- ===== Right Section: CTA + Hamburger ===== -->
+      <div class="header-right">
+        <a href="https://calendly.com/your-placeholder" class="rts-btn btn-primary schedule-cta">
+          Schedule Consultation
+        </a>
+
+        <button id="mobileMenuBtn" class="mobile-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+          <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="22" height="2" rx="1" fill="currentColor"/>
+            <rect y="6" width="22" height="2" rx="1" fill="currentColor"/>
+            <rect y="12" width="22" height="2" rx="1" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Mobile Nav (Sidebar) ===== -->
+  <nav id="mobileNav" class="mobile-nav-panel" aria-hidden="true" aria-label="Mobile navigation">
+    <div class="mobile-nav-inner">
+      <button id="mobileCloseBtn" class="mobile-close" aria-label="Close menu">✕</button>
+      <ul class="mobile-links" role="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="sectors.html">Sectors</a></li>
+        <li><a href="research-hub.html">Insights</a></li>
+        <li><a href="team.html">Our Team</a></li>
+        <li><a href="contact-us.html">Contact</a></li>
+        <li><a href="https://calendly.com/your-placeholder" class="mobile-cta">Schedule Consultation</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== Styles ===== -->
+  <style>
+    :root {
+      --brand-primary: #071D36;
+      --brand-accent: #B9732F;
+      --brand-accent-hover: #A86A2A;
+      --neutral-surface: #FFFFFF;
+      --text-on-primary: #FFFFFF;
+      --border-subtle: rgba(255,255,255,0.06);
+      --topline-color: rgba(255,255,255,0.92);
+      --transition: 0.28s;
+    }
+
+    .header-two.header--sticky {
+      position: sticky;
+      top: 0;
+      z-index: 99999;
+      background: linear-gradient(180deg, rgba(7,29,54,0.98), rgba(7,29,54,0.92));
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(6px);
+    }
+
+    .header-top { padding: 6px 0; }
+    .header-top .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 18px;
+    }
+
+    .main-header .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+    }
+
+    .nav-area .main-nav-list {
+      display: flex;
+      gap: 14px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-nav > a {
+      color: var(--text-on-primary);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    .main-nav > a:hover {
+      color: var(--brand-accent);
+      background: rgba(255,255,255,0.02);
+      transition: var(--transition);
+    }
+
+    /* Dropdown */
+    .has-dropdown {
+      position: relative;
+    }
+    .submenu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: var(--neutral-surface);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.18);
+      border-radius: 8px;
+      padding: 8px;
+      display: none;
+      min-width: 220px;
+    }
+    .has-dropdown:hover .submenu {
+      display: block;
+    }
+    .submenu a {
+      display: block;
+      padding: 8px 12px;
+      color: #1C2539;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .submenu a:hover {
+      background: #F4F7FB;
+      color: var(--brand-primary);
+    }
+
+    /* CTA */
+    .rts-btn.btn-primary.schedule-cta {
+      background: var(--brand-accent);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      border: none;
+      transition: var(--transition);
+    }
+    .rts-btn.btn-primary.schedule-cta:hover {
+      background: var(--brand-accent-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ===== Mobile Menu ===== */
+    .mobile-hamburger {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-on-primary);
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Sidebar (Mobile Nav) */
+    .mobile-nav-panel {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      height: 100%;
+      width: 320px;
+      background: var(--brand-primary);
+      color: var(--text-on-primary);
+      z-index: 100000;
+      transition: right var(--transition) ease;
+      box-shadow: -10px 0 30px rgba(2,6,23,0.3);
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+    }
+
+    .mobile-nav-panel[aria-hidden="false"] {
+      display: flex;
+      right: 0;
+    }
+
+    .mobile-close {
+      align-self: flex-end;
+      background: transparent;
+      border: none;
+      color: var(--text-on-primary);
+      font-size: 22px;
+    }
+
+    .mobile-links {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mobile-links a {
+      color: var(--text-on-primary);
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .mobile-cta {
+      background: var(--brand-accent);
+      color: #fff;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    /* Hide nav + show hamburger on small screens */
+    @media (max-width: 980px) {
+      .nav-area { display: none; }
+      .mobile-hamburger { display: flex; }
+    }
+
+    /* Hide mobile sidebar on desktop */
+    @media (min-width: 981px) {
+      .mobile-nav-panel {
+        display: none !important;
+        right: -100%;
+      }
+    }
+  </style>
+
+  <!-- ===== JS for Toggle ===== -->
+  <script>
+    (function(){
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileClose = document.getElementById('mobileCloseBtn');
+
+      const openMenu = () => {
+        mobileNav.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+        mobileBtn.setAttribute('aria-expanded','true');
+      };
+
+      const closeMenu = () => {
+        mobileNav.setAttribute('aria-hidden','true');
+        document.body.style.overflow='';
+        mobileBtn.setAttribute('aria-expanded','false');
+      };
+
+      mobileBtn.addEventListener('click', openMenu);
+      mobileClose.addEventListener('click', closeMenu);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.getAttribute('aria-hidden') === 'false') {
+          closeMenu();
+        }
+      });
+    })();
+  </script>
 </header>
+
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -159,203 +490,412 @@ function toggleSubmenu(event) {
 
 
 <!-- rts service area start -->
-<div class="rts-service-area pt--40 pb--60">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="title-style-two center">
-                    <span class="bg-content">Services</span>
-                    <span class="pre">Advisory Excellence</span>
-                    <h2 class="title rts-text-anime-style-1">Strategic Solutions for Emerging Markets
-                    </h2>
-                </div>
-            </div>
-        </div>
+<section class="rts-service-area pt--40 pb--60">
+  <div class="container">
+    <div class="title-style-two center">
+      <span class="bg-content">Services</span>
+      <span class="pre">Advisory Excellence</span>
+      <h2 class="title rts-text-anime-style-1">
+        Strategic Solutions for Emerging Markets
+      </h2>
     </div>
-    <div class="container-2 mt--30">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="service-bg-style-one-wrapper">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="service-style-swiper-wrapper-two">
-                                <div class="swiper mySwiper-service-1">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="single-service-signle-wrapper" id="transactional-advisory" style="background-image: url('assets/images/service/transactional-bg.webp'); background-size: cover; background-position: center; min-height: 300px; position: relative;">
-                                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%); border-radius: inherit;"></div>
-                                                <div style="position: relative; z-index: 2; color: white; padding: 40px 30px;">
-                                                    <div class="icons" style="margin-bottom: 20px;">
-                                                        <i class="fas fa-handshake" style="font-size: 48px; color: white;"></i>
-                                                    </div>
-                                                    <div class="information">
-                                                        <h5 class="title" style="color: white; margin-bottom: 15px;">Transactional Advisory</h5>
-                                                        <p class="disc" style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
-                                                            Expert deal support across emerging markets with precision execution.
-                                                        </p>
-                                                        <a href="contact.html" class="arrow-right" style="color: white; font-weight: 600;">
-                                                            <span>Get Started</span>
-                                                            <i class="fa-sharp fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="single-service-signle-wrapper" id="market-entry" style="background-image: url('assets/images/service/market-entry-bg.webp'); background-size: cover; background-position: center; min-height: 300px; position: relative;">
-                                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(79, 172, 254, 0.85) 0%, rgba(0, 242, 254, 0.85) 100%); border-radius: inherit;"></div>
-                                                <div style="position: relative; z-index: 2; color: white; padding: 40px 30px;">
-                                                    <div class="icons" style="margin-bottom: 20px;">
-                                                        <i class="fas fa-globe-asia" style="font-size: 48px; color: white;"></i>
-                                                    </div>
-                                                    <div class="information">
-                                                        <h5 class="title" style="color: white; margin-bottom: 15px;">Market Entry</h5>
-                                                        <p class="disc" style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
-                                                            Strategic guidance for Africa and Asia market expansion.
-                                                        </p>
-                                                        <a href="contact.html" class="arrow-right" style="color: white; font-weight: 600;">
-                                                            <span>Get Started</span>
-                                                            <i class="fa-sharp fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="single-service-signle-wrapper" id="asset-valuation" style="background-image: url('assets/images/service/valuation-bg.webp'); background-size: cover; background-position: center; min-height: 300px; position: relative;">
-                                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(240, 147, 251, 0.85) 0%, rgba(245, 87, 108, 0.85) 100%); border-radius: inherit;"></div>
-                                                <div style="position: relative; z-index: 2; color: white; padding: 40px 30px;">
-                                                    <div class="icons" style="margin-bottom: 20px;">
-                                                        <i class="fas fa-chart-line" style="font-size: 48px; color: white;"></i>
-                                                    </div>
-                                                    <div class="information">
-                                                        <h5 class="title" style="color: white; margin-bottom: 15px;">Asset Valuation</h5>
-                                                        <p class="disc" style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
-                                                            Data-driven asset assessment with regional expertise.
-                                                        </p>
-                                                        <a href="contact.html" class="arrow-right" style="color: white; font-weight: 600;">
-                                                            <span>Get Started</span>
-                                                            <i class="fa-sharp fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="single-service-signle-wrapper" id="capital-asset-sales" style="background-image: url('assets/images/service/capital-bg.webp'); background-size: cover; background-position: center; min-height: 300px; position: relative;">
-                                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255, 193, 7, 0.85) 0%, rgba(255, 152, 0, 0.85) 100%); border-radius: inherit;"></div>
-                                                <div style="position: relative; z-index: 2; color: white; padding: 40px 30px;">
-                                                    <div class="icons" style="margin-bottom: 20px;">
-                                                        <i class="fas fa-building" style="font-size: 48px; color: white;"></i>
-                                                    </div>
-                                                    <div class="information">
-                                                        <h5 class="title" style="color: white; margin-bottom: 15px;">Asset Sales Brokerage</h5>
-                                                        <p class="disc" style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
-                                                            High-value asset transactions with seamless execution.
-                                                        </p>
-                                                        <a href="contact.html" class="arrow-right" style="color: white; font-weight: 600;">
-                                                            <span>Get Started</span>
-                                                            <i class="fa-sharp fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="single-service-signle-wrapper" id="fundraising" style="background-image: url('assets/images/service/fundraising-bg.webp'); background-size: cover; background-position: center; min-height: 300px; position: relative;">
-                                                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(76, 175, 80, 0.85) 0%, rgba(56, 142, 60, 0.85) 100%); border-radius: inherit;"></div>
-                                                <div style="position: relative; z-index: 2; color: white; padding: 40px 30px;">
-                                                    <div class="icons" style="margin-bottom: 20px;">
-                                                        <i class="fas fa-coins" style="font-size: 48px; color: white;"></i>
-                                                    </div>
-                                                    <div class="information">
-                                                        <h5 class="title" style="color: white; margin-bottom: 15px;">Fundraising</h5>
-                                                        <p class="disc" style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.5; margin-bottom: 20px;">
-                                                            Capital connections with optimal terms and strategic partnerships.
-                                                        </p>
-                                                        <a href="contact.html" class="arrow-right" style="color: white; font-weight: 600;">
-                                                            <span>Get Started</span>
-                                                            <i class="fa-sharp fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-pagination"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    <div class="services-wrapper">
+      <!-- Transaction Advisory -->
+      <div class="service-card">
+        <div class="service-image" style="background-image: url('assets/images/service/transactional-bg.webp')">
+          <div class="overlay"></div>
         </div>
+        <div class="service-content">
+          <div class="service-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h5 class="service-title">Transaction Advisory</h5>
+          <p class="service-desc">
+            Expert deal support across emerging markets with precision execution.
+          </p>
+          <a href="contact.html" class="service-btn">Get Started</a>
+        </div>
+      </div>
+
+      <!-- Market Entry Strategy -->
+      <div class="service-card">
+        <div class="service-image" style="background-image: url('assets/images/service/market-entry-bg.webp')">
+          <div class="overlay"></div>
+        </div>
+        <div class="service-content">
+          <div class="service-icon">
+            <i class="fas fa-globe-asia"></i>
+          </div>
+          <h5 class="service-title">Market Entry Strategy</h5>
+          <p class="service-desc">
+            Strategic guidance for Africa and Asia market expansion.
+          </p>
+          <a href="contact.html" class="service-btn">Get Started</a>
+        </div>
+      </div>
+
+      <!-- Capital Markets -->
+      <div class="service-card">
+        <div class="service-image" style="background-image: url('assets/images/service/capital-bg.webp')">
+          <div class="overlay"></div>
+        </div>
+        <div class="service-content">
+          <div class="service-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h5 class="service-title">Capital Markets</h5>
+          <p class="service-desc">
+            Comprehensive support for fundraising, structuring, and investor outreach.
+          </p>
+          <a href="contact.html" class="service-btn">Get Started</a>
+        </div>
+      </div>
     </div>
-</div>
-<!-- service area end -->
+  </div>
+</section>
+<!-- rts service area end -->
+
+<style>
+    :root {
+  --brand-primary: #071d36;
+  --brand-accent: #b9732f;
+  --brand-accent-hover: #a86a2a;
+  --neutral-surface: #ffffff;
+  --text-on-primary: #ffffff;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --topline-color: rgba(255, 255, 255, 0.92);
+  --transition: 0.28s;
+}
+
+/* Section Wrapper */
+.rts-service-area {
+  background-color: var(--neutral-surface);
+  padding: 60px 0;
+}
+
+/* Title Section */
+.title-style-two.center {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title-style-two .pre {
+  color: var(--brand-accent);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.title-style-two .title {
+  color: var(--brand-primary);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* Services Wrapper */
+.services-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Individual Service Card */
+.service-card {
+  width: 400px;
+  height: 500px;
+  background-color: var(--neutral-surface);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Image Section
+.service-image {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+} */
+
+/* Gradient Overlay */
+.service-image .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  /* background: linear-gradient(135deg, rgba(7, 29, 54, 0.6), rgba(185, 115, 47, 0.6)); */
+}
+
+/* Content Section */
+.service-content {
+  padding: 40px;
+  position: relative;
+  z-index: 2;
+  color: var(--brand-primary);
+}
+
+/* Icon */
+.service-icon {
+  font-size: 48px;
+  color: var(--brand-accent);
+  margin-bottom: 20px;
+}
+
+/* Title & Description */
+.service-title {
+    color:var(--brand-primary);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.service-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* CTA Button */
+.service-btn {
+  display: inline-block;
+  background-color: var(--brand-accent);
+  color: var(--text-on-primary);
+  padding: 10px 22px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color var(--transition);
+}
+
+.service-btn:hover {
+    color: var(--brand-accent);
+  background-color: var(--neutral-surface);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .services-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+</style>
 
 <!-- The Woughton Advantage -->
 <div class="rts-woughton-advantage-area rts-section-gap bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="title-style-two center">
-                    <span class="bg-content">Advantage</span>
-                    <span class="pre">Why Choose Woughton</span>
-                    <h2 class="title rts-text-anime-style-1">The Woughton Advantage</h2>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="title-style-two center">
+          <span class="bg-content">Advantage</span>
+          <span class="pre">Why Choose Woughton</span>
+          <h2 class="title rts-text-anime-style-1">The Woughton Advantage</h2>
         </div>
-        <div class="row g-5 mt--30">
-            <div class="col-lg-4 col-md-6" data-animation="fadeInUp" data-delay="0.2">
-                <div class="advantage-card" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; height: 100%;">
-                    <div class="advantage-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                        <i class="fas fa-globe-africa" style="font-size: 32px; color: white;"></i>
-                    </div>
-                    <h4 style="color: #333; margin-bottom: 15px;">Deep Regional Expertise</h4>
-                    <p style="color: #666; line-height: 1.6; font-size: 14px;">Our team understands the nuances of local economies, regulations, and cultures, allowing us to identify and structure opportunities that others miss.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-animation="fadeInUp" data-delay="0.4">
-                <div class="advantage-card" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; height: 100%;">
-                    <div class="advantage-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                        <i class="fas fa-chart-network" style="font-size: 32px; color: white;"></i>
-                    </div>
-                    <h4 style="color: #333; margin-bottom: 15px;">Global & Local Hybrid</h4>
-                    <p style="color: #666; line-height: 1.6; font-size: 14px;">We combine decades of local experience with global best practices. Our team's exposure to international finance and technology allows us to apply sophisticated strategies tailored to the African context.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6" data-animation="fadeInUp" data-delay="0.6">
-                <div class="advantage-card" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; height: 100%;">
-                    <div class="advantage-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                        <i class="fas fa-handshake" style="font-size: 32px; color: white;"></i>
-                    </div>
-                    <h4 style="color: #333; margin-bottom: 15px;">End-to-End Advisory</h4>
-                    <p style="color: #666; line-height: 1.6; font-size: 14px;">We don't just find capital; we guide our clients through every stage of a deal. From initial feasibility studies to post-deal advisory, we are your partners in building long-term value.</p>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="row g-5 mt--30">
+      <!-- Card 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="advantage-card">
+          <div class="advantage-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <i class="fas fa-globe-africa"></i>
+          </div>
+          <h4>Deep Regional Expertise</h4>
+          <p>Our team understands the nuances of local economies, regulations, and cultures, allowing us to identify and structure opportunities that others miss.</p>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="advantage-card">
+          <div class="advantage-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <i class="fas fa-chart-network"></i>
+          </div>
+          <h4>Global & Local Hybrid</h4>
+          <p>We combine decades of local experience with global best practices. Our team's exposure to international finance and technology allows us to apply sophisticated strategies tailored to the African context.</p>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="advantage-card">
+          <div class="advantage-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h4>End-to-End Advisory</h4>
+          <p>We don't just find capital; we guide our clients through every stage of a deal. From initial feasibility studies to post-deal advisory, we are your partners in building long-term value.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<style>
+    :root {
+  --brand-primary: #071D36;
+  --brand-accent: #B9732F;
+  --brand-accent-hover: #A86A2A;
+  --neutral-surface: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+  --border-subtle: rgba(255,255,255,0.06);
+  --topline-color: rgba(255,255,255,0.92);
+  --transition: 0.28s;
+}
+
+/* Advantage Cards */
+.advantage-card {
+  background: var(--neutral-surface);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  transition: transform var(--transition), box-shadow var(--transition);
+  height: 100%;
+}
+
+.advantage-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+}
+
+/* Icon */
+.advantage-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 32px;
+  color: var(--text-on-primary);
+}
+
+/* Header & Text */
+.advantage-card h4 {
+  font-size: 24px;
+  color: var(--brand-primary);
+  margin-bottom: 15px;
+}
+
+.advantage-card p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .advantage-card {
+    padding: 30px;
+  }
+}
+
+</style>
 
 <!-- CTA Section -->
 <div class="rts-services-cta-area rts-section-gap">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="services-cta-wrapper" style="text-align: center; padding: 60px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; color: white;">
-                    <h2 style="color: white; margin-bottom: 20px; font-weight: 700; font-size: 2.5rem;">Ready to discuss your investment or advisory needs?</h2>
-                    <p style=" color: white;font-size: 18px; margin-bottom: 30px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
-                        Let's explore how our expertise in emerging markets can help you achieve your strategic objectives and unlock new opportunities for growth.
-                    </p>
-                    <a href="contact.html" class="rts-btn btn-primary btn-white" style="background: white; color: #667eea; padding: 16px 32px; font-weight: 600; margin: auto;">
-                        Contact Us Today <i class="fa-light fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="services-cta-wrapper">
+          <h2>Ready to discuss your investment or advisory needs?</h2>
+          <p>
+            Let's explore how our expertise in emerging markets can help you achieve your strategic objectives and unlock new opportunities for growth.
+          </p>
+          <a href="contact.html" class="rts-btn btn-primary">
+            Contact Us Today <i class="fa-light fa-arrow-right"></i>
+          </a>
         </div>
+      </div>
     </div>
+  </div>
 </div>
+
+<style>
+    :root {
+  --brand-primary: #071D36;
+  --brand-accent: #B9732F;
+  --brand-accent-hover: #A86A2A;
+  --neutral-surface: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+  --border-subtle: rgba(255,255,255,0.06);
+  --topline-color: rgba(255,255,255,0.92);
+  --transition: 0.28s;
+}
+
+/* CTA Wrapper */
+.services-cta-wrapper {
+  text-align: center;
+  padding: 60px 40px;
+  background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%);
+  border-radius: 15px;
+  color: var(--text-on-primary);
+}
+
+/* Header & Text */
+.services-cta-wrapper h2 {
+  font-size: 24px; /* updated from 2.5rem */
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-on-primary);
+}
+
+.services-cta-wrapper p {
+  font-size: 16px; /* updated from 18px */
+  margin-bottom: 30px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-on-primary);
+  line-height: 1.6;
+}
+
+/* CTA Button */
+.rts-btn.btn-primary {
+  background: var(--neutral-surface);
+  color: var(--brand-accent);
+  padding: 16px 32px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.rts-btn.btn-primary i {
+  margin-left: 8px;
+}
+
+.rts-btn.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+</style>
+
+
+
 <div class="rts-footer-area  footer-three footer-bg-three mt--120 mt_md--80 mt_sm--60">
     <br>
     <br>
@@ -477,12 +1017,222 @@ function toggleSubmenu(event) {
 </div>
 
 <style>
-@media (min-width: 992px) {
-    .footer-three-single-wized.mid-right {
-        padding-left: 20px;
+:root {
+  --brand-primary: #071D36;
+  --brand-accent: #B9732F;
+  --brand-accent-hover: #A86A2A;
+  --neutral-surface: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+  --border-subtle: rgba(255,255,255,0.06);
+  --topline-color: rgba(255,255,255,0.92);
+  --transition: 0.28s;
+}
+
+/* ------------------------- Footer Background & Spacing ------------------------- */
+.rts-footer-area.footer-three,
+.rts-footer-area.footer-two {
+    background-color: var(--brand-primary); /* deep navy */
+    color: var(--neutral-surface); /* light text */
+    padding-top: 100px;
+    padding-bottom: 60px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ------------------------- CTA Newsletter Section ------------------------- */
+.rts-cta-area-one .cta-main-area-wrapper-one {
+    background-color: rgba(7,29,54,0.95); /* subtle variation of brand-primary */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+
+.rts-cta-area-one .left-areas .pre {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brand-accent); /* gold accent */
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.rts-cta-area-one .left-areas .title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--neutral-surface);
+    line-height: 1.2;
+}
+
+.rts-cta-area-one .right-area .inpur-area-main {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.rts-cta-area-one input[type="text"] {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    width: 250px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.04);
+    color: var(--neutral-surface);
+}
+
+.rts-cta-area-one input[type="text"]::placeholder {
+    color: rgba(245,247,250,0.6);
+}
+
+.rts-cta-area-one .btn-primary {
+    padding: 12px 28px;
+    background-color: var(--brand-accent);
+    color: var(--neutral-surface);
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform var(--transition);
+}
+
+.rts-cta-area-one .btn-primary:hover {
+    background-color: var(--brand-accent-hover);
+    color: var(--brand-accent);
+    transform: translateY(-2px);
+}
+
+/* ------------------------- Footer Widgets ------------------------- */
+.footer-two-single-wized .title,
+.footer-two-single-wized .wized-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand-primary); /* light titles on dark background */
+    margin-bottom: 15px;
+}
+
+.footer-two-single-wized p.disc {
+    font-size: 14px;
+    color: rgba(245,247,250,0.88); /* slightly muted white */
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.footer-two-single-wized a.rts-btn.btn-primary {
+    background-color: var(--brand-accent);
+    color: var(--neutral-surface);
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform var(--transition);
+}
+
+.footer-two-single-wized a.rts-btn.btn-primary:hover {
+    background-color: var(--brand-accent-hover);
+    transform: translateY(-2px);
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Contact Info ------------------------- */
+.contact-info-1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.contact-info-1 .icon {
+    font-size: 18px;
+    color: var(--brand-accent);
+    margin-top: 2px;
+}
+
+.contact-info-1 .disc span {
+    display: block;
+    font-size: 12px;
+    color: var(--neutral-surface);
+    font-weight: 700;
+}
+
+.contact-info-1 .disc a {
+    color: rgba(245,247,250,0.9);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.contact-info-1 .disc a:hover {
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Copy-right ------------------------- */
+.rts-copy-right-1 {
+    background-color: rgba(7,25,46,0.95); /* slightly darker strip */
+    padding: 20px 0;
+    color: rgba(245,247,250,0.86);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.rts-copy-right-1 .right ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.rts-copy-right-1 .right ul li a {
+    color: rgba(245,247,250,0.86);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.rts-copy-right-1 .right ul li a:hover {
+    color: var(--brand-accent);
+}
+
+/* ------------------------- Misc small helpers to keep contrast readable ------------------------- */
+a,
+a:link,
+a:visited {
+  color: var(--neutral-surface);
+}
+
+.rts-footer-area .bg-image,
+.rts-footer-area .shape {
+  /* ensure any decorative elements keep the same tonal family */
+  opacity: 0.06;
+  filter: grayscale(20%);
+}
+
+/* ------------------------- Responsive ------------------------- */
+@media(max-width:992px) {
+    .rts-cta-area-one .cta-main-area-wrapper-one {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .rts-cta-area-one .right-area .inpur-area-main {
+        width: 100%;
+        flex-direction: column;
+    }
+    .rts-cta-area-one input[type="text"] {
+        width: 100%;
+    }
+    .rts-copy-right-1 {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
     }
 }
 </style>
+
 
 <!-- progress area end -->
 
