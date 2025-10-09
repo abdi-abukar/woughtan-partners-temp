@@ -1,0 +1,2096 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Woughton Global Partners - Bridging global standards with African market expertise. Strategic advisory services for emerging markets."
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png" />
+    <title>About Us | Woughton Global Partners</title>
+    <link rel="stylesheet" href="assets/css/plugins/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Red+Hat+Display:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --brand-primary: #071d36;
+        --brand-accent: #b9732f;
+        --brand-accent-hover: #a86a2a;
+        --neutral-surface: #ffffff;
+        --text-on-primary: #ffffff;
+        --text-dark: #1a1a1a;
+        --text-muted: #666;
+        --border-subtle: rgba(7, 29, 54, 0.1);
+        --transition: 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'DM Sans', sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+        background: var(--neutral-surface);
+        padding-top: 105px;
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: 'Red Hat Display', sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      /* ========== FIXED HEADER ========== */
+      .header-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        background: var(--neutral-surface);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Topline */
+      .header-top {
+        background: var(--brand-primary);
+        padding: 6px 0;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .header-top .content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left-header-top p {
+        margin: 0;
+        font-size: 13px;
+      }
+
+      .topline-link {
+        color: var(--brand-accent);
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .topline-link:hover {
+        color: var(--brand-accent-hover);
+      }
+
+      .ht-social {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .ht-social span {
+        font-size: 12px;
+      }
+
+      .ht-social ul {
+        display: flex;
+        gap: 10px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .ht-social a {
+        color: rgba(255, 255, 255, 0.8);
+        transition: var(--transition);
+        font-size: 14px;
+      }
+
+      .ht-social a:hover {
+        color: var(--brand-accent);
+      }
+
+      /* Main Header */
+      .main-header {
+        padding: 12px 0;
+        background: var(--neutral-surface);
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .main-header .content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .header-left .thumbnail img {
+        height: 40px;
+        width: auto;
+      }
+
+      /* Navigation */
+      .nav-area .main-nav-list {
+        display: flex;
+        gap: 5px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+
+      .main-nav > a {
+        color: var(--brand-primary);
+        text-decoration: none;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: var(--transition);
+        display: block;
+      }
+
+      .main-nav > a:hover {
+        background: rgba(7, 29, 54, 0.08);
+        color: var(--brand-accent);
+      }
+
+      .has-dropdown {
+        position: relative;
+      }
+
+      .submenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--neutral-surface);
+        min-width: 240px;
+        border-radius: 8px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all var(--transition);
+        padding: 8px 0;
+        margin-top: 8px;
+      }
+
+      .has-dropdown:hover .submenu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .submenu a {
+        display: block;
+        padding: 10px 20px;
+        color: var(--text-dark);
+        text-decoration: none;
+        transition: var(--transition);
+        font-size: 14px;
+      }
+
+      .submenu a:hover {
+        background: rgba(185, 115, 47, 0.1);
+        color: var(--brand-accent);
+        padding-left: 25px;
+      }
+
+      /* Search Bar */
+      .search-wrapper {
+        display: flex;
+        align-items: center;
+        background: rgba(7, 29, 54, 0.06);
+        border-radius: 25px;
+        padding: 6px 15px;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .search-wrapper:focus-within {
+        background: rgba(7, 29, 54, 0.1);
+        box-shadow: 0 0 0 2px rgba(185, 115, 47, 0.2);
+      }
+
+      .search-wrapper input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: var(--brand-primary);
+        font-size: 14px;
+        width: 180px;
+        padding: 4px 8px;
+      }
+
+      .search-wrapper input::placeholder {
+        color: rgba(7, 29, 54, 0.5);
+      }
+
+      .search-wrapper i {
+        color: var(--brand-accent);
+      }
+
+      /* Search Dropdown */
+      .search-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--neutral-surface);
+        border-radius: 8px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        margin-top: 8px;
+        padding: 8px 0;
+        display: none;
+        z-index: 1000;
+      }
+
+      .search-dropdown.active {
+        display: block;
+      }
+
+      .search-result-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: var(--transition);
+        border-left: 3px solid transparent;
+      }
+
+      .search-result-item:hover {
+        background: rgba(185, 115, 47, 0.08);
+        border-left-color: var(--brand-accent);
+      }
+
+      .search-result-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--brand-primary);
+        margin-bottom: 4px;
+      }
+
+      .search-result-desc {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* Header Right */
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .schedule-cta {
+        background: var(--brand-accent);
+        color: var(--text-on-primary);
+        padding: 10px 22px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: var(--transition);
+        white-space: nowrap;
+      }
+
+      .schedule-cta:hover {
+        background: var(--brand-accent-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(185, 115, 47, 0.3);
+      }
+
+      /* Mobile Hamburger */
+      .mobile-hamburger {
+        display: none;
+        background: var(--brand-accent);
+        border: none;
+        color: var(--text-on-primary);
+        font-size: 22px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .mobile-hamburger:hover {
+        background: var(--brand-accent-hover);
+      }
+
+      /* Mobile Navigation - Dropdown Style */
+      .mobile-nav-panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: var(--brand-primary);
+        z-index: 99998;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+      }
+
+      .mobile-nav-panel.active {
+        max-height: 100vh;
+        padding: 20px 0;
+        overflow-y: auto;
+      }
+
+      .mobile-nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .mobile-close {
+        background: none;
+        border: none;
+        color: var(--text-on-primary);
+        font-size: 28px;
+        cursor: pointer;
+        float: right;
+        padding: 5px;
+        margin-bottom: 15px;
+      }
+
+      .mobile-search-wrapper {
+        margin-bottom: 20px;
+        position: relative;
+        clear: both;
+      }
+
+      .mobile-search-wrapper input {
+        width: 100%;
+        padding: 12px 40px 12px 15px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-on-primary);
+        font-size: 14px;
+      }
+
+      .mobile-search-wrapper input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .mobile-search-wrapper i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--brand-accent);
+      }
+
+      .mobile-search-dropdown {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 8px;
+        margin-top: 8px;
+        padding: 8px 0;
+        display: none;
+      }
+
+      .mobile-search-dropdown.active {
+        display: block;
+      }
+
+      .mobile-search-result {
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .mobile-search-result:hover {
+        background: rgba(185, 115, 47, 0.1);
+      }
+
+      .mobile-search-result-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--brand-primary);
+        margin-bottom: 3px;
+      }
+
+      .mobile-search-result-desc {
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      .mobile-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .mobile-links li {
+        margin-bottom: 0;
+      }
+
+      .mobile-links a {
+        color: var(--text-on-primary);
+        text-decoration: none;
+        padding: 12px 15px;
+        display: block;
+        border-radius: 6px;
+        transition: var(--transition);
+      }
+
+      .mobile-links a:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .mobile-submenu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        margin-left: 15px;
+      }
+
+      .submenu-toggle {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-cta {
+        background: var(--brand-accent);
+        margin-top: 15px;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      /* ========== BREADCRUMBS ========== */
+      .breadcrumbs {
+        background: linear-gradient(135deg, rgba(7, 29, 54, 0.95), rgba(7, 29, 54, 0.98));
+        padding: 20px 0;
+        color: var(--text-on-primary);
+      }
+
+      .breadcrumbs .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .breadcrumbs ul {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .breadcrumbs a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .breadcrumbs a:hover {
+        color: var(--brand-accent);
+      }
+
+      .breadcrumbs span {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* ========== HERO SECTION ========== */
+      .about-hero {
+        background: linear-gradient(135deg, rgba(7, 29, 54, 0.95), rgba(10, 40, 68, 0.97)),
+                    url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600') center/cover;
+        padding: 80px 0 60px;
+        color: var(--text-on-primary);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .about-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at top right, rgba(185, 115, 47, 0.15), transparent 60%);
+      }
+
+      .about-hero .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-eyebrow {
+        color: var(--brand-accent);
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        display: inline-block;
+      }
+
+      .hero-headline {
+        font-size: 52px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 22px;
+        color: var(--text-on-primary);
+      }
+
+      .hero-headline .accent {
+        color: var(--brand-accent);
+      }
+
+      .hero-subheadline {
+        font-size: 20px;
+        margin-bottom: 40px;
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 30px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 42px;
+        font-weight: 800;
+        color: var(--brand-accent);
+        margin-bottom: 8px;
+        font-family: 'Red Hat Display', system-ui;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* ========== TEAM SECTION ========== */
+      .team-section {
+        padding: 100px 0;
+        background: #ffffff;
+      }
+
+      .team-section .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 70px;
+      }
+
+      .section-pre {
+        color: var(--brand-accent);
+        font-weight: 600;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .section-title {
+        font-size: 42px;
+        color: var(--brand-primary);
+        margin-bottom: 15px;
+        line-height: 1.3;
+      }
+
+      .section-title .highlight {
+        color: var(--brand-accent);
+      }
+
+      .section-desc {
+        font-size: 18px;
+        color: var(--text-muted);
+        max-width: 900px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      .team-member-block {
+        margin-bottom: 80px;
+      }
+
+      .team-member-block:last-child {
+        margin-bottom: 0;
+      }
+
+      .team-member-row {
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .team-member-block:nth-child(even) .team-member-row {
+        grid-template-columns: 1fr 400px;
+      }
+
+      .team-member-block:nth-child(even) .team-photo {
+        order: 2;
+      }
+
+      .team-photo {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 12px 40px rgba(7, 29, 54, 0.1);
+      }
+
+      .team-photo img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .photo-badge {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: linear-gradient(135deg, #b9732f, #a86a2a);
+        color: #ffffff;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 12px rgba(185, 115, 47, 0.3);
+      }
+
+      .team-info .member-name {
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--brand-primary);
+        margin-bottom: 8px;
+        line-height: 1.3;
+      }
+
+      .team-info .member-title {
+        font-size: 16px;
+        color: var(--brand-accent);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+
+      .team-info .member-bio {
+        font-size: 17px;
+        color: var(--text-dark);
+        line-height: 1.7;
+        margin-bottom: 30px;
+      }
+
+      .member-highlights {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .highlight-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 15px;
+        background: rgba(185, 115, 47, 0.05);
+        border-radius: 8px;
+      }
+
+      .highlight-item i {
+        color: var(--brand-accent);
+        font-size: 20px;
+        margin-top: 3px;
+      }
+
+      .highlight-content h5 {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--brand-primary);
+        margin: 0 0 4px;
+      }
+
+      .highlight-content p {
+        font-size: 14px;
+        color: var(--text-muted);
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      /* ========== APPROACH SECTION ========== */
+      .approach-section {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #f8f9fa, #ffffff);
+      }
+
+      .approach-section .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .approach-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+        margin-top: 60px;
+      }
+
+      .approach-card {
+        background: var(--neutral-surface);
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border-top: 4px solid var(--brand-accent);
+      }
+
+      .approach-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+      }
+
+      .approach-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        font-size: 32px;
+        color: #ffffff;
+        background: linear-gradient(135deg, var(--brand-accent), #d49b63);
+        box-shadow: 0 8px 20px rgba(185, 115, 47, 0.25);
+      }
+
+      .approach-card h4 {
+        font-size: 22px;
+        color: var(--brand-primary);
+        margin-bottom: 12px;
+        line-height: 1.4;
+      }
+
+      .approach-card p {
+        font-size: 15px;
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .approach-features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .approach-features li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+        line-height: 1.5;
+      }
+
+      .approach-features i {
+        color: var(--brand-accent);
+        margin-top: 3px;
+        flex-shrink: 0;
+        font-size: 13px;
+      }
+
+      /* ========== WHY AFRICA SECTION ========== */
+      .why-africa-section {
+        padding: 100px 0;
+        background: #ffffff;
+      }
+
+      .why-africa-section .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .africa-stats-banner {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin: 60px 0 80px;
+        padding: 50px;
+        background: linear-gradient(135deg, #071d36, #0a2847);
+        border-radius: 20px;
+        box-shadow: 0 12px 40px rgba(7, 29, 54, 0.15);
+      }
+
+      .africa-stat {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .stat-value {
+        font-size: 48px;
+        font-weight: 800;
+        color: var(--brand-accent);
+        margin-bottom: 10px;
+        font-family: 'Red Hat Display', system-ui;
+      }
+
+      .stat-desc {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .drivers-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--brand-primary);
+        margin-bottom: 40px;
+        text-align: center;
+        font-family: 'Red Hat Display', system-ui;
+      }
+
+      .driver-card {
+        display: flex;
+        gap: 25px;
+        margin-bottom: 30px;
+        padding: 30px;
+        background: rgba(185, 115, 47, 0.03);
+        border-radius: 12px;
+        border-left: 4px solid var(--brand-accent);
+        transition: all 0.3s ease;
+      }
+
+      .driver-card:hover {
+        background: rgba(185, 115, 47, 0.08);
+        transform: translateX(5px);
+      }
+
+      .driver-number {
+        font-size: 48px;
+        font-weight: 800;
+        color: rgba(185, 115, 47, 0.25);
+        line-height: 1;
+        font-family: 'Red Hat Display', system-ui;
+        flex-shrink: 0;
+        width: 80px;
+      }
+
+      .driver-content h4 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--brand-primary);
+        margin-bottom: 10px;
+      }
+
+      .driver-content p {
+        font-size: 16px;
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      .regions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 35px;
+        margin-top: 50px;
+      }
+
+      .region-card {
+        background: linear-gradient(135deg, #071d36, #0a2847);
+        color: #ffffff;
+        padding: 40px;
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 30px rgba(7, 29, 54, 0.15);
+      }
+
+      .region-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 45px rgba(7, 29, 54, 0.25);
+      }
+
+      .region-icon {
+        width: 70px;
+        height: 70px;
+        background: rgba(185, 115, 47, 0.15);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        font-size: 32px;
+        color: var(--brand-accent);
+      }
+
+      .region-name {
+        font-size: 24px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 12px;
+      }
+
+      .region-description {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .region-highlights {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .highlight-badge {
+        background: rgba(185, 115, 47, 0.15);
+        color: var(--brand-accent);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* ========== NETWORK SECTION ========== */
+      .network-section {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #f8f9fa, #ffffff);
+      }
+
+      .network-section .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .network-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .network-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 36px 24px;
+        text-align: center;
+        height: 100%;
+        box-shadow: 0 6px 20px rgba(7, 29, 54, 0.06);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(7, 29, 54, 0.04);
+      }
+
+      .network-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 32px rgba(7, 29, 54, 0.12);
+      }
+
+      .network-flag {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 20px;
+        background: linear-gradient(135deg, #b9732f 0%, #a86a2a 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 16px rgba(185, 115, 47, 0.2);
+      }
+
+      .network-flag i {
+        font-size: 26px;
+        color: #ffffff;
+      }
+
+      .network-location {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--brand-primary);
+        margin-bottom: 12px;
+      }
+
+      .network-description {
+        font-size: 15px;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* ========== CTA SECTION ========== */
+      .cta-section {
+        padding: 80px 0;
+        background: linear-gradient(135deg, var(--brand-primary), #0a2a4a);
+        color: var(--text-on-primary);
+        text-align: center;
+      }
+
+      .cta-section .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .cta-title {
+        font-size: 38px;
+        margin-bottom: 20px;
+        line-height: 1.3;
+      }
+
+      .cta-text {
+        font-size: 18px;
+        margin-bottom: 35px;
+        opacity: 0.95;
+        line-height: 1.7;
+      }
+
+      .cta-button {
+        background: var(--brand-accent);
+        color: var(--text-on-primary);
+        padding: 16px 40px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 17px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: var(--transition);
+      }
+
+      .cta-button:hover {
+        background: var(--brand-accent-hover);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(185, 115, 47, 0.3);
+      }
+
+      /* ========== FOOTER ========== */
+      .footer {
+        background: var(--brand-primary);
+        color: var(--text-on-primary);
+        padding: 60px 0 30px;
+      }
+
+      .footer .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-col h4 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: var(--brand-accent);
+      }
+
+      .footer-col p,
+      .footer-col a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 15px;
+        line-height: 1.8;
+        display: block;
+        transition: var(--transition);
+      }
+
+      .footer-col a:hover {
+        color: var(--brand-accent);
+        padding-left: 5px;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 30px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+      }
+
+      /* ========== RESPONSIVE ========== */
+      @media (max-width: 1200px) {
+        .team-member-row {
+          grid-template-columns: 1fr;
+        }
+
+        .team-member-block:nth-child(even) .team-member-row {
+          grid-template-columns: 1fr;
+        }
+
+        .team-member-block:nth-child(even) .team-photo {
+          order: 1;
+        }
+
+        .approach-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 980px) {
+        body {
+          padding-top: 90px;
+        }
+
+        .header-top {
+          padding: 4px 0;
+        }
+
+        .left-header-top p {
+          font-size: 11px;
+        }
+
+        .topline-link {
+          font-size: 11px;
+        }
+
+        .ht-social span {
+          display: none;
+        }
+
+        .ht-social a {
+          font-size: 12px;
+        }
+
+        .header-left .thumbnail img {
+          height: 32px;
+        }
+
+        .nav-area,
+        .schedule-cta,
+        .search-wrapper {
+          display: none;
+        }
+
+        .mobile-hamburger {
+          display: block;
+        }
+
+        .about-hero {
+          padding: 60px 0 50px;
+        }
+
+        .hero-headline {
+          font-size: 38px;
+        }
+
+        .hero-subheadline {
+          font-size: 17px;
+        }
+
+        .section-title {
+          font-size: 32px;
+        }
+
+        .team-info .member-name {
+          font-size: 28px;
+        }
+
+        .driver-card {
+          flex-direction: column;
+        }
+
+        .driver-number {
+          font-size: 36px;
+          width: auto;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-headline {
+          font-size: 32px;
+        }
+
+        .hero-subheadline {
+          font-size: 16px;
+        }
+
+        .section-title {
+          font-size: 28px;
+        }
+
+        .cta-title {
+          font-size: 30px;
+        }
+
+        .hero-stats {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        .stat-number {
+          font-size: 32px;
+        }
+
+        .africa-stats-banner {
+          grid-template-columns: repeat(2, 1fr);
+          padding: 30px;
+        }
+
+        .regions-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header-top .content {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+
+        .left-header-top p {
+          font-size: 10px;
+        }
+
+        .hero-headline {
+          font-size: 28px;
+        }
+
+        .hero-subheadline {
+          font-size: 15px;
+        }
+
+        .africa-stats-banner {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ========== FIXED HEADER ========== -->
+    <header class="header-wrapper">
+      <!-- Topline -->
+      <div class="header-top">
+        <div class="content">
+          <div class="left-header-top">
+            <p>
+              Ready to unlock emerging market opportunities?
+              <a href="contact-us.html" class="topline-link">
+                Contact Us <i class="fas fa-arrow-right"></i>
+              </a>
+            </p>
+          </div>
+          <div class="right-header-top">
+            <div class="ht-social">
+              <span>Follow Us:</span>
+              <ul>
+                <li>
+                  <a href="#" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Header -->
+      <div class="main-header">
+        <div class="content">
+          <div class="header-left">
+            <a class="thumbnail" href="index.html" aria-label="Woughton Global home">
+              <img src="assets/images/logo.png" alt="Woughton Global" />
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-area" aria-label="Primary navigation">
+              <ul class="main-nav-list">
+                <li class="main-nav"><a href="index.html">Home</a></li>
+
+                <li class="main-nav has-dropdown">
+                  <a href="services.html">Services</a>
+                  <ul class="submenu">
+                    <li><a href="services.html#transaction-advisory">Transaction Advisory</a></li>
+                    <li><a href="services.html#market-entry">Market Entry Strategy</a></li>
+                    <li><a href="services.html#capital-markets">Capital Markets</a></li>
+                  </ul>
+                </li>
+
+                <li class="main-nav"><a href="research-hub.html">Insights</a></li>
+
+                <li class="main-nav has-dropdown">
+                  <a href="about.html">About</a>
+                  <ul class="submenu">
+                    <li><a href="about.html#our-team">Our Team</a></li>
+                    <li><a href="about.html#our-approach">Our Approach</a></li>
+                    <li><a href="about.html#why-africa">Why Africa</a></li>
+                  </ul>
+                </li>
+
+                <li class="main-nav"><a href="contact-us.html">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Header Right -->
+          <div class="header-right">
+            <!-- Search Bar -->
+            <div class="search-wrapper">
+              <input type="text" placeholder="Search..." id="searchInput" autocomplete="off" />
+              <i class="fas fa-search"></i>
+              <div class="search-dropdown" id="searchDropdown">
+                <div class="search-result-item" data-link="services.html#transaction-advisory">
+                  <div class="search-result-title">Transaction Advisory</div>
+                  <div class="search-result-desc">M&A, due diligence, and deal structuring</div>
+                </div>
+                <div class="search-result-item" data-link="services.html#market-entry">
+                  <div class="search-result-title">Market Entry Strategy</div>
+                  <div class="search-result-desc">Strategic guidance for market expansion</div>
+                </div>
+                <div class="search-result-item" data-link="services.html#capital-markets">
+                  <div class="search-result-title">Capital Markets</div>
+                  <div class="search-result-desc">Fundraising and investor relations</div>
+                </div>
+                <div class="search-result-item" data-link="research-hub.html">
+                  <div class="search-result-title">Research Hub</div>
+                  <div class="search-result-desc">Market insights and reports</div>
+                </div>
+                <div class="search-result-item" data-link="contact-us.html">
+                  <div class="search-result-title">Contact Us</div>
+                  <div class="search-result-desc">Schedule a consultation</div>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://calendly.com/your-placeholder" class="schedule-cta">
+              Schedule Consultation
+            </a>
+
+            <button class="mobile-hamburger" id="mobileMenuBtn" aria-label="Open menu">
+              &#9776;
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation - Dropdown Style -->
+      <nav class="mobile-nav-panel" id="mobileNav">
+        <div class="mobile-nav-inner">
+          <button class="mobile-close" id="mobileCloseBtn" aria-label="Close menu">✕</button>
+          
+          <!-- Mobile Search -->
+          <div class="mobile-search-wrapper">
+            <input type="text" placeholder="Search..." id="mobileSearchInput" autocomplete="off" />
+            <i class="fas fa-search"></i>
+            <div class="mobile-search-dropdown" id="mobileSearchDropdown">
+              <div class="mobile-search-result" data-link="services.html#transaction-advisory">
+                <div class="mobile-search-result-title">Transaction Advisory</div>
+                <div class="mobile-search-result-desc">M&A and deal structuring</div>
+              </div>
+              <div class="mobile-search-result" data-link="services.html#market-entry">
+                <div class="mobile-search-result-title">Market Entry</div>
+                <div class="mobile-search-result-desc">Market expansion guidance</div>
+              </div>
+              <div class="mobile-search-result" data-link="services.html#capital-markets">
+                <div class="mobile-search-result-title">Capital Markets</div>
+                <div class="mobile-search-result-desc">Fundraising support</div>
+              </div>
+              <div class="mobile-search-result" data-link="research-hub.html">
+                <div class="mobile-search-result-title">Insights</div>
+                <div class="mobile-search-result-desc">Research and reports</div>
+              </div>
+            </div>
+          </div>
+
+          <ul class="mobile-links">
+            <li><a href="index.html">Home</a></li>
+
+            <li>
+              <a href="#" class="submenu-toggle">Services +</a>
+              <ul class="mobile-submenu">
+                <li><a href="services.html#transaction-advisory">Transaction Advisory</a></li>
+                <li><a href="services.html#market-entry">Market Entry Strategy</a></li>
+                <li><a href="services.html#capital-markets">Capital Markets</a></li>
+              </ul>
+            </li>
+
+            <li><a href="research-hub.html">Insights</a></li>
+
+            <li>
+              <a href="#" class="submenu-toggle">About +</a>
+              <ul class="mobile-submenu">
+                <li><a href="about.html#our-team">Our Team</a></li>
+                <li><a href="about.html#our-approach">Our Approach</a></li>
+                <li><a href="about.html#why-africa">Why Africa</a></li>
+              </ul>
+            </li>
+
+            <li><a href="contact-us.html">Contact</a></li>
+
+            <li>
+              <a href="https://calendly.com/your-placeholder" class="mobile-cta">
+                Schedule Consultation
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ========== BREADCRUMBS ========== -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><span>/</span></li>
+          <li>About Us</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="about-hero">
+      <div class="container">
+        <span class="hero-eyebrow">About Woughton Global Partners</span>
+        <h1 class="hero-headline">
+          Bridging <span class="accent">Global Standards</span> with <span class="accent">African Market Expertise</span>
+        </h1>
+        <p class="hero-subheadline">
+          We are a specialized advisory firm connecting international investors with high-quality emerging market opportunities across Sub-Saharan Africa. Our team combines investment-banking rigor from Goldman Sachs and McKinsey with deep, on-the-ground market knowledge spanning 16 African countries.
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">$2.5B+</div>
+            <div class="stat-label">Transaction Value</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Transactions Closed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">16</div>
+            <div class="stat-label">Countries Served</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TEAM SECTION ========== -->
+    <section class="team-section" id="our-team">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-pre">Our Team</span>
+          <h2 class="section-title">Led by Advisors from <span class="highlight">Goldman Sachs, McKinsey</span> and Local Market Pioneers</h2>
+          <p class="section-desc">
+            Our leadership blends international investment-banking rigor with deep, on-the-ground African market experience — delivering structured capital solutions, transaction execution, and market entry strategies at global standards.
+          </p>
+        </div>
+
+        <!-- Prof Edward Opoku Adusei -->
+        <div class="team-member-block">
+          <div class="team-member-row">
+            <div class="team-photo">
+              <img src="assets/images/one.jpeg" alt="Prof. Edward Opoku Adusei - Managing Partner">
+              <div class="photo-badge">Managing Partner</div>
+            </div>
+            <div class="team-info">
+              <h3 class="member-name">Prof. Edward Opoku Adusei</h3>
+              <p class="member-title">Managing Partner</p>
+              <p class="member-bio">
+                With over 35 years as an Associate Professor and strategic consultant, Edward brings unmatched economic and advisory experience. He has provided high-level counsel to organizations like the World Bank and the African Peer Review Mechanism.
+              </p>
+              
+              <div class="member-highlights">
+                <div class="highlight-item">
+                  <i class="far fa-briefcase"></i>
+                  <div class="highlight-content">
+                    <h5>35+ Years Strategic Consulting</h5>
+                    <p>World Bank & Associate Professor</p>
+                  </div>
+                </div>
+                
+                <div class="highlight-item">
+                  <i class="far fa-chart-line"></i>
+                  <div class="highlight-content">
+                    <h5>$2B+ Project Funding</h5>
+                    <p>Real estate, mining, infrastructure</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Maxwell Danquah -->
+        <div class="team-member-block">
+          <div class="team-member-row">
+            <div class="team-photo">
+              <img src="assets/images/two.jpeg" alt="Maxwell Danquah MBA - Partner">
+              <div class="photo-badge">Partner, Deal Sourcing</div>
+            </div>
+            <div class="team-info">
+              <h3 class="member-name">Maxwell Danquah, MBA</h3>
+              <p class="member-title">Partner, Deal Sourcing and Strategy</p>
+              <p class="member-bio">
+                An Emory University MBA, Maxwell combines practical financial services experience from Africa with strategic and technological expertise gained in mission-critical roles at Big Tech companies in the U.S.
+              </p>
+              
+              <div class="member-highlights">
+                <div class="highlight-item">
+                  <i class="far fa-graduation-cap"></i>
+                  <div class="highlight-content">
+                    <h5>Emory University MBA</h5>
+                    <p>Top-tier business education</p>
+                  </div>
+                </div>
+                
+                <div class="highlight-item">
+                  <i class="far fa-rocket"></i>
+                  <div class="highlight-content">
+                    <h5>Big Tech & Financial Services</h5>
+                    <p>Mission-critical U.S. tech roles</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== APPROACH SECTION ========== -->
+    <section class="approach-section" id="our-approach">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-pre">Our Approach</span>
+          <h2 class="section-title">How We Work: <span class="highlight">Rigor Meets Local Knowledge</span></h2>
+          <p class="section-desc">
+            We combine the analytical frameworks and execution standards of top-tier investment banks with the nuanced, on-the-ground insights that only decades of African market experience can provide.
+          </p>
+        </div>
+
+        <div class="approach-grid">
+          <!-- Deep African Networks -->
+          <div class="approach-card">
+            <div class="approach-icon">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <h4>Deep African Networks</h4>
+            <p>
+              Established relationships across 16 African countries with on-ground presence in Ghana, Nigeria, and South Africa.
+            </p>
+            <ul class="approach-features">
+              <li><i class="fas fa-check-circle"></i> On-ground presence in key markets</li>
+              <li><i class="fas fa-check-circle"></i> Direct regulator relationships</li>
+              <li><i class="fas fa-check-circle"></i> 20+ institutional investors</li>
+              <li><i class="fas fa-check-circle"></i> Local expertise across 16 countries</li>
+            </ul>
+          </div>
+
+          <!-- Global Advisory Standards -->
+          <div class="approach-card">
+            <div class="approach-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h4>Global Advisory Standards</h4>
+            <p>
+              Team members from Goldman Sachs, McKinsey bring world-class analytical rigor and international best practices.
+            </p>
+            <ul class="approach-features">
+              <li><i class="fas fa-check-circle"></i> Goldman Sachs methodology</li>
+              <li><i class="fas fa-check-circle"></i> Rigorous financial modeling</li>
+              <li><i class="fas fa-check-circle"></i> International transaction experience</li>
+              <li><i class="fas fa-check-circle"></i> Best-in-class execution</li>
+            </ul>
+          </div>
+
+          <!-- Sector Specialists -->
+          <div class="approach-card">
+            <div class="approach-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <h4>Sector Specialists</h4>
+            <p>
+              Deep domain expertise in Energy, Technology, Financial Services, and Infrastructure across African markets.
+            </p>
+            <ul class="approach-features">
+              <li><i class="fas fa-check-circle"></i> Energy & Infrastructure</li>
+              <li><i class="fas fa-check-circle"></i> Technology & Digital sectors</li>
+              <li><i class="fas fa-check-circle"></i> Financial Services specialization</li>
+              <li><i class="fas fa-check-circle"></i> Cross-sector experience</li>
+            </ul>
+          </div>
+
+          <!-- End-to-End Support -->
+          <div class="approach-card">
+            <div class="approach-icon">
+              <i class="fas fa-hands-helping"></i>
+            </div>
+            <h4>End-to-End Support</h4>
+            <p>
+              From initial feasibility studies to post-transaction advisory, we partner throughout the entire investment lifecycle.
+            </p>
+            <ul class="approach-features">
+              <li><i class="fas fa-check-circle"></i> Market assessment & feasibility</li>
+              <li><i class="fas fa-check-circle"></i> Transaction execution</li>
+              <li><i class="fas fa-check-circle"></i> Post-close integration</li>
+              <li><i class="fas fa-check-circle"></i> Ongoing strategic advisory</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== WHY AFRICA SECTION ========== -->
+    <section class="why-africa-section" id="why-africa">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-pre">Why Africa</span>
+          <h2 class="section-title">The Investment Case: <span class="highlight">Africa's Time is Now</span></h2>
+          <p class="section-desc">
+            Sub-Saharan Africa represents one of the world's last high-growth frontiers — a region of 1.2 billion people with rapidly expanding middle classes, accelerating digital adoption, and improving business environments.
+          </p>
+        </div>
+
+        <!-- Key Stats Banner -->
+        <div class="africa-stats-banner">
+          <div class="africa-stat">
+            <div class="stat-value">1.2B+</div>
+            <div class="stat-desc">Population</div>
+          </div>
+          <div class="africa-stat">
+            <div class="stat-value">60%</div>
+            <div class="stat-desc">Under Age 25</div>
+          </div>
+          <div class="africa-stat">
+            <div class="stat-value">$2.5T</div>
+            <div class="stat-desc">Combined GDP</div>
+          </div>
+          <div class="africa-stat">
+            <div class="stat-value">54</div>
+            <div class="stat-desc">Countries</div>
+          </div>
+        </div>
+
+        <!-- Investment Drivers -->
+        <h3 class="drivers-title">Five Key Investment Drivers</h3>
+        
+        <div class="driver-card">
+          <div class="driver-number">01</div>
+          <div class="driver-content">
+            <h4>Demographic Dividend</h4>
+            <p>
+              Africa's population projected to reach 2.5 billion by 2050, with a median age of just 19 years. This young, urban population drives consumption growth and digital adoption.
+            </p>
+          </div>
+        </div>
+
+        <div class="driver-card">
+          <div class="driver-number">02</div>
+          <div class="driver-content">
+            <h4>Digital Leapfrogging</h4>
+            <p>
+              With over 600 million mobile money accounts, Africa leads in financial inclusion innovation, creating opportunities in fintech, e-commerce, and digital services.
+            </p>
+          </div>
+        </div>
+
+        <div class="driver-card">
+          <div class="driver-number">03</div>
+          <div class="driver-content">
+            <h4>Regional Integration: AfCFTA</h4>
+            <p>
+              The African Continental Free Trade Area creates a single market of 1.2 billion people with combined GDP of $2.5 trillion, showing 15% increase in intra-African trade.
+            </p>
+          </div>
+        </div>
+
+        <div class="driver-card">
+          <div class="driver-number">04</div>
+          <div class="driver-content">
+            <h4>Natural Resource Wealth</h4>
+            <p>
+              Africa holds 30% of global mineral reserves, 10% of oil reserves, and vast renewable energy potential. Energy transition creates opportunities in solar, wind, and green hydrogen.
+            </p>
+          </div>
+        </div>
+
+        <div class="driver-card">
+          <div class="driver-number">05</div>
+          <div class="driver-content">
+            <h4>Improving Business Environment</h4>
+            <p>
+              Reforms across multiple countries improve ease of doing business. Ghana, Rwanda, Kenya, and Côte d'Ivoire lead in creating investor-friendly environments.
+            </p>
+          </div>
+        </div>
+
+        <!-- Regional Focus -->
+        <h3 class="drivers-title" style="margin-top: 80px;">Our Regional Focus</h3>
+        <div class="regions-grid">
+          <div class="region-card">
+            <div class="region-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h4 class="region-name">West Africa</h4>
+            <p class="region-description">
+              <strong>Nigeria & Ghana</strong> — Africa's largest economy and fastest-growing fintech hub. Combined population 250M+, strong English-language business environment.
+            </p>
+            <div class="region-highlights">
+              <span class="highlight-badge">Nigeria: $440B GDP</span>
+              <span class="highlight-badge">Ghana: Stable Democracy</span>
+              <span class="highlight-badge">ECOWAS Integration</span>
+            </div>
+          </div>
+
+          <div class="region-card">
+            <div class="region-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h4 class="region-name">East Africa</h4>
+            <p class="region-description">
+              <strong>Kenya, Tanzania, Ethiopia</strong> — EAC integration, strong agriculture, growing manufacturing. Kenya's M-Pesa pioneered mobile money globally.
+            </p>
+            <div class="region-highlights">
+              <span class="highlight-badge">Kenya: Tech Hub</span>
+              <span class="highlight-badge">Ethiopia: 120M Pop</span>
+              <span class="highlight-badge">EAC Customs Union</span>
+            </div>
+          </div>
+
+          <div class="region-card">
+            <div class="region-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <h4 class="region-name">Southern Africa</h4>
+            <p class="region-description">
+              <strong>South Africa</strong> — Most developed financial markets, gateway to southern Africa, sophisticated business environment, natural resource wealth.
+            </p>
+            <div class="region-highlights">
+              <span class="highlight-badge">JSE: Largest Exchange</span>
+              <span class="highlight-badge">SADC Trade Zone</span>
+              <span class="highlight-badge">Financial Hub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== NETWORK SECTION ========== -->
+    <section class="network-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-pre">Global Presence</span>
+          <h2 class="section-title">Our <span class="highlight">Global Network</span></h2>
+          <p class="section-desc">
+            On-the-ground presence and strong partnerships across key markets in Africa, North America, Asia, and the Middle East
+          </p>
+        </div>
+
+        <div class="network-grid">
+          <div class="network-card">
+            <div class="network-flag">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h4 class="network-location">Ghana (HQ)</h4>
+            <p class="network-description">
+              Headquartered in Accra with deep government and institutional relationships
+            </p>
+          </div>
+
+          <div class="network-card">
+            <div class="network-flag">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h4 class="network-location">Nigeria</h4>
+            <p class="network-description">
+              Strong networks across Lagos financial hub and Abuja government corridors
+            </p>
+          </div>
+
+          <div class="network-card">
+            <div class="network-flag">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h4 class="network-location">South Africa</h4>
+            <p class="network-description">
+              Institutional investor relationships and financial services expertise
+            </p>
+          </div>
+
+          <div class="network-card">
+            <div class="network-flag">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h4 class="network-location">USA (Atlanta)</h4>
+            <p class="network-description">
+              Technology and diaspora investment connections across North America
+            </p>
+          </div>
+
+          <div class="network-card">
+            <div class="network-flag">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h4 class="network-location">ASEAN Region</h4>
+            <p class="network-description">
+              Emerging market expertise across Southeast Asian economies
+            </p>
+          </div>
+
+          <div class="network-card">
+            <div class="network-flag">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h4 class="network-location">Middle East</h4>
+            <p class="network-description">
+              Sovereign wealth fund and institutional capital relationships
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA SECTION ========== -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="cta-title">Ready to Work With Our Team?</h2>
+        <p class="cta-text">
+          Connect with advisors who understand both global standards and local realities. Schedule a consultation to discuss your investment objectives in Sub-Saharan Africa.
+        </p>
+        <a href="contact-us.html" class="cta-button">
+          Schedule Consultation <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Contact Accra Office</h4>
+            <p>Plot NO.21, Airport City</p>
+            <p>8th Floor, One Airport Square</p>
+            <p>Accra, Ghana</p>
+            <p style="margin-top: 15px;">
+              <strong>Phone:</strong> +1(470)301-5064<br />
+              <strong>Email:</strong> info@wroughtonpartners.com<br />
+              <strong>WhatsApp:</strong> +1(470)301-5064
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Office Hours</h4>
+            <p><strong>Ghana:</strong> 10am - 5pm GMT</p>
+            <p><strong>Atlanta:</strong> 9am - 2pm EST</p>
+            <p style="margin-top: 15px;"><em>We respond within 48 hours</em></p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="research-hub.html">Insights</a>
+            <a href="about.html">About Us</a>
+            <a href="contact-us.html">Contact</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>Global Presence</h4>
+            <p>We maintain strong networks across:</p>
+            <p>• Ghana, Nigeria, South Africa</p>
+            <p>• USA (Atlanta)</p>
+            <p>• ASEAN Region</p>
+            <p>• Middle East</p>
+            <p style="margin-top: 15px;">
+              <strong>20+</strong> Institutional Investor Relationships
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>Woughton Global Partners - Copyright <span id="currentYear"></span>. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile Menu Toggle
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileClose = document.getElementById('mobileCloseBtn');
+      const submenuToggles = document.querySelectorAll('.submenu-toggle');
+
+      mobileBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+      });
+
+      mobileClose.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+
+      document.addEventListener('click', (e) => {
+        if (mobileNav.classList.contains('active') && 
+            !mobileNav.contains(e.target) && 
+            !mobileBtn.contains(e.target)) {
+          mobileNav.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+
+      submenuToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          const submenu = toggle.nextElementSibling;
+          const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px';
+          submenu.style.maxHeight = isOpen ? '0' : submenu.scrollHeight + 'px';
+          toggle.textContent = toggle.textContent.includes('+')
+            ? toggle.textContent.replace('+', '−')
+            : toggle.textContent.replace('−', '+');
+        });
+      });
+
+      // Desktop Search
+      const searchInput = document.getElementById('searchInput');
+      const searchDropdown = document.getElementById('searchDropdown');
+      const searchResults = document.querySelectorAll('.search-result-item');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          
+          if (query.length > 0) {
+            searchDropdown.classList.add('active');
+            searchResults.forEach(result => {
+              const title = result.querySelector('.search-result-title').textContent.toLowerCase();
+              const desc = result.querySelector('.search-result-desc').textContent.toLowerCase();
+              result.style.display = (title.includes(query) || desc.includes(query)) ? 'block' : 'none';
+            });
+          } else {
+            searchDropdown.classList.remove('active');
+          }
+        });
+
+        searchResults.forEach(result => {
+          result.addEventListener('click', () => {
+            const link = result.getAttribute('data-link');
+            if (link) window.location.href = link;
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
+            searchDropdown.classList.remove('active');
+          }
+        });
+      }
+
+      // Mobile Search
+      const mobileSearchInput = document.getElementById('mobileSearchInput');
+      const mobileSearchDropdown = document.getElementById('mobileSearchDropdown');
+      const mobileSearchResults = document.querySelectorAll('.mobile-search-result');
+
+      if (mobileSearchInput) {
+        mobileSearchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          
+          if (query.length > 0) {
+            mobileSearchDropdown.classList.add('active');
+            mobileSearchResults.forEach(result => {
+              const title = result.querySelector('.mobile-search-result-title').textContent.toLowerCase();
+              const desc = result.querySelector('.mobile-search-result-desc').textContent.toLowerCase();
+              result.style.display = (title.includes(query) || desc.includes(query)) ? 'block' : 'none';
+            });
+          } else {
+            mobileSearchDropdown.classList.remove('active');
+          }
+        });
+
+        mobileSearchResults.forEach(result => {
+          result.addEventListener('click', () => {
+            const link = result.getAttribute('data-link');
+            if (link) window.location.href = link;
+          });
+        });
+      }
+
+      // Current Year
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+      // Smooth Scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
