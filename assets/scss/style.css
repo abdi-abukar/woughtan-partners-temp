@@ -154,6 +154,16 @@ body::before {
   z-index: -1;
   opacity: 0.05;
 }
+/* Hide scrollbars for all elements */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbars for WebKit browsers (Chrome, Safari, Opera) */
+*::-webkit-scrollbar {
+  display: none;
+}
 
 h1,
 h2,
@@ -5040,7 +5050,7 @@ header.header-two .menu-item-open > a {
   margin: auto;
 }
 .banner-four-area-main-wrapper .banner-four-bg .inner-content-wrapper-four-banner span {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
 }
 

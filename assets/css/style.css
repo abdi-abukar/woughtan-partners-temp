@@ -44,6 +44,7 @@
 ==============================================  */
 /* Default  */
 :root {
+  
   /* ------------------------------------------------------------
      Brand System (Option 1 - Conservative)
      Deep Navy primary + Gold/Copper accent.
@@ -155,7 +156,17 @@
 
 * {
   box-sizing: border-box;
+}html, body {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 
 html {
   margin: 0;
@@ -7991,18 +8002,17 @@ header.header--sticky.sticky .nav-area ul li.main-nav {
   }
 }
 
-.banner-four-area-main-wrapper {
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 81.536% 93.689%, 50.99% 100%, 25.313% 93.689%, 0% 100%, 0% 0%);
-}
 .banner-four-area-main-wrapper .banner-four-bg {
-  background-image: url(../images/banner/03.webp);
+  background-image: url(/assets/hero.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: 824px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
-}
-.banner-four-area-main-wrapper .banner-four-bg.two {
+}.banner-four-area-main-wrapper .banner-four-bg.two {
   background-image: url(../images/banner/25.webp);
 }
 .banner-four-area-main-wrapper .banner-four-bg.three {
@@ -8014,7 +8024,7 @@ header.header--sticky.sticky .nav-area ul li.main-nav {
   }
 }
 .banner-four-area-main-wrapper .banner-four-bg .inner-content-wrapper-four-banner span {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
 }
 
