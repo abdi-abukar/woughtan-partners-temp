@@ -9,8 +9,7 @@
     />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png" />
     <title>Services | Woughton Global Partners</title>
-    <link rel="stylesheet" href="assets/css/plugins/fontawesome.css" />
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -37,12 +36,25 @@
         box-sizing: border-box;
       }
 
+      /* Hide scrollbars globally */
+      * {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      
+      *::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        display: none;
+      }
+
       body {
         font-family: 'DM Sans', sans-serif;
         line-height: 1.6;
         color: var(--text-dark);
         background: var(--neutral-surface);
         padding-top: 105px;
+        overflow-x: hidden;
       }
 
       h1, h2, h3, h4, h5 {
@@ -51,7 +63,7 @@
         line-height: 1.2;
       }
 
-      /* ========== FIXED HEADER ========== */
+      /* ========== FIXED HEADER (STANDARDIZED) ========== */
       .header-wrapper {
         position: fixed;
         top: 0;
@@ -62,7 +74,6 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
 
-      /* Topline */
       .header-top {
         background: var(--brand-primary);
         padding: 6px 0;
@@ -123,7 +134,6 @@
         color: var(--brand-accent);
       }
 
-      /* Main Header */
       .main-header {
         padding: 12px 0;
         background: var(--neutral-surface);
@@ -151,7 +161,6 @@
         width: auto;
       }
 
-      /* Navigation */
       .nav-area .main-nav-list {
         display: flex;
         gap: 5px;
@@ -194,12 +203,17 @@
         transition: all var(--transition);
         padding: 8px 0;
         margin-top: 8px;
+        list-style: none;
       }
 
       .has-dropdown:hover .submenu {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
+      }
+
+      .submenu li {
+        list-style: none;
       }
 
       .submenu a {
@@ -217,7 +231,6 @@
         padding-left: 25px;
       }
 
-      /* Search Bar */
       .search-wrapper {
         display: flex;
         align-items: center;
@@ -251,19 +264,25 @@
         color: var(--brand-accent);
       }
 
-      /* Search Dropdown */
       .search-dropdown {
         position: absolute;
-        top: 100%;
+        top: calc(100% + 8px);
         left: 0;
         right: 0;
         background: var(--neutral-surface);
         border-radius: 8px;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-        margin-top: 8px;
         padding: 8px 0;
         display: none;
-        z-index: 1000;
+        z-index: 10000;
+        max-height: 400px;
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .search-dropdown::-webkit-scrollbar {
+        display: none;
       }
 
       .search-dropdown.active {
@@ -294,7 +313,15 @@
         color: var(--text-muted);
       }
 
-      /* Header Right */
+      .search-result-category {
+        font-size: 11px;
+        color: var(--brand-accent);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+      }
+
       .header-right {
         display: flex;
         align-items: center;
@@ -318,7 +345,6 @@
         box-shadow: 0 4px 12px rgba(185, 115, 47, 0.3);
       }
 
-      /* Mobile Hamburger */
       .mobile-hamburger {
         display: none;
         background: var(--brand-accent);
@@ -335,76 +361,91 @@
         background: var(--brand-accent-hover);
       }
 
-      /* Mobile Navigation - Dropdown Style */
       .mobile-nav-panel {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        background: var(--brand-primary);
+        bottom: 0;
+        background: rgba(7, 29, 54, 0.98);
+        backdrop-filter: blur(10px);
         z-index: 99998;
-        padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease, padding 0.4s ease;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+        padding-top: 105px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .mobile-nav-panel::-webkit-scrollbar {
+        display: none;
       }
 
       .mobile-nav-panel.active {
-        max-height: 100vh;
-        padding: 20px 0;
-        overflow-y: auto;
+        transform: translateX(0);
       }
 
       .mobile-nav-inner {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      .mobile-close {
-        background: none;
-        border: none;
-        color: var(--text-on-primary);
-        font-size: 28px;
-        cursor: pointer;
-        float: right;
-        padding: 5px;
-        margin-bottom: 15px;
+        padding: 30px 20px;
       }
 
       .mobile-search-wrapper {
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         position: relative;
-        clear: both;
       }
 
       .mobile-search-wrapper input {
         width: 100%;
-        padding: 12px 40px 12px 15px;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.1);
+        padding: 14px 45px 14px 18px;
+        border-radius: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.08);
         color: var(--text-on-primary);
-        font-size: 14px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-search-wrapper input:focus {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: var(--brand-accent);
+        outline: none;
       }
 
       .mobile-search-wrapper input::placeholder {
-        color: rgba(255, 255, 255, 0.6);
+        color: rgba(255, 255, 255, 0.5);
       }
 
       .mobile-search-wrapper i {
         position: absolute;
-        right: 15px;
+        right: 18px;
         top: 50%;
         transform: translateY(-50%);
         color: var(--brand-accent);
+        pointer-events: none;
       }
 
       .mobile-search-dropdown {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 8px;
-        margin-top: 8px;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
         padding: 8px 0;
+        display: none;
+        max-height: 300px;
+        overflow-y: auto;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .mobile-search-dropdown::-webkit-scrollbar {
         display: none;
       }
 
@@ -413,24 +454,35 @@
       }
 
       .mobile-search-result {
-        padding: 10px 15px;
+        padding: 12px 18px;
         cursor: pointer;
         transition: var(--transition);
+        border-left: 3px solid transparent;
       }
 
       .mobile-search-result:hover {
         background: rgba(185, 115, 47, 0.1);
+        border-left-color: var(--brand-accent);
+      }
+
+      .mobile-search-result-category {
+        font-size: 10px;
+        color: var(--brand-accent);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
       }
 
       .mobile-search-result-title {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 600;
         color: var(--brand-primary);
-        margin-bottom: 3px;
+        margin-bottom: 4px;
       }
 
       .mobile-search-result-desc {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-muted);
       }
 
@@ -440,31 +492,55 @@
         margin: 0;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 4px;
       }
 
       .mobile-links li {
         margin-bottom: 0;
       }
 
-      .mobile-links a {
+      .mobile-links > li > a {
         color: var(--text-on-primary);
         text-decoration: none;
-        padding: 12px 15px;
+        padding: 16px 20px;
         display: block;
-        border-radius: 6px;
-        transition: var(--transition);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        font-size: 16px;
+        font-weight: 500;
       }
 
-      .mobile-links a:hover {
+      .mobile-links > li > a:hover {
         background: rgba(255, 255, 255, 0.1);
+        padding-left: 25px;
       }
 
       .mobile-submenu {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
-        margin-left: 15px;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-top: 4px;
+        list-style: none;
+      }
+
+      .mobile-submenu.active {
+        max-height: 500px;
+      }
+
+      .mobile-submenu a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        padding: 12px 20px 12px 40px;
+        display: block;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-size: 14px;
+      }
+
+      .mobile-submenu a:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--brand-accent);
+        padding-left: 45px;
       }
 
       .submenu-toggle {
@@ -472,13 +548,40 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: var(--text-on-primary);
+        text-decoration: none;
+        padding: 16px 20px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .submenu-toggle:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .submenu-toggle i {
+        transition: transform 0.3s ease;
+        font-size: 14px;
+      }
+
+      .submenu-toggle.active i {
+        transform: rotate(180deg);
       }
 
       .mobile-cta {
         background: var(--brand-accent);
-        margin-top: 15px;
+        margin-top: 20px;
         text-align: center;
         font-weight: 600;
+        color: var(--text-on-primary) !important;
+        padding: 16px 20px !important;
+      }
+
+      .mobile-cta:hover {
+        background: var(--brand-accent-hover);
+        padding-left: 20px !important;
       }
 
       /* ========== BREADCRUMBS ========== */
@@ -547,7 +650,7 @@
       }
 
       .hero-headline {
-        font-size: 52px;
+        font-size: clamp(32px, 5vw, 52px);
         font-weight: 700;
         line-height: 1.2;
         margin-bottom: 22px;
@@ -555,7 +658,7 @@
       }
 
       .hero-subheadline {
-        font-size: 20px;
+        font-size: clamp(16px, 2vw, 20px);
         margin-bottom: 0;
         color: rgba(255, 255, 255, 0.9);
         max-width: 850px;
@@ -566,14 +669,13 @@
 
       /* ========== SERVICES SECTION ========== */
       .services-section {
-        padding: 100px 0;
+        padding: 100px 20px;
         background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
       }
 
       .services-section .container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 0 20px;
       }
 
       .section-header {
@@ -583,16 +685,16 @@
 
       .section-pre {
         color: var(--brand-accent);
-        font-weight: 600;
-        font-size: 16px;
+        font-weight: 700;
+        font-size: 14px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 12px;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
         display: block;
       }
 
       .section-title {
-        font-size: 42px;
+        font-size: clamp(32px, 4vw, 42px);
         color: var(--brand-primary);
         margin-bottom: 15px;
         line-height: 1.3;
@@ -606,7 +708,6 @@
         line-height: 1.7;
       }
 
-      /* Service Cards - Split Layout */
       .services-grid {
         display: flex;
         flex-direction: column;
@@ -739,19 +840,18 @@
 
       /* ========== PROOF SECTION ========== */
       .proof-section {
-        padding: 100px 0;
+        padding: 100px 20px;
         background: linear-gradient(135deg, #f8f9fa, #ffffff);
       }
 
       .proof-section .container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 0 20px;
       }
 
       .proof-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 35px;
         margin-top: 50px;
       }
@@ -804,7 +904,7 @@
 
       /* ========== TESTIMONIALS ========== */
       .testimonials-section {
-        padding: 100px 0;
+        padding: 100px 20px;
         background: var(--brand-primary);
         color: var(--text-on-primary);
       }
@@ -812,12 +912,11 @@
       .testimonials-section .container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 0 20px;
       }
 
       .testimonials-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 40px;
         margin-top: 60px;
       }
@@ -863,19 +962,18 @@
 
       /* ========== SECTORS ========== */
       .sectors-section {
-        padding: 100px 0;
+        padding: 100px 20px;
         background: var(--neutral-surface);
       }
 
       .sectors-section .container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 0 20px;
       }
 
       .sectors-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 30px;
         margin-top: 50px;
       }
@@ -890,7 +988,7 @@
         cursor: pointer;
       }
 
-      .sector-card:hover {
+  .sector-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 12px 35px rgba(7, 29, 54, 0.25);
       }
@@ -912,68 +1010,9 @@
         line-height: 1.6;
       }
 
-      /* ========== WHY WOUGHTON ========== */
-      .why-woughton-section {
-        padding: 100px 0;
-        background: linear-gradient(135deg, #f8f9fa, #ffffff);
-      }
-
-      .why-woughton-section .container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      .why-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 35px;
-        margin-top: 60px;
-      }
-
-      .why-card {
-        background: var(--neutral-surface);
-        padding: 40px;
-        border-radius: 16px;
-        text-align: center;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-        transition: var(--transition);
-      }
-
-      .why-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
-      }
-
-      .why-icon {
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 25px;
-        font-size: 40px;
-        color: var(--text-on-primary);
-        background: linear-gradient(135deg, var(--brand-accent), #d49b63);
-      }
-
-      .why-title {
-        font-size: 24px;
-        color: var(--brand-primary);
-        margin-bottom: 15px;
-        line-height: 1.4;
-      }
-
-      .why-desc {
-        font-size: 16px;
-        color: var(--text-muted);
-        line-height: 1.7;
-      }
-
-      /* ========== CTA SECTION ========== */
+      /* ========== CTA SECTION (STANDARDIZED) ========== */
       .cta-section {
-        padding: 80px 0;
+        padding: 80px 20px;
         background: linear-gradient(135deg, var(--brand-primary), #0a2a4a);
         color: var(--text-on-primary);
         text-align: center;
@@ -986,13 +1025,13 @@
       }
 
       .cta-title {
-        font-size: 38px;
+        font-size: clamp(28px, 5vw, 38px);
         margin-bottom: 20px;
         line-height: 1.3;
       }
 
       .cta-text {
-        font-size: 18px;
+        font-size: clamp(16px, 2.5vw, 18px);
         margin-bottom: 35px;
         opacity: 0.95;
         line-height: 1.7;
@@ -1015,10 +1054,10 @@
       .cta-button:hover {
         background: var(--brand-accent-hover);
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(185, 115, 47, 0.3);
+        box-shadow: 0 12px 32px rgba(185, 115, 47, 0.35);
       }
 
-      /* ========== FOOTER ========== */
+      /* ========== FOOTER (STANDARDIZED) ========== */
       .footer {
         background: var(--brand-primary);
         color: var(--text-on-primary);
@@ -1069,14 +1108,6 @@
 
       /* ========== RESPONSIVE ========== */
       @media (max-width: 1200px) {
-        .hero-headline {
-          font-size: 46px;
-        }
-
-        .section-title {
-          font-size: 36px;
-        }
-
         .service-card {
           grid-template-columns: 1fr;
           min-height: auto;
@@ -1100,28 +1131,14 @@
           padding-top: 90px;
         }
 
-        .header-top {
-          padding: 4px 0;
+        .header-top .content {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
         }
 
-        .left-header-top p {
-          font-size: 11px;
-        }
-
-        .topline-link {
-          font-size: 11px;
-        }
-
-        .ht-social span {
-          display: none;
-        }
-
-        .ht-social a {
-          font-size: 12px;
-        }
-
-        .header-left .thumbnail img {
-          height: 32px;
+        .ht-social {
+          justify-content: center;
         }
 
         .nav-area,
@@ -1135,19 +1152,7 @@
         }
 
         .services-hero {
-          padding: 60px 0 50px;
-        }
-
-        .hero-headline {
-          font-size: 38px;
-        }
-
-        .hero-subheadline {
-          font-size: 17px;
-        }
-
-        .section-title {
-          font-size: 32px;
+          padding: 60px 20px 50px;
         }
 
         .service-visual {
@@ -1165,29 +1170,9 @@
         .service-content-area {
           padding: 35px 30px;
         }
-
-        .testimonials-grid {
-          grid-template-columns: 1fr;
-        }
       }
 
       @media (max-width: 768px) {
-        .hero-headline {
-          font-size: 32px;
-        }
-
-        .hero-subheadline {
-          font-size: 16px;
-        }
-
-        .section-title {
-          font-size: 28px;
-        }
-
-        .cta-title {
-          font-size: 30px;
-        }
-
         .service-desc-text {
           font-size: 16px;
         }
@@ -1199,33 +1184,45 @@
         .proof-grid {
           grid-template-columns: 1fr;
         }
-      }
 
-      @media (max-width: 480px) {
-        .header-top .content {
-          flex-direction: column;
-          gap: 8px;
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sectors-grid {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
           text-align: center;
         }
 
-        .left-header-top p {
-          font-size: 10px;
+        .footer-col a:hover {
+          padding-left: 0;
         }
+      }
 
-        .hero-headline {
-          font-size: 28px;
-        }
-
-        .hero-subheadline {
-          font-size: 15px;
-        }
-
+      @media (max-width: 480px) {
         .service-icon-large {
           font-size: 50px;
         }
 
         .service-title-visual {
           font-size: 22px;
+        }
+
+        .case-study-card {
+          padding: 30px 24px;
+        }
+
+        .testimonial-card {
+          padding: 32px 24px;
+        }
+
+        .sector-card {
+          padding: 28px 24px;
         }
       }
     </style>
@@ -1234,7 +1231,6 @@
   <body>
     <!-- ========== FIXED HEADER ========== -->
     <header class="header-wrapper">
-      <!-- Topline -->
       <div class="header-top">
         <div class="content">
           <div class="left-header-top">
@@ -1265,7 +1261,6 @@
         </div>
       </div>
 
-      <!-- Main Header -->
       <div class="main-header">
         <div class="content">
           <div class="header-left">
@@ -1273,7 +1268,6 @@
               <img src="assets/images/logo.png" alt="Woughton Global" />
             </a>
 
-            <!-- Desktop Navigation -->
             <nav class="nav-area" aria-label="Primary navigation">
               <ul class="main-nav-list">
                 <li class="main-nav"><a href="index.html">Home</a></li>
@@ -1292,9 +1286,9 @@
                 <li class="main-nav has-dropdown">
                   <a href="about.html">About</a>
                   <ul class="submenu">
-                <li><a href="about.html#our-team">Our Team</a></li>
-                <li><a href="about.html#our-approach">Our Approach</a></li>
-                <li><a href="about.html#why-africa">Why Africa</a></li>
+                    <li><a href="about.html#our-team">Our Team</a></li>
+                    <li><a href="about.html#our-approach">Our Approach</a></li>
+                    <li><a href="about.html#why-africa">Why Africa</a></li>
                   </ul>
                 </li>
 
@@ -1303,34 +1297,11 @@
             </nav>
           </div>
 
-          <!-- Header Right -->
           <div class="header-right">
-            <!-- Search Bar -->
             <div class="search-wrapper">
-              <input type="text" placeholder="Search services..." id="searchInput" autocomplete="off" />
+              <input type="text" placeholder="Search..." id="searchInput" autocomplete="off" />
               <i class="fas fa-search"></i>
-              <div class="search-dropdown" id="searchDropdown">
-                <div class="search-result-item" data-link="services.html#transaction-advisory">
-                  <div class="search-result-title">Transaction Advisory</div>
-                  <div class="search-result-desc">M&A, due diligence, and deal structuring</div>
-                </div>
-                <div class="search-result-item" data-link="services.html#market-entry">
-                  <div class="search-result-title">Market Entry Strategy</div>
-                  <div class="search-result-desc">Strategic guidance for market expansion</div>
-                </div>
-                <div class="search-result-item" data-link="services.html#capital-markets">
-                  <div class="search-result-title">Capital Markets</div>
-                  <div class="search-result-desc">Fundraising and investor relations</div>
-                </div>
-                <div class="search-result-item" data-link="research-hub.html">
-                  <div class="search-result-title">Research Hub</div>
-                  <div class="search-result-desc">Market insights and reports</div>
-                </div>
-                <div class="search-result-item" data-link="contact-us.html">
-                  <div class="search-result-title">Contact Us</div>
-                  <div class="search-result-desc">Schedule a consultation</div>
-                </div>
-              </div>
+              <div class="search-dropdown" id="searchDropdown"></div>
             </div>
 
             <a href="https://calendly.com/your-placeholder" class="schedule-cta">
@@ -1344,62 +1315,37 @@
         </div>
       </div>
 
-      <!-- Mobile Navigation - Dropdown Style -->
       <nav class="mobile-nav-panel" id="mobileNav">
         <div class="mobile-nav-inner">
-          <button class="mobile-close" id="mobileCloseBtn" aria-label="Close menu">✕</button>
-          
-          <!-- Mobile Search -->
           <div class="mobile-search-wrapper">
             <input type="text" placeholder="Search..." id="mobileSearchInput" autocomplete="off" />
             <i class="fas fa-search"></i>
-            <div class="mobile-search-dropdown" id="mobileSearchDropdown">
-              <div class="mobile-search-result" data-link="services.html#transaction-advisory">
-                <div class="mobile-search-result-title">Transaction Advisory</div>
-                <div class="mobile-search-result-desc">M&A and deal structuring</div>
-              </div>
-              <div class="mobile-search-result" data-link="services.html#market-entry">
-                <div class="mobile-search-result-title">Market Entry</div>
-                <div class="mobile-search-result-desc">Market expansion guidance</div>
-              </div>
-              <div class="mobile-search-result" data-link="services.html#capital-markets">
-                <div class="mobile-search-result-title">Capital Markets</div>
-                <div class="mobile-search-result-desc">Fundraising support</div>
-              </div>
-              <div class="mobile-search-result" data-link="research-hub.html">
-                <div class="mobile-search-result-title">Insights</div>
-                <div class="mobile-search-result-desc">Research and reports</div>
-              </div>
-            </div>
+            <div class="mobile-search-dropdown" id="mobileSearchDropdown"></div>
           </div>
 
           <ul class="mobile-links">
             <li><a href="index.html">Home</a></li>
 
             <li>
-              <a href="#" class="submenu-toggle">Services +</a>
-              <ul class="mobile-submenu">
+              <div class="submenu-toggle" data-submenu="services">
+                <span>Services</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <ul class="mobile-submenu" id="submenu-services">
                 <li><a href="services.html#transaction-advisory">Transaction Advisory</a></li>
                 <li><a href="services.html#market-entry">Market Entry Strategy</a></li>
                 <li><a href="services.html#capital-markets">Capital Markets</a></li>
               </ul>
             </li>
 
-            <li>
-              <a href="#" class="submenu-toggle">Sectors +</a>
-              <ul class="mobile-submenu">
-                <li><a href="sectors.html#technology">Technology</a></li>
-                <li><a href="sectors.html#energy">Energy</a></li>
-                <li><a href="sectors.html#financial-services">Financial Services</a></li>
-                <li><a href="sectors.html#infrastructure">Infrastructure</a></li>
-              </ul>
-            </li>
-
             <li><a href="research-hub.html">Insights</a></li>
 
             <li>
-              <a href="#" class="submenu-toggle">About +</a>
-              <ul class="mobile-submenu">
+              <div class="submenu-toggle" data-submenu="about">
+                <span>About</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <ul class="mobile-submenu" id="submenu-about">
                 <li><a href="about.html#our-team">Our Team</a></li>
                 <li><a href="about.html#our-approach">Our Approach</a></li>
                 <li><a href="about.html#why-africa">Why Africa</a></li>
@@ -1670,61 +1616,6 @@
       </div>
     </section>
 
-    <!-- ========== WHY WOUGHTON ========== -->
-    <section class="why-woughton-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-pre">The Woughton Advantage</span>
-          <h2 class="section-title">Why Choose Woughton Global</h2>
-          <p class="section-desc">
-            Four key differentiators that set us apart in the emerging markets advisory landscape
-          </p>
-        </div>
-
-        <div class="why-grid">
-          <div class="why-card">
-            <div class="why-icon">
-              <i class="fas fa-network-wired"></i>
-            </div>
-            <h4 class="why-title">Deep African Networks</h4>
-            <p class="why-desc">
-              Established relationships across 16 African countries with on-ground presence in key markets including Ghana, Nigeria, and South Africa. Our network spans government officials, institutional investors, and industry leaders.
-            </p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-icon">
-              <i class="fas fa-globe"></i>
-            </div>
-            <h4 class="why-title">Global Advisory Standards</h4>
-            <p class="why-desc">
-              Team members from Goldman Sachs, McKinsey, Google, and leading global institutions bring world-class analytical rigor and international best practices to every engagement.
-            </p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-icon">
-              <i class="fas fa-chart-bar"></i>
-            </div>
-            <h4 class="why-title">Sector Specialists</h4>
-            <p class="why-desc">
-              Deep domain expertise in Energy, Technology, Financial Services, and Infrastructure. Our team combines industry knowledge with regional insights for unmatched advisory quality.
-            </p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-icon">
-              <i class="fas fa-hands-helping"></i>
-            </div>
-            <h4 class="why-title">End-to-End Support</h4>
-            <p class="why-desc">
-              From initial feasibility studies to post-transaction advisory, we partner with clients throughout the entire investment lifecycle, ensuring long-term value creation.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ========== CTA SECTION ========== -->
     <section class="cta-section">
       <div class="container">
@@ -1765,9 +1656,8 @@
             <h4>Quick Links</h4>
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
-            <a href="sectors.html">Sectors</a>
             <a href="research-hub.html">Insights</a>
-            <a href="about.html#team">Our Team</a>
+            <a href="about.html">Our Team</a>
             <a href="contact-us.html">Contact</a>
           </div>
 
@@ -1792,87 +1682,159 @@
 
     <!-- JavaScript -->
     <script>
-      // Mobile Menu Toggle - Dropdown Style
-      const mobileBtn = document.getElementById('mobileMenuBtn');
-      const mobileNav = document.getElementById('mobileNav');
-      const mobileClose = document.getElementById('mobileCloseBtn');
-      const submenuToggles = document.querySelectorAll('.submenu-toggle');
-
-      mobileBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('active');
-        if (mobileNav.classList.contains('active')) {
-          document.body.style.overflow = 'hidden';
-        } else {
-          document.body.style.overflow = '';
+      // Search Data
+      const searchData = [
+        {
+          category: "Services",
+          title: "Transaction Advisory",
+          description: "M&A, due diligence, and deal structuring services",
+          link: "services.html#transaction-advisory",
+          keywords: ["transaction", "advisory", "m&a", "merger", "acquisition", "due diligence", "deal", "structuring"]
+        },
+        {
+          category: "Services",
+          title: "Market Entry Strategy",
+          description: "Strategic guidance for emerging market expansion",
+          link: "services.html#market-entry",
+          keywords: ["market", "entry", "strategy", "expansion", "africa", "emerging markets"]
+        },
+        {
+          category: "Services",
+          title: "Capital Markets",
+          description: "Fundraising and investor relations services",
+          link: "services.html#capital-markets",
+          keywords: ["capital", "fundraising", "investor", "relations", "equity", "debt"]
+        },
+        {
+          category: "Research",
+          title: "Research Hub",
+          description: "Market insights and reports",
+          link: "research-hub.html",
+          keywords: ["research", "insights", "reports", "analysis"]
+        },
+        {
+          category: "Contact",
+          title: "Contact Us",
+          description: "Get in touch with our team",
+          link: "contact-us.html",
+          keywords: ["contact", "get in touch", "consultation", "meeting"]
         }
-      });
+      ];
 
-      mobileClose.addEventListener('click', () => {
-        mobileNav.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-
-      // Close mobile nav when clicking outside
-      document.addEventListener('click', (e) => {
-        if (mobileNav.classList.contains('active') && 
-            !mobileNav.contains(e.target) && 
-            !mobileBtn.contains(e.target)) {
-          mobileNav.classList.remove('active');
-          document.body.style.overflow = '';
+      // Smart Search Implementation
+      class SmartSearch {
+        constructor(data, resultsPerPage = 5) {
+          this.data = data;
+          this.resultsPerPage = resultsPerPage;
+          this.currentPage = 1;
+          this.currentResults = [];
         }
-      });
 
-      submenuToggles.forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
-          e.preventDefault();
-          const submenu = toggle.nextElementSibling;
-          const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px';
-          submenu.style.maxHeight = isOpen ? '0' : submenu.scrollHeight + 'px';
-          toggle.textContent = toggle.textContent.includes('+')
-            ? toggle.textContent.replace('+', '−')
-            : toggle.textContent.replace('−', '+');
-        });
-      });
+        search(query) {
+          if (!query || query.length < 1) {
+            return [];
+          }
 
-      // Desktop Search Functionality
-      const searchInput = document.getElementById('searchInput');
-      const searchDropdown = document.getElementById('searchDropdown');
-      const searchResults = document.querySelectorAll('.search-result-item');
+          const normalizedQuery = query.toLowerCase().trim();
+          const results = [];
 
-      if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          const query = e.target.value.toLowerCase().trim();
-          
-          if (query.length > 0) {
-            searchDropdown.classList.add('active');
-            
-            // Filter results
-            searchResults.forEach(result => {
-              const title = result.querySelector('.search-result-title').textContent.toLowerCase();
-              const desc = result.querySelector('.search-result-desc').textContent.toLowerCase();
-              
-              if (title.includes(query) || desc.includes(query)) {
-                result.style.display = 'block';
-              } else {
-                result.style.display = 'none';
+          this.data.forEach(item => {
+            let score = 0;
+
+            if (item.title.toLowerCase() === normalizedQuery) {
+              score += 100;
+            } else if (item.title.toLowerCase().includes(normalizedQuery)) {
+              score += 50;
+            }
+
+            if (item.description.toLowerCase().includes(normalizedQuery)) {
+              score += 30;
+            }
+
+            if (item.category.toLowerCase().includes(normalizedQuery)) {
+              score += 20;
+            }
+
+            item.keywords.forEach(keyword => {
+              if (keyword.includes(normalizedQuery)) {
+                score += 10;
+              }
+              if (keyword === normalizedQuery) {
+                score += 20;
               }
             });
-          } else {
-            searchDropdown.classList.remove('active');
-          }
-        });
 
-        // Click on search result
-        searchResults.forEach(result => {
-          result.addEventListener('click', () => {
-            const link = result.getAttribute('data-link');
-            if (link) {
-              window.location.href = link;
+            if (score > 0) {
+              results.push({ ...item, score });
             }
           });
+
+          results.sort((a, b) => b.score - a.score);
+          this.currentResults = results;
+          this.currentPage = 1;
+          
+          return results;
+        }
+
+        getPaginatedResults() {
+          const start = (this.currentPage - 1) * this.resultsPerPage;
+          const end = start + this.resultsPerPage;
+          return this.currentResults.slice(start, end);
+        }
+      }
+
+      const searchEngine = new SmartSearch(searchData);
+
+      // Desktop Search
+      const searchInput = document.getElementById('searchInput');
+      const searchDropdown = document.getElementById('searchDropdown');
+
+      function renderSearchResults(results, container, isMobile = false) {
+        container.innerHTML = '';
+
+        if (results.length === 0) {
+          container.innerHTML = '<div style="padding: 20px; text-align: center; color: #666; font-size: 14px;">No results found</div>';
+          return;
+        }
+
+        const paginatedResults = searchEngine.getPaginatedResults();
+
+        paginatedResults.forEach(result => {
+          const resultItem = document.createElement('div');
+          resultItem.className = isMobile ? 'mobile-search-result' : 'search-result-item';
+          resultItem.setAttribute('data-link', result.link);
+          
+          resultItem.innerHTML = `
+            <div class="${isMobile ? 'mobile-search-result-category' : 'search-result-category'}">${result.category}</div>
+            <div class="${isMobile ? 'mobile-search-result-title' : 'search-result-title'}">${result.title}</div>
+            <div class="${isMobile ? 'mobile-search-result-desc' : 'search-result-desc'}">${result.description}</div>
+          `;
+          
+          resultItem.addEventListener('click', () => {
+            window.location.href = result.link;
+          });
+          
+          container.appendChild(resultItem);
+        });
+      }
+
+      if (searchInput) {
+        let searchTimeout;
+        searchInput.addEventListener('input', (e) => {
+          clearTimeout(searchTimeout);
+          searchTimeout = setTimeout(() => {
+            const query = e.target.value;
+            const results = searchEngine.search(query);
+            
+            if (query.trim().length > 0) {
+              searchDropdown.classList.add('active');
+              renderSearchResults(results, searchDropdown, false);
+            } else {
+              searchDropdown.classList.remove('active');
+            }
+          }, 300);
         });
 
-        // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
           if (!searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
             searchDropdown.classList.remove('active');
@@ -1880,49 +1842,77 @@
         });
       }
 
-      // Mobile Search Functionality
+      // Mobile Search
       const mobileSearchInput = document.getElementById('mobileSearchInput');
       const mobileSearchDropdown = document.getElementById('mobileSearchDropdown');
-      const mobileSearchResults = document.querySelectorAll('.mobile-search-result');
 
       if (mobileSearchInput) {
+        let mobileSearchTimeout;
         mobileSearchInput.addEventListener('input', (e) => {
-          const query = e.target.value.toLowerCase().trim();
-          
-          if (query.length > 0) {
-            mobileSearchDropdown.classList.add('active');
+          clearTimeout(mobileSearchTimeout);
+          mobileSearchTimeout = setTimeout(() => {
+            const query = e.target.value;
+            const results = searchEngine.search(query);
             
-            // Filter results
-            mobileSearchResults.forEach(result => {
-              const title = result.querySelector('.mobile-search-result-title').textContent.toLowerCase();
-              const desc = result.querySelector('.mobile-search-result-desc').textContent.toLowerCase();
-              
-              if (title.includes(query) || desc.includes(query)) {
-                result.style.display = 'block';
-              } else {
-                result.style.display = 'none';
-              }
-            });
-          } else {
-            mobileSearchDropdown.classList.remove('active');
-          }
-        });
-
-        // Click on mobile search result
-        mobileSearchResults.forEach(result => {
-          result.addEventListener('click', () => {
-            const link = result.getAttribute('data-link');
-            if (link) {
-              window.location.href = link;
+            if (query.trim().length > 0) {
+              mobileSearchDropdown.classList.add('active');
+              renderSearchResults(results, mobileSearchDropdown, true);
+            } else {
+              mobileSearchDropdown.classList.remove('active');
             }
-          });
+          }, 300);
         });
       }
 
-      // Current Year in Footer
+      // Mobile Menu
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+
+      mobileBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+        mobileBtn.innerHTML = mobileNav.classList.contains('active') ? '✕' : '&#9776;';
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+      });
+
+      document.addEventListener('click', (e) => {
+        if (mobileNav.classList.contains('active') && 
+            !mobileNav.contains(e.target) && 
+            !mobileBtn.contains(e.target)) {
+          mobileNav.classList.remove('active');
+          mobileBtn.innerHTML = '&#9776;';
+          document.body.style.overflow = '';
+        }
+      });
+
+      // Mobile submenu toggles
+      const submenuToggles = document.querySelectorAll('.submenu-toggle');
+      submenuToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          const submenuId = 'submenu-' + toggle.getAttribute('data-submenu');
+          const submenu = document.getElementById(submenuId);
+          const isActive = submenu.classList.contains('active');
+          
+          // Close all submenus
+          document.querySelectorAll('.mobile-submenu').forEach(sm => {
+            sm.classList.remove('active');
+          });
+          document.querySelectorAll('.submenu-toggle').forEach(st => {
+            st.classList.remove('active');
+          });
+          
+          // Toggle current submenu
+          if (!isActive) {
+            submenu.classList.add('active');
+            toggle.classList.add('active');
+          }
+        });
+      });
+
+      // Current Year
       document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-      // Smooth Scroll for Anchor Links
+      // Smooth Scroll
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();

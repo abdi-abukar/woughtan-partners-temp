@@ -7,11 +7,7 @@
       name="description"
       content="Woughton Global Partners - Strategic advisory services for emerging African markets. Transaction advisory, market entry strategy, and capital markets expertise."
     />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="assets/images/fav.png"
-    />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png" />
     <title>Woughton Global Partners | Emerging Markets Advisory</title>
     <link rel="stylesheet" href="assets/css/plugins/fontawesome.css" />
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css" />
@@ -21,6 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Red+Hat+Display:wght@400;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
       :root {
@@ -55,6 +52,46 @@
         line-height: 1.2;
       }
 
+      /* ========== ANIMATIONS ========== */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes countUp {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .animate-on-scroll {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      .animate-delay-1 { animation-delay: 0.1s; }
+      .animate-delay-2 { animation-delay: 0.2s; }
+      .animate-delay-3 { animation-delay: 0.3s; }
+      .animate-delay-4 { animation-delay: 0.4s; }
+
       /* ========== FIXED HEADER ========== */
       .header-wrapper {
         position: fixed;
@@ -66,7 +103,6 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
 
-      /* Topline */
       .header-top {
         background: var(--brand-primary);
         padding: 6px 0;
@@ -127,7 +163,6 @@
         color: var(--brand-accent);
       }
 
-      /* Main Header */
       .main-header {
         padding: 12px 0;
         background: var(--neutral-surface);
@@ -155,7 +190,6 @@
         width: auto;
       }
 
-      /* Navigation */
       .nav-area .main-nav-list {
         display: flex;
         gap: 5px;
@@ -198,12 +232,17 @@
         transition: all var(--transition);
         padding: 8px 0;
         margin-top: 8px;
+        list-style: none;
       }
 
       .has-dropdown:hover .submenu {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
+      }
+
+      .submenu li {
+        list-style: none;
       }
 
       .submenu a {
@@ -255,19 +294,19 @@
         color: var(--brand-accent);
       }
 
-      /* Search Dropdown */
       .search-dropdown {
         position: absolute;
-        top: 100%;
+        top: calc(100% + 8px);
         left: 0;
         right: 0;
         background: var(--neutral-surface);
         border-radius: 8px;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-        margin-top: 8px;
         padding: 8px 0;
         display: none;
-        z-index: 1000;
+        z-index: 10000;
+        max-height: 400px;
+        overflow-y: auto;
       }
 
       .search-dropdown.active {
@@ -298,7 +337,52 @@
         color: var(--text-muted);
       }
 
-      /* Header Right */
+      .search-result-category {
+        font-size: 11px;
+        color: var(--brand-accent);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+      }
+
+      .search-no-results {
+        padding: 20px;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+
+      .search-pagination {
+        padding: 12px 20px;
+        border-top: 1px solid var(--border-subtle);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .search-pagination button {
+        background: var(--brand-accent);
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: var(--transition);
+      }
+
+      .search-pagination button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .search-pagination button:not(:disabled):hover {
+        background: var(--brand-accent-hover);
+      }
+
       .header-right {
         display: flex;
         align-items: center;
@@ -322,7 +406,6 @@
         box-shadow: 0 4px 12px rgba(185, 115, 47, 0.3);
       }
 
-      /* Mobile Hamburger */
       .mobile-hamburger {
         display: none;
         background: var(--brand-accent);
@@ -339,77 +422,79 @@
         background: var(--brand-accent-hover);
       }
 
-      /* Mobile Navigation */
       .mobile-nav-panel {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        background: var(--brand-primary);
+        bottom: 0;
+        background: rgba(7, 29, 54, 0.98);
+        backdrop-filter: blur(10px);
         z-index: 99998;
-        padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease, padding 0.4s ease;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
       }
 
       .mobile-nav-panel.active {
-        max-height: 100vh;
-        padding: 20px 0;
-        overflow-y: auto;
+        transform: translateX(0);
       }
 
       .mobile-nav-inner {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      .mobile-close {
-        background: none;
-        border: none;
-        color: var(--text-on-primary);
-        font-size: 28px;
-        cursor: pointer;
-        float: right;
-        padding: 5px;
-        margin-bottom: 15px;
+        padding: 30px 20px;
       }
 
       .mobile-search-wrapper {
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         position: relative;
-        clear: both;
       }
 
       .mobile-search-wrapper input {
         width: 100%;
-        padding: 12px 40px 12px 15px;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.1);
+        padding: 14px 45px 14px 18px;
+        border-radius: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.08);
         color: var(--text-on-primary);
-        font-size: 14px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-search-wrapper input:focus {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: var(--brand-accent);
+        outline: none;
       }
 
       .mobile-search-wrapper input::placeholder {
-        color: rgba(255, 255, 255, 0.6);
+        color: rgba(255, 255, 255, 0.5);
       }
 
       .mobile-search-wrapper i {
         position: absolute;
-        right: 15px;
+        right: 18px;
         top: 50%;
         transform: translateY(-50%);
         color: var(--brand-accent);
+        pointer-events: none;
       }
 
       .mobile-search-dropdown {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 8px;
-        margin-top: 8px;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
         padding: 8px 0;
         display: none;
+        max-height: 300px;
+        overflow-y: auto;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
       }
 
       .mobile-search-dropdown.active {
@@ -417,24 +502,35 @@
       }
 
       .mobile-search-result {
-        padding: 10px 15px;
+        padding: 12px 18px;
         cursor: pointer;
         transition: var(--transition);
+        border-left: 3px solid transparent;
       }
 
       .mobile-search-result:hover {
         background: rgba(185, 115, 47, 0.1);
+        border-left-color: var(--brand-accent);
+      }
+
+      .mobile-search-result-category {
+        font-size: 10px;
+        color: var(--brand-accent);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
       }
 
       .mobile-search-result-title {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 600;
         color: var(--brand-primary);
-        margin-bottom: 3px;
+        margin-bottom: 4px;
       }
 
       .mobile-search-result-desc {
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-muted);
       }
 
@@ -444,31 +540,55 @@
         margin: 0;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 4px;
       }
 
       .mobile-links li {
         margin-bottom: 0;
       }
 
-      .mobile-links a {
+      .mobile-links > li > a {
         color: var(--text-on-primary);
         text-decoration: none;
-        padding: 12px 15px;
+        padding: 16px 20px;
         display: block;
-        border-radius: 6px;
-        transition: var(--transition);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        font-size: 16px;
+        font-weight: 500;
       }
 
-      .mobile-links a:hover {
+      .mobile-links > li > a:hover {
         background: rgba(255, 255, 255, 0.1);
+        padding-left: 25px;
       }
 
       .mobile-submenu {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
-        margin-left: 15px;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-top: 4px;
+        list-style: none;
+      }
+
+      .mobile-submenu.active {
+        max-height: 500px;
+      }
+
+      .mobile-submenu a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        padding: 12px 20px 12px 40px;
+        display: block;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-size: 14px;
+      }
+
+      .mobile-submenu a:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--brand-accent);
+        padding-left: 45px;
       }
 
       .submenu-toggle {
@@ -476,82 +596,101 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: var(--text-on-primary);
+        text-decoration: none;
+        padding: 16px 20px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .submenu-toggle:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .submenu-toggle i {
+        transition: transform 0.3s ease;
+        font-size: 14px;
+      }
+
+      .submenu-toggle.active i {
+        transform: rotate(180deg);
       }
 
       .mobile-cta {
         background: var(--brand-accent);
-        margin-top: 15px;
+        margin-top: 20px;
         text-align: center;
         font-weight: 600;
+        color: var(--text-on-primary) !important;
+        padding: 16px 20px !important;
       }
 
-      /* ========== REDESIGNED HERO SECTION ========== */
+      .mobile-cta:hover {
+        background: var(--brand-accent-hover);
+        padding-left: 20px !important;
+      }
+
+      /* ========== HERO SECTION ========== */
       .hero-section {
-        position: relative;
-        min-height: 85vh;
+        min-height: 90vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(
-          135deg, 
-          rgba(7, 29, 54, 0.95) 0%, 
-          rgba(11, 43, 74, 0.92) 50%,
-          rgba(7, 29, 54, 0.95) 100%
-        ),
-        url('assets/images/banner/21.webp') center/cover no-repeat;
         color: var(--text-on-primary);
+        position: relative;
         overflow: hidden;
         padding: 120px 20px 80px;
       }
 
-      /* Subtle pattern overlay */
-      .hero-section::before {
-        content: '';
+      .hero-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        z-index: 0;
+      }
+
+      .hero-overlay {
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-          radial-gradient(circle at 20% 80%, rgba(185, 115, 47, 0.12) 0%, transparent 50%),
-          radial-gradient(circle at 80% 20%, rgba(185, 115, 47, 0.08) 0%, transparent 50%);
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          rgba(7, 29, 54, 0.85) 0%,
+          rgba(11, 43, 74, 0.90) 100%
+        );
         z-index: 1;
       }
 
-      .hero-container {
-        position: relative;
-        z-index: 2;
+      .hero-section .container {
         max-width: 1200px;
         margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-content {
         text-align: center;
+        max-width: 1000px;
+        margin: 0 auto;
       }
 
-      /* Eyebrow badge */
-      .hero-eyebrow {
-        display: inline-block;
-        background: rgba(185, 115, 47, 0.15);
-        border: 1px solid rgba(185, 115, 47, 0.3);
-        color: var(--brand-accent);
-        padding: 10px 28px;
-        border-radius: 50px;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        margin-bottom: 32px;
-        backdrop-filter: blur(10px);
-      }
-
-      /* Main headline */
       .hero-h1 {
-        font-size: clamp(36px, 5vw, 72px);
+        font-size: clamp(36px, 5vw, 64px);
         font-weight: 900;
         line-height: 1.15;
         margin-bottom: 28px;
         text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        max-width: 1100px;
-        margin-left: auto;
-        margin-right: auto;
       }
 
       .hero-h1 .accent {
@@ -560,7 +699,6 @@
         display: inline-block;
       }
 
-      /* Subheadline */
       .hero-lead {
         font-size: clamp(16px, 2vw, 20px);
         line-height: 1.7;
@@ -570,9 +708,8 @@
         font-weight: 400;
       }
 
-      /* CTA Buttons */
       .hero-ctas {
-        display: flex;
+        display: none;
         gap: 20px;
         justify-content: center;
         align-items: center;
@@ -580,45 +717,42 @@
         margin-bottom: 80px;
       }
 
-      .btn-hero-primary {
-        background: var(--brand-accent);
-        color: #ffffff;
+      .btn-woughton {
+        display: inline-block;
         padding: 18px 42px;
         border-radius: 8px;
         font-weight: 700;
         font-size: 16px;
         text-decoration: none;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 24px rgba(185, 115, 47, 0.25);
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .btn-primary {
+        background: var(--brand-accent);
+        color: #fff;
         border: 2px solid var(--brand-accent);
       }
 
-      .btn-hero-primary:hover {
+      .btn-primary:hover {
         background: var(--brand-accent-hover);
         transform: translateY(-3px);
         box-shadow: 0 12px 32px rgba(185, 115, 47, 0.35);
       }
 
-      .btn-hero-secondary {
+      .btn-secondary {
         background: transparent;
-        color: #ffffff;
-        padding: 18px 42px;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 16px;
-        text-decoration: none;
-        transition: all 0.3s ease;
+        color: #fff;
         border: 2px solid rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(10px);
       }
 
-      .btn-hero-secondary:hover {
+      .btn-secondary:hover {
         background: rgba(255, 255, 255, 0.1);
         border-color: rgba(255, 255, 255, 0.5);
         transform: translateY(-3px);
       }
 
-      /* Stats Grid */
       .hero-stats {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -634,6 +768,7 @@
         border-radius: 12px;
         border: 1px solid rgba(255, 255, 255, 0.12);
         transition: all 0.3s ease;
+        text-align: center;
       }
 
       .stat-item:hover {
@@ -658,45 +793,148 @@
         font-weight: 500;
       }
 
-      /* ========== PROBLEM/SOLUTION STRIP ========== */
-      .problem-solution-strip {
-        background: linear-gradient(135deg, #071D36 0%, #0A2847 100%);
-        padding: 70px 20px;
-        position: relative;
-        overflow: hidden;
+      /* ========== COMBINED HERO + WHY WOUGHTON ========== */
+      .opportunity-advantage-section {
+        padding: 100px 20px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
       }
 
-      .problem-solution-strip::before {
+      .opportunity-advantage-section .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .opportunity-intro {
+        text-align: center;
+        margin-bottom: 80px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .opportunity-intro h2 {
+        font-size: clamp(32px, 4vw, 48px);
+        color: var(--brand-primary);
+        margin-bottom: 24px;
+        line-height: 1.3;
+      }
+
+      .opportunity-intro .lead-text {
+        font-size: 20px;
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .opportunity-highlight {
+        background: linear-gradient(135deg, rgba(185, 115, 47, 0.08), rgba(185, 115, 47, 0.04));
+        border-left: 4px solid var(--brand-accent);
+        padding: 24px 32px;
+        border-radius: 8px;
+        margin-top: 40px;
+      }
+
+      .opportunity-highlight p {
+        font-size: 18px;
+        color: var(--brand-primary);
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      .advantages-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 36px;
+      }
+
+      .advantage-item {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border: 2px solid transparent;
+        padding: 56px 44px;
+        border-radius: 20px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      }
+
+      .advantage-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(90deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .advantage-item::after {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(185,115,47,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-        opacity: 0.3;
+        background: linear-gradient(135deg, rgba(185, 115, 47, 0.03) 0%, rgba(185, 115, 47, 0) 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
       }
 
-      .strip-content {
+      .advantage-item > * {
         position: relative;
-        z-index: 2;
-        text-align: center;
-        max-width: 1000px;
-        margin: 0 auto;
+        z-index: 1;
       }
 
-      .strip-title {
-        font-size: clamp(24px, 3vw, 36px);
-        line-height: 1.5;
-        font-weight: 600;
-        color: #F5F7FA;
+      .advantage-item:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(185, 115, 47, 0.2);
+        border-color: var(--brand-accent);
+      }
+
+      .advantage-item:hover::before {
+        transform: scaleX(1);
+      }
+
+      .advantage-item:hover::after {
+        opacity: 1;
+      }
+
+      .advantage-number {
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--brand-accent);
+        margin-bottom: 24px;
+        letter-spacing: 3px;
+        display: inline-block;
+        padding: 8px 20px;
+        background: rgba(185, 115, 47, 0.1);
+        border-radius: 6px;
+      }
+
+      .advantage-item h3 {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--brand-primary);
+        margin-bottom: 18px;
+        line-height: 1.3;
+      }
+
+      .advantage-item p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--text-dark);
         margin: 0;
       }
 
       /* ========== SERVICES SECTION ========== */
       .services-section {
         padding: 100px 20px;
-        background: #f8f9fa;
+        background: #ffffff;
       }
 
       .services-section .container {
@@ -825,7 +1063,7 @@
       /* ========== PROOF SECTION ========== */
       .proof-section {
         padding: 100px 20px;
-        background: #ffffff;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
       }
 
       .proof-section .container {
@@ -834,14 +1072,15 @@
       }
 
       .transaction-card {
-        background: #ffffff;
-        border-radius: 16px;
-        padding: 40px 32px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 20px;
+        padding: 48px 36px;
         height: 100%;
-        border: 1px solid #e5e7eb;
-        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
       }
 
       .transaction-card::before {
@@ -849,53 +1088,90 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 4px;
-        height: 0;
-        background: linear-gradient(180deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%);
-        transition: height 0.3s ease;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(90deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .transaction-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(185, 115, 47, 0.03) 0%, rgba(185, 115, 47, 0) 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+      }
+
+      .transaction-card > * {
+        position: relative;
+        z-index: 1;
       }
 
       .transaction-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(185, 115, 47, 0.2);
         border-color: var(--brand-accent);
       }
 
       .transaction-card:hover::before {
-        height: 100%;
+        transform: scaleX(1);
+      }
+
+      .transaction-card:hover::after {
+        opacity: 1;
       }
 
       .transaction-value {
-        font-size: 52px;
+        font-size: 64px;
         font-weight: 900;
-        color: var(--brand-primary);
-        margin-bottom: 16px;
+        background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-accent-hover) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 20px;
         line-height: 1;
+        letter-spacing: -2px;
       }
 
       .transaction-sector {
-        font-size: 15px;
-        font-weight: 700;
-        color: var(--brand-accent);
-        margin-bottom: 20px;
+        font-size: 13px;
+        font-weight: 800;
+        color: var(--brand-primary);
+        margin-bottom: 24px;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+        display: inline-block;
+        padding: 8px 16px;
+        background: rgba(185, 115, 47, 0.1);
+        border-radius: 6px;
       }
 
       .transaction-description {
-        font-size: 16px;
-        line-height: 1.7;
-        color: var(--text-muted);
-        margin-bottom: 24px;
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--text-dark);
+        margin-bottom: 28px;
+        font-weight: 400;
       }
 
       .transaction-region {
         display: flex;
         align-items: center;
-        gap: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        color: #8b98a5;
+        gap: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--brand-accent);
+        padding: 12px 20px;
+        background: linear-gradient(135deg, rgba(185, 115, 47, 0.05), rgba(185, 115, 47, 0.1));
+        border-radius: 8px;
+        border-left: 4px solid var(--brand-accent);
       }
 
       .testimonial-card {
@@ -944,132 +1220,10 @@
         color: #8b98a5;
       }
 
-      /* ========== WHY WOUGHTON ========== */
-      .why-woughton {
-        padding: 100px 20px;
-        background: #f8f9fa;
-      }
-
-      .why-woughton .container {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .advantages-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 36px;
-      }
-
-      .advantage-item {
-        border: 1px solid #e0e0e0;
-        padding: 48px 40px;
-        background: #ffffff;
-        border-radius: 12px;
-        transition: all 0.3s ease;
-      }
-
-      .advantage-item:hover {
-        border-color: var(--brand-accent);
-        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-        transform: translateY(-4px);
-      }
-
-      .advantage-number {
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--brand-accent);
-        margin-bottom: 24px;
-        letter-spacing: 2px;
-      }
-
-      .advantage-item h3 {
-        font-size: 24px;
-        font-weight: 700;
-        color: var(--brand-primary);
-        margin-bottom: 16px;
-      }
-
-      .advantage-item p {
-        font-size: 16px;
-        line-height: 1.7;
-        color: var(--text-muted);
-        margin: 0;
-      }
-
-      /* ========== TEAM BRIEF ========== */
-      .team-brief {
-        padding: 90px 20px;
-        background: #ffffff;
-      }
-
-      .team-brief .container {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .team-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 60px;
-      }
-
-      .team-text {
-        flex: 1;
-      }
-
-      .team-text h2 {
-        font-size: clamp(28px, 3vw, 40px);
-        font-weight: 700;
-        color: var(--brand-primary);
-        margin-bottom: 24px;
-        line-height: 1.3;
-      }
-
-      .team-text p {
-        font-size: 18px;
-        color: var(--text-muted);
-        line-height: 1.8;
-      }
-
-      .team-cta {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        flex-shrink: 0;
-      }
-
-      .btn-woughton {
-        display: inline-block;
-        background: var(--brand-accent);
-        color: #fff;
-        padding: 16px 36px;
-        border-radius: 8px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        text-align: center;
-        border: 2px solid var(--brand-accent);
-      }
-
-      .btn-woughton:hover {
-        background: var(--brand-accent-hover);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(185, 115, 47, 0.3);
-      }
-
-      .team-cta small {
-        font-size: 14px;
-        color: #8b98a5;
-        text-align: center;
-      }
-
       /* ========== RESEARCH REPORTS ========== */
       .research-reports {
         padding: 100px 20px;
-        background: #f8f9fa;
+        background: #ffffff;
       }
 
       .research-reports .container {
@@ -1194,228 +1348,157 @@
         gap: 10px;
       }
 
-      .reports-cta {
+      /* ========== CTA SECTION ========== */
+      .cta-section {
+        padding: 80px 20px;
+        background: linear-gradient(135deg, var(--brand-primary), #0a2a4a);
+        color: var(--text-on-primary);
         text-align: center;
-        padding: 60px 48px;
-        background: #ffffff;
-        border-radius: 16px;
+      }
+
+      .cta-section .container {
         max-width: 900px;
         margin: 0 auto;
-        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+        padding: 0 20px;
       }
 
-      .reports-cta h3 {
-        font-size: 32px;
-        font-weight: 700;
-        color: var(--brand-primary);
+      .cta-title {
+        font-size: clamp(28px, 5vw, 38px);
         margin-bottom: 20px;
+        line-height: 1.3;
       }
 
-      .reports-cta p {
-        font-size: 18px;
-        color: var(--text-muted);
-        margin-bottom: 36px;
+      .cta-text {
+        font-size: clamp(16px, 2.5vw, 18px);
+        margin-bottom: 35px;
+        opacity: 0.95;
         line-height: 1.7;
+      }
+
+      .cta-button {
+        background: var(--brand-accent);
+        color: var(--text-on-primary);
+        padding: 16px 40px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 17px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: var(--transition);
+      }
+
+      .cta-button:hover {
+        background: var(--brand-accent-hover);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(185, 115, 47, 0.35);
       }
 
       /* ========== FOOTER ========== */
       .footer {
         background: var(--brand-primary);
         color: var(--text-on-primary);
+        padding: 60px 0 30px;
       }
 
-      .newsletter-section {
-        padding: 60px 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .newsletter-wrapper {
+      .footer .container {
         max-width: 1400px;
         margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 40px;
-      }
-
-      .newsletter-label {
-        display: block;
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--brand-accent);
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-      }
-
-      .newsletter-content h3 {
-        font-size: 32px;
-        font-weight: 700;
-        color: #fff;
-        margin: 0;
-      }
-
-      .newsletter-form {
-        display: flex;
-        gap: 12px;
-        flex-shrink: 0;
-      }
-
-      .newsletter-form input {
-        padding: 16px 24px;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.08);
-        color: #fff;
-        font-size: 15px;
-        min-width: 320px;
-      }
-
-      .newsletter-form input::placeholder {
-        color: rgba(255, 255, 255, 0.5);
-      }
-
-      .newsletter-form input:focus {
-        outline: none;
-        border-color: var(--brand-accent);
-        background: rgba(255, 255, 255, 0.12);
-      }
-
-      .footer-main {
-        padding: 90px 20px;
+        padding: 0 20px;
       }
 
       .footer-grid {
-        max-width: 1400px;
-        margin: 0 auto;
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
-        gap: 80px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
       }
 
-      .footer-col h3 {
-        font-size: 36px;
-        font-weight: 700;
+      .footer-col h4 {
+        font-size: 18px;
         margin-bottom: 20px;
-        line-height: 1.2;
-      }
-
-      .footer-col h5 {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 28px;
         color: var(--brand-accent);
       }
 
-      .footer-col p {
-        font-size: 16px;
-        color: rgba(255, 255, 255, 0.75);
-        margin-bottom: 28px;
-        line-height: 1.7;
-      }
-
-      .contact-item {
-        display: flex;
-        gap: 16px;
-        margin-bottom: 28px;
-      }
-
-      .contact-item i {
-        font-size: 18px;
-        color: var(--brand-accent);
-        margin-top: 4px;
-      }
-
-      .contact-item span {
-        display: block;
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.6);
-        margin-bottom: 6px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      .contact-item a {
-        color: rgba(255, 255, 255, 0.9);
+      .footer-col p,
+      .footer-col a {
+        color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
         font-size: 15px;
-        line-height: 1.6;
-        transition: color 0.3s ease;
+        line-height: 1.8;
+        display: block;
+        transition: var(--transition);
       }
 
-      .contact-item a:hover {
+      .footer-col a:hover {
         color: var(--brand-accent);
+        padding-left: 5px;
       }
 
-      .footer-copyright {
-        padding: 28px 20px;
+      .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .copyright-wrapper {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .copyright-wrapper p {
-        font-size: 14px;
+        padding-top: 30px;
+        text-align: center;
         color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+      }
+
+      /* Bootstrap Grid Helper */
+      .row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
         margin: 0;
       }
 
-      .footer-links {
-        display: flex;
-        gap: 32px;
-        list-style: none;
-        margin: 0;
+      .col-lg-4, .col-lg-6, .col-md-6 {
         padding: 0;
+        width: 100%;
       }
 
-      .footer-links a {
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        font-size: 14px;
-        transition: color 0.3s ease;
+      .g-4 {
+        gap: 24px;
       }
 
-      .footer-links a:hover {
-        color: var(--brand-accent);
+      .mb-5 {
+        margin-bottom: 48px;
+      }
+
+      @media (min-width: 768px) {
+        .col-md-6 {
+          grid-column: span 1;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .row {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .row .col-lg-6 {
+          grid-column: span 1;
+        }
+        
+        .row.testimonials-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .row.testimonials-row .col-lg-6 {
+          grid-column: span 1;
+        }
       }
 
       /* ========== RESPONSIVE ========== */
-      @media (max-width: 1200px) {
-        .hero-h1 {
-          font-size: 56px;
-        }
-
-        .section-title {
-          font-size: 36px;
+      @media (min-width: 981px) {
+        .hero-ctas {
+          display: none !important;
         }
       }
 
       @media (max-width: 980px) {
         body {
           padding-top: 90px;
-        }
-
-        .header-top {
-          padding: 4px 0;
-        }
-
-        .left-header-top p {
-          font-size: 11px;
-        }
-
-        .ht-social span {
-          display: none;
-        }
-
-        .header-left .thumbnail img {
-          height: 32px;
         }
 
         .nav-area,
@@ -1429,108 +1512,165 @@
         }
 
         .hero-section {
-          min-height: 70vh;
+          min-height: 80vh;
           padding: 100px 20px 60px;
         }
 
-        .hero-stats {
-          grid-template-columns: repeat(2, 1fr);
+        .hero-ctas {
+          display: flex !important;
+          flex-direction: row;
+          gap: 12px;
+          margin-bottom: 60px;
         }
 
-        .advantages-grid {
-          grid-template-columns: 1fr;
+        .btn-woughton {
+          padding: 12px 24px;
+          font-size: 14px;
+          flex: 1;
         }
 
-        .team-content {
+        .mobile-nav-panel {
+          top: 130px;
+        }
+
+        .stat-item {
+          padding: 24px 18px;
+        }
+
+        .stat-value {
+          font-size: 36px;
+        }
+
+        .stat-label {
+          font-size: 13px;
+        }
+
+        .header-top .content {
           flex-direction: column;
+          gap: 8px;
+          text-align: center;
         }
 
-        .footer-grid {
-          grid-template-columns: 1fr;
-          gap: 50px;
-        }
-
-        .newsletter-wrapper {
-          flex-direction: column;
+        .ht-social {
+          justify-content: center;
         }
       }
 
       @media (max-width: 768px) {
-        .hero-h1 {
-          font-size: 38px;
-        }
-
-        .section-title {
-          font-size: 32px;
-        }
-
-        .strip-title {
-          font-size: 24px;
+        .hero-section {
+          min-height: auto;
+          padding: 80px 20px 50px;
         }
 
         .hero-stats {
-          grid-template-columns: 1fr;
-        }
-
-        .hero-ctas {
-          flex-direction: column;
-          width: 100%;
-        }
-
-        .btn-hero-primary,
-        .btn-hero-secondary {
-          width: 100%;
-          max-width: 400px;
-        }
-
-        .newsletter-form {
-          width: 100%;
-          flex-direction: column;
-        }
-
-        .newsletter-form input {
-          width: 100%;
-          min-width: auto;
-        }
-
-        .copyright-wrapper {
-          flex-direction: column;
+          grid-template-columns: repeat(2, 1fr);
           gap: 20px;
-          text-align: center;
-        }
-
-        .footer-links {
-          flex-wrap: wrap;
-          justify-content: center;
         }
 
         .services-grid,
         .reports-grid {
           grid-template-columns: 1fr;
         }
+
+        .hero-ctas {
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .btn-woughton {
+          width: 100%;
+        }
+
+        .advantages-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+          text-align: center;
+        }
+
+        .footer-col a:hover {
+          padding-left: 0;
+        }
+
+        .row {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .col-lg-4, .col-lg-6, .col-md-6 {
+          width: 100%;
+          padding: 0;
+          margin-bottom: 0;
+        }
+
+        .opportunity-intro .lead-text {
+          font-size: 18px;
+        }
+
+        .opportunity-highlight {
+          padding: 20px 24px;
+        }
+
+        .opportunity-highlight p {
+          font-size: 16px;
+        }
+
+        .advantage-item {
+          padding: 36px 28px;
+        }
+
+        .transaction-card {
+          padding: 36px 28px;
+        }
+
+        .transaction-value {
+          font-size: 48px;
+        }
       }
 
       @media (max-width: 480px) {
+        .stat-item {
+          padding: 20px 14px;
+        }
+
+        .stat-value {
+          font-size: 32px;
+        }
+
+        .stat-label {
+          font-size: 12px;
+        }
+
         .hero-h1 {
           font-size: 32px;
         }
 
-        .section-title {
-          font-size: 28px;
+        .hero-lead {
+          font-size: 16px;
         }
 
-        .stat-value {
-          font-size: 40px;
+        .btn-woughton {
+          padding: 14px 20px;
+          font-size: 15px;
+        }
+
+        .header-left .thumbnail img {
+          height: 32px;
+        }
+
+        .testimonial-card {
+          padding: 32px 24px;
+        }
+
+        .transaction-card {
+          padding: 32px 24px;
         }
 
         .transaction-value {
-          font-size: 44px;
-        }
-
-        .card-inner,
-        .report-content,
-        .testimonial-card {
-          padding: 28px;
+          font-size: 40px;
         }
       }
     </style>
@@ -1539,7 +1679,6 @@
   <body>
     <!-- ========== FIXED HEADER ========== -->
     <header class="header-wrapper">
-      <!-- Topline -->
       <div class="header-top">
         <div class="content">
           <div class="left-header-top">
@@ -1570,7 +1709,6 @@
         </div>
       </div>
 
-      <!-- Main Header -->
       <div class="main-header">
         <div class="content">
           <div class="header-left">
@@ -1578,7 +1716,6 @@
               <img src="assets/images/logo.png" alt="Woughton Global" />
             </a>
 
-            <!-- Desktop Navigation -->
             <nav class="nav-area" aria-label="Primary navigation">
               <ul class="main-nav-list">
                 <li class="main-nav"><a href="index.html">Home</a></li>
@@ -1597,9 +1734,9 @@
                 <li class="main-nav has-dropdown">
                   <a href="about.html">About</a>
                   <ul class="submenu">
-                    <li><a href="team.html">Our Team</a></li>
-                    <li><a href="approach.html">Our Approach</a></li>
-                    <li><a href="why-africa.html">Why Africa</a></li>
+                    <li><a href="about.html#our-team">Our Team</a></li>
+                    <li><a href="about.html#our-approach">Our Approach</a></li>
+                    <li><a href="about.html#why-africa">Why Africa</a></li>
                   </ul>
                 </li>
 
@@ -1608,30 +1745,11 @@
             </nav>
           </div>
 
-          <!-- Header Right -->
           <div class="header-right">
-            <!-- Search Bar -->
             <div class="search-wrapper">
               <input type="text" placeholder="Search..." id="searchInput" autocomplete="off" />
               <i class="fas fa-search"></i>
-              <div class="search-dropdown" id="searchDropdown">
-                <div class="search-result-item" data-link="services.html#transaction-advisory">
-                  <div class="search-result-title">Transaction Advisory</div>
-                  <div class="search-result-desc">M&A, due diligence, and deal structuring</div>
-                </div>
-                <div class="search-result-item" data-link="services.html#market-entry">
-                  <div class="search-result-title">Market Entry Strategy</div>
-                  <div class="search-result-desc">Strategic guidance for market expansion</div>
-                </div>
-                <div class="search-result-item" data-link="services.html#capital-markets">
-                  <div class="search-result-title">Capital Markets</div>
-                  <div class="search-result-desc">Fundraising and investor relations</div>
-                </div>
-                <div class="search-result-item" data-link="research-hub.html">
-                  <div class="search-result-title">Research Hub</div>
-                  <div class="search-result-desc">Market insights and reports</div>
-                </div>
-              </div>
+              <div class="search-dropdown" id="searchDropdown"></div>
             </div>
 
             <a href="https://calendly.com/your-placeholder" class="schedule-cta">
@@ -1645,37 +1763,24 @@
         </div>
       </div>
 
-      <!-- Mobile Navigation -->
       <nav class="mobile-nav-panel" id="mobileNav">
         <div class="mobile-nav-inner">
-          <button class="mobile-close" id="mobileCloseBtn" aria-label="Close menu">✕</button>
           
-          <!-- Mobile Search -->
           <div class="mobile-search-wrapper">
             <input type="text" placeholder="Search..." id="mobileSearchInput" autocomplete="off" />
             <i class="fas fa-search"></i>
-            <div class="mobile-search-dropdown" id="mobileSearchDropdown">
-              <div class="mobile-search-result" data-link="services.html#transaction-advisory">
-                <div class="mobile-search-result-title">Transaction Advisory</div>
-                <div class="mobile-search-result-desc">M&A and deal structuring</div>
-              </div>
-              <div class="mobile-search-result" data-link="services.html#market-entry">
-                <div class="mobile-search-result-title">Market Entry</div>
-                <div class="mobile-search-result-desc">Market expansion guidance</div>
-              </div>
-              <div class="mobile-search-result" data-link="services.html#capital-markets">
-                <div class="mobile-search-result-title">Capital Markets</div>
-                <div class="mobile-search-result-desc">Fundraising support</div>
-              </div>
-            </div>
+            <div class="mobile-search-dropdown" id="mobileSearchDropdown"></div>
           </div>
 
           <ul class="mobile-links">
             <li><a href="index.html">Home</a></li>
 
             <li>
-              <a href="#" class="submenu-toggle">Services +</a>
-              <ul class="mobile-submenu">
+              <div class="submenu-toggle" data-submenu="services">
+                <span>Services</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <ul class="mobile-submenu" id="submenu-services">
                 <li><a href="services.html#transaction-advisory">Transaction Advisory</a></li>
                 <li><a href="services.html#market-entry">Market Entry Strategy</a></li>
                 <li><a href="services.html#capital-markets">Capital Markets</a></li>
@@ -1685,11 +1790,14 @@
             <li><a href="research-hub.html">Insights</a></li>
 
             <li>
-              <a href="#" class="submenu-toggle">About +</a>
-              <ul class="mobile-submenu">
-                <li><a href="team.html">Our Team</a></li>
-                <li><a href="approach.html">Our Approach</a></li>
-                <li><a href="why-africa.html">Why Africa</a></li>
+              <div class="submenu-toggle" data-submenu="about">
+                <span>About</span>
+                <i class="fas fa-chevron-down"></i>
+              </div>
+              <ul class="mobile-submenu" id="submenu-about">
+                <li><a href="about.html#our-team">Our Team</a></li>
+                <li><a href="about.html#our-approach">Our Approach</a></li>
+                <li><a href="about.html#why-africa">Why Africa</a></li>
               </ul>
             </li>
 
@@ -1705,308 +1813,53 @@
       </nav>
     </header>
 
-    <!-- ========== REDESIGNED HERO SECTION ========== -->
-<!-- ========== HERO SECTION ========== -->
-<section class="hero-section">
-  <div class="container">
-    <div class="hero-content">
-      <span class="hero-eyebrow">Trusted Advisory Excellence</span>
-      <h1 class="hero-h1">
-        Structuring Africa's Next <span class="accent">$2.5 Billion</span> in Transformative Investments
-      </h1>
-      <p class="hero-lead">
-        World Bank–caliber economic analysis combined with deep Ghana & West African networks. We mobilize institutional capital for infrastructure, energy and digital projects that deliver measurable impact.
-      </p>
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero-section">
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="assets/videoplayback.mp4" type="video/mp4">
+      </video>
       
-      <div class="hero-ctas">
-        <a href="contact-us.html" class="btn-woughton btn-primary">Schedule Consultation</a>
-        <a href="services.html" class="btn-woughton btn-secondary">Our Services</a>
-      </div>
+      <div class="hero-overlay"></div>
       
-      <!-- Key Stats -->
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-value">$2.5B+</div>
-          <div class="stat-label">Transaction Value</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">20+</div>
-          <div class="stat-label">Market Transactions</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">16</div>
-          <div class="stat-label">Countries Served</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">20+</div>
-          <div class="stat-label">Years of Team Experience</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-  /* ========== HERO SECTION ========== */
-  .hero-section {
-background: 
-  linear-gradient(180deg, rgba(7, 29, 54, 0.4) 0%, rgba(11, 43, 74, 0.5) 100%),
-  url('assets/hero.webp') center/cover no-repeat;
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-on-primary);
-    position: relative;
-    overflow: hidden;
-    padding: 120px 20px 80px;
-  }
-
-  .hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(185, 115, 47, 0.12), transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-section .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-content {
-    text-align: center;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .hero-eyebrow {
-    color: var(--brand-accent);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    display: inline-block;
-    background: #071d36;
-    padding: 10px 24px;
-    border-radius: 6px;
-    border: 1px solid rgba(185, 115, 47, 0.3);
-  }
-
-  .hero-h1 {
-    font-size: 64px;
-    font-weight: 800;
-    margin-bottom: 28px;
-    line-height: 1.15;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-  }
-
-  .hero-h1 .accent {
-    color: var(--brand-accent);
-  }
-
-  .hero-lead {
-    font-size: 20px;
-    color: rgba(255, 255, 255, 0.94);
-    margin-bottom: 40px;
-    line-height: 1.7;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 64px;
-  }
-
-  .btn-woughton {
-    display: inline-block;
-    padding: 16px 36px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    text-align: center;
-  }
-
-  .btn-primary {
-    background: var(--brand-accent);
-    color: #fff;
-    border: 2px solid var(--brand-accent);
-  }
-
-  .btn-primary:hover {
-    background: var(--brand-accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(185, 115, 47, 0.4);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: #fff;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-  }
-
-  .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.6);
-    transform: translateY(-2px);
-  }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .stat-item {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    padding: 28px 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    transition: all 0.3s ease;
-  }
-
-  .stat-item:hover {
-    background: rgba(255, 255, 255, 0.14);
-    transform: translateY(-6px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  }
-
-  .stat-value {
-    font-size: 44px;
-    font-weight: 800;
-    color: var(--brand-accent);
-    margin-bottom: 8px;
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.95);
-    line-height: 1.4;
-    font-weight: 600;
-  }
-
-  /* ========== RESPONSIVE ========== */
-  @media (max-width: 1200px) {
-    .hero-h1 {
-      font-size: 52px;
-    }
-  }
-
-  @media (max-width: 980px) {
-    .hero-section {
-      min-height: 80vh;
-      padding: 100px 20px 60px;
-    }
-
-    .hero-h1 {
-      font-size: 42px;
-    }
-
-    .hero-lead {
-      font-size: 18px;
-    }
-
-    .hero-stats {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .hero-section {
-      min-height: auto;
-      padding: 80px 20px 50px;
-    }
-
-    .hero-h1 {
-      font-size: 36px;
-    }
-
-    .hero-lead {
-      font-size: 16px;
-      margin-bottom: 32px;
-    }
-
-    .hero-ctas {
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 48px;
-    }
-
-    .btn-woughton {
-      width: 100%;
-      max-width: 300px;
-      padding: 14px 28px;
-      font-size: 15px;
-    }
-
-    .hero-stats {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .stat-item {
-      padding: 24px 16px;
-    }
-
-    .stat-value {
-      font-size: 36px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero-h1 {
-      font-size: 28px;
-    }
-
-    .hero-eyebrow {
-      font-size: 11px;
-      padding: 8px 16px;
-    }
-
-    .stat-value {
-      font-size: 32px;
-    }
-
-    .stat-label {
-      font-size: 13px;
-    }
-  }
-</style>
-    <!-- ========== PROBLEM/SOLUTION STRIP ========== -->
-    <section class="problem-solution-strip">
       <div class="container">
-        <div class="strip-content">
-          <h2 class="strip-title">
-            Navigating Africa's $3T+ investment opportunity requires local expertise and global standards. We bridge both.
-          </h2>
+        <div class="hero-content">
+          <h1 class="hero-h1 animate-on-scroll">
+            Structuring Africa's Next <span class="accent">$2.5 Billion</span> in Transformative Private Investments
+          </h1>
+          <p class="hero-lead animate-on-scroll animate-delay-1">
+            World Bank–caliber economic analysis combined with deep Ghana & West African networks. We mobilize institutional capital for infrastructure, energy and digital projects that deliver measurable impact.
+          </p>
+
+          <div class="hero-ctas animate-on-scroll animate-delay-2">
+            <a href="contact-us.html" class="btn-woughton btn-primary">Schedule Consultation</a>
+            <a href="services.html" class="btn-woughton btn-secondary">Our Services</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item animate-on-scroll animate-delay-1">
+              <div class="stat-value" data-target="2.5">0</div>
+              <div class="stat-label">$B+ Transaction Value</div>
+            </div>
+            <div class="stat-item animate-on-scroll animate-delay-2">
+              <div class="stat-value" data-target="20">0</div>
+              <div class="stat-label">Market Transactions</div>
+            </div>
+            <div class="stat-item animate-on-scroll animate-delay-3">
+              <div class="stat-value" data-target="16">0</div>
+              <div class="stat-label">Countries Served</div>
+            </div>
+            <div class="stat-item animate-on-scroll animate-delay-4">
+              <div class="stat-value" data-target="20">0</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+
     <!-- ========== SERVICES SECTION ========== -->
-    <section class="services-section">
+    <section class="services-section" id="services">
       <div class="container">
         <div class="section-header">
           <span class="section-pre">Our Core Services</span>
@@ -2017,10 +1870,9 @@ background:
         </div>
 
         <div class="services-grid">
-          <!-- Card 1: Transaction Advisory -->
-          <article class="service-card">
+          <article class="service-card animate-on-scroll animate-delay-1">
             <div class="card-media">
-              <img src="assets/images/service/02.webp" alt="Transaction Advisory" />
+              <img src="assets/1.jpg" alt="Transaction Advisory" />
             </div>
             <div class="card-inner">
               <img src="assets/images/service/icons/04.svg" alt="" class="card-icon" />
@@ -2034,10 +1886,9 @@ background:
             </div>
           </article>
 
-          <!-- Card 2: Market Entry Strategy -->
-          <article class="service-card">
+          <article class="service-card animate-on-scroll animate-delay-2">
             <div class="card-media">
-              <img src="assets/images/service/03.webp" alt="Market Entry Strategy" />
+              <img src="assets/2.webp" alt="Market Entry Strategy" />
             </div>
             <div class="card-inner">
               <img src="assets/images/service/icons/05.svg" alt="" class="card-icon" />
@@ -2051,10 +1902,9 @@ background:
             </div>
           </article>
 
-          <!-- Card 3: Capital Markets -->
-          <article class="service-card">
+          <article class="service-card animate-on-scroll animate-delay-3">
             <div class="card-media">
-              <img src="assets/images/service/04.webp" alt="Capital Markets" />
+              <img src="assets/3.jpg" alt="Capital Markets" />
             </div>
             <div class="card-inner">
               <img src="assets/images/service/icons/06.svg" alt="" class="card-icon" />
@@ -2072,7 +1922,7 @@ background:
     </section>
 
     <!-- ========== PROOF SECTION ========== -->
-    <section class="proof-section">
+    <section class="proof-section" id="track-record">
       <div class="container">
         <div class="section-header">
           <span class="section-label">Proven Track Record</span>
@@ -2084,7 +1934,7 @@ background:
 
         <div class="row g-4 mb-5">
           <div class="col-lg-4 col-md-6">
-            <div class="transaction-card">
+            <div class="transaction-card animate-on-scroll animate-delay-1">
               <div class="transaction-value">$150M</div>
               <div class="transaction-sector">Market Entry Advisory</div>
               <div class="transaction-description">
@@ -2101,7 +1951,7 @@ background:
           </div>
 
           <div class="col-lg-4 col-md-6">
-            <div class="transaction-card">
+            <div class="transaction-card animate-on-scroll animate-delay-2">
               <div class="transaction-value">$90M</div>
               <div class="transaction-sector">Infrastructure Finance</div>
               <div class="transaction-description">
@@ -2118,7 +1968,7 @@ background:
           </div>
 
           <div class="col-lg-4 col-md-6">
-            <div class="transaction-card">
+            <div class="transaction-card animate-on-scroll animate-delay-3">
               <div class="transaction-value">$200M+</div>
               <div class="transaction-sector">Energy Sector Advisory</div>
               <div class="transaction-description">
@@ -2135,10 +1985,9 @@ background:
           </div>
         </div>
 
-        <!-- Client Testimonials -->
-        <div class="row g-4">
+        <div class="row g-4 testimonials-row">
           <div class="col-lg-6">
-            <div class="testimonial-card">
+            <div class="testimonial-card animate-on-scroll animate-delay-1">
               <div class="quote-icon">
                 <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 19.2C0 11.7333 2.93333 5.6 8.8 0.799999H17.6L13.6 8C9.86667 10.9333 8 14.6667 8 19.2V32H0V19.2ZM22.4 19.2C22.4 11.7333 25.3333 5.6 31.2 0.799999H40L36 8C32.2667 10.9333 30.4 14.6667 30.4 19.2V32H22.4V19.2Z" fill="currentColor"/>
@@ -2155,7 +2004,7 @@ background:
           </div>
 
           <div class="col-lg-6">
-            <div class="testimonial-card">
+            <div class="testimonial-card animate-on-scroll animate-delay-2">
               <div class="quote-icon">
                 <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 19.2C0 11.7333 2.93333 5.6 8.8 0.799999H17.6L13.6 8C9.86667 10.9333 8 14.6667 8 19.2V32H0V19.2ZM22.4 19.2C22.4 11.7333 25.3333 5.6 31.2 0.799999H40L36 8C32.2667 10.9333 30.4 14.6667 30.4 19.2V32H22.4V19.2Z" fill="currentColor"/>
@@ -2174,34 +2023,41 @@ background:
       </div>
     </section>
 
-    <!-- ========== WHY WOUGHTON ========== -->
-    <section class="why-woughton">
+    <!-- ========== COMBINED OPPORTUNITY + ADVANTAGE ========== -->
+    <section class="opportunity-advantage-section" id="why-woughton">
       <div class="container">
-        <div class="section-header">
-          <span class="section-pre">The Woughton Advantage</span>
-          <h2 class="section-title">Why Choose Woughton Global</h2>
+        <div class="opportunity-intro animate-on-scroll">
+          <h2>Navigating Africa's $3 Trillion Investment Opportunity</h2>
+          <p class="lead-text">
+            Sub-Saharan Africa represents one of the world's fastest-growing economic regions, yet accessing these opportunities requires navigating complex regulatory environments, fragmented markets, and unique risk profiles.
+          </p>
+          <div class="opportunity-highlight">
+            <p>
+              We bridge the gap between global capital and African opportunity, combining institutional-grade advisory with deep local expertise to structure and close transformative transactions.
+            </p>
+          </div>
         </div>
-        
+
         <div class="advantages-grid">
-          <div class="advantage-item">
+          <div class="advantage-item animate-on-scroll animate-delay-1">
             <div class="advantage-number">01</div>
             <h3>Deep African Networks</h3>
             <p>Active relationships across 16 countries. Direct access to government officials, institutional investors, and key decision-makers in Ghana, Nigeria, South Africa, and throughout Sub-Saharan Africa.</p>
           </div>
 
-          <div class="advantage-item">
+          <div class="advantage-item animate-on-scroll animate-delay-2">
             <div class="advantage-number">02</div>
             <h3>Global Advisory Standards</h3>
             <p>World Bank-caliber analysis. Experience from Goldman Sachs, McKinsey, and Google. Institutional-grade due diligence that meets international investor requirements.</p>
           </div>
 
-          <div class="advantage-item">
+          <div class="advantage-item animate-on-scroll animate-delay-3">
             <div class="advantage-number">03</div>
             <h3>Sector Specialists</h3>
             <p>Focused expertise in energy, technology, financial services, and infrastructure. We understand regulatory frameworks and market dynamics across the continent.</p>
           </div>
 
-          <div class="advantage-item">
+          <div class="advantage-item animate-on-scroll animate-delay-4">
             <div class="advantage-number">04</div>
             <h3>End-to-End Support</h3>
             <p>From market assessment through deal closure and post-transaction support. We guide clients through regulatory approvals, capital raising, and operational setup.</p>
@@ -2210,24 +2066,8 @@ background:
       </div>
     </section>
 
-    <!-- ========== TEAM BRIEF ========== -->
-    <section class="team-brief">
-      <div class="container">
-        <div class="team-content">
-          <div class="team-text">
-            <h2>Led by advisors from Goldman Sachs, McKinsey, Google and local market pioneers</h2>
-            <p>Our leadership blends international investment-banking rigor with deep, on-the-ground African market experience — delivering structured capital solutions, transaction execution and market entry strategies at global standards.</p>
-          </div>
-          <div class="team-cta">
-            <a href="team.html" class="btn-woughton">Meet the Full Team</a>
-            <small>Profiles, credentials & selected mandates →</small>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ========== RESEARCH REPORTS ========== -->
-    <section class="research-reports">
+    <section class="research-reports" id="insights">
       <div class="container">
         <div class="section-header">
           <span class="section-label">Research Hub</span>
@@ -2236,7 +2076,7 @@ background:
         </div>
 
         <div class="reports-grid">
-          <div class="report-card">
+          <div class="report-card animate-on-scroll animate-delay-1">
             <div class="report-icon" style="background: linear-gradient(135deg, #b9732f 0%, #8b5c23 100%);">
               <i class="fas fa-chart-line"></i>
             </div>
@@ -2251,7 +2091,7 @@ background:
             </div>
           </div>
 
-          <div class="report-card">
+          <div class="report-card animate-on-scroll animate-delay-2">
             <div class="report-icon" style="background: linear-gradient(135deg, #8b5c23 0%, #665640 100%);">
               <i class="fas fa-globe-africa"></i>
             </div>
@@ -2266,7 +2106,7 @@ background:
             </div>
           </div>
 
-          <div class="report-card">
+          <div class="report-card animate-on-scroll animate-delay-3">
             <div class="report-icon" style="background: linear-gradient(135deg, #665640 0%, #b9732f 100%);">
               <i class="fas fa-coins"></i>
             </div>
@@ -2281,156 +2121,323 @@ background:
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="reports-cta">
-          <h3>Access Our Complete Research Library</h3>
-          <p>Explore our comprehensive collection of market intelligence reports covering all major emerging economies</p>
-          <a href="research-hub.html" class="btn-woughton">View All Reports</a>
-        </div>
+    <!-- ========== CTA SECTION ========== -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="cta-title">Ready to Explore African Market Opportunities?</h2>
+        <p class="cta-text">
+          Let's discuss how our expertise in emerging markets can help you achieve your strategic objectives and unlock new opportunities for growth.
+        </p>
+        <a href="contact-us.html" class="cta-button">
+          Schedule Consultation <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </section>
 
     <!-- ========== FOOTER ========== -->
     <footer class="footer">
-      <!-- Newsletter CTA -->
-      <div class="newsletter-section">
-        <div class="newsletter-wrapper">
-          <div class="newsletter-content">
-            <span class="newsletter-label">Latest Business Ideas</span>
-            <h3>Sign Up Newsletter</h3>
-          </div>
-          <div class="newsletter-form">
-            <input type="email" placeholder="Enter Email Address">
-            <button class="btn-woughton">Subscribe Now</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Main Footer -->
-      <div class="footer-main">
+      <div class="container">
         <div class="footer-grid">
           <div class="footer-col">
-            <h3>Ready To <br>Work With Us?</h3>
-            <p>Partner with advisors who understand both global standards and local markets.</p>
-            <a href="contact-us.html" class="btn-woughton">Contact Us</a>
+            <h4>Contact Accra Office</h4>
+            <p>Plot NO.21, Airport City</p>
+            <p>8th Floor, One Airport Square</p>
+            <p>Accra, Ghana</p>
+            <p style="margin-top: 15px;">
+              <strong>Phone:</strong> +1(470)301-5064<br />
+              <strong>Email:</strong> info@wroughtonpartners.com<br />
+              <strong>WhatsApp:</strong> +1(470)301-5064
+            </p>
           </div>
 
           <div class="footer-col">
-            <h5>Contact Us</h5>
-            <div class="contact-item">
-              <i class="fas fa-phone-alt"></i>
-              <div>
-                <span>Call Us</span>
-                <a href="tel:+14703015064">+1 (470) 301-5064</a>
-              </div>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-envelope"></i>
-              <div>
-                <span>Email Us</span>
-                <a href="mailto:info@wroughtonpartners.com">info@wroughtonpartners.com</a>
-              </div>
-            </div>
+            <h4>Office Hours</h4>
+            <p><strong>Ghana:</strong> 10am - 5pm GMT</p>
+            <p><strong>Atlanta:</strong> 9am - 2pm EST</p>
+            <p style="margin-top: 15px;"><em>We respond within 48 hours</em></p>
           </div>
 
           <div class="footer-col">
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <div>
-                <span>Accra Office</span>
-                <a href="#">Plot NO.21, Airport City<br>8th Floor, One Airport Square<br>Accra, Ghana</a>
-              </div>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-clock"></i>
-              <div>
-                <span>Office Hours</span>
-                <p style="margin: 0; color: rgba(255, 255, 255, 0.9);">Ghana: 10am - 5pm GMT<br>Atlanta: 9am - 2pm EST</p>
-              </div>
-            </div>
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="research-hub.html">Insights</a>
+            <a href="about.html">Our Team</a>
+            <a href="contact-us.html">Contact</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>Global Presence</h4>
+            <p>We maintain strong networks across:</p>
+            <p>• Ghana, Nigeria, South Africa</p>
+            <p>• USA (Atlanta)</p>
+            <p>• ASEAN Region</p>
+            <p>• Middle East</p>
+            <p style="margin-top: 15px;">
+              <strong>20+</strong> Institutional Investor Relationships
+            </p>
           </div>
         </div>
-      </div>
 
-      <!-- Copyright -->
-      <div class="footer-copyright">
-        <div class="copyright-wrapper">
+        <div class="footer-bottom">
           <p>Woughton Global Partners - Copyright <span id="currentYear"></span>. All rights reserved.</p>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="research-hub.html">Research Hub</a></li>
-            <li><a href="contact-us.html">Contact Us</a></li>
-          </ul>
         </div>
       </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
-      // Mobile Menu Toggle
-      const mobileBtn = document.getElementById('mobileMenuBtn');
-      const mobileNav = document.getElementById('mobileNav');
-      const mobileClose = document.getElementById('mobileCloseBtn');
-      const submenuToggles = document.querySelectorAll('.submenu-toggle');
-
-      mobileBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('active');
-        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-      });
-
-      mobileClose.addEventListener('click', () => {
-        mobileNav.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-
-      document.addEventListener('click', (e) => {
-        if (mobileNav.classList.contains('active') && 
-            !mobileNav.contains(e.target) && 
-            !mobileBtn.contains(e.target)) {
-          mobileNav.classList.remove('active');
-          document.body.style.overflow = '';
+      // Create search.json data structure
+      const searchData = [
+        {
+          category: "Services",
+          title: "Transaction Advisory",
+          description: "M&A, due diligence, and deal structuring services",
+          link: "services.html#transaction-advisory",
+          keywords: ["transaction", "advisory", "m&a", "merger", "acquisition", "due diligence", "deal", "structuring"]
+        },
+        {
+          category: "Services",
+          title: "Market Entry Strategy",
+          description: "Strategic guidance for emerging market expansion",
+          link: "services.html#market-entry",
+          keywords: ["market", "entry", "strategy", "expansion", "africa", "emerging markets"]
+        },
+        {
+          category: "Services",
+          title: "Capital Markets",
+          description: "Fundraising and investor relations services",
+          link: "services.html#capital-markets",
+          keywords: ["capital", "fundraising", "investor", "relations", "equity", "debt"]
+        },
+        {
+          category: "Research",
+          title: "West Africa Economic Outlook 2025",
+          description: "Comprehensive economic analysis for Ghana, Nigeria, Senegal",
+          link: "research-hub.html",
+          keywords: ["west africa", "economic", "outlook", "ghana", "nigeria", "senegal", "report"]
+        },
+        {
+          category: "Research",
+          title: "Southeast Asia Infrastructure Guide",
+          description: "Infrastructure investment insights for Vietnam, Thailand, Indonesia",
+          link: "research-hub.html",
+          keywords: ["southeast asia", "infrastructure", "vietnam", "thailand", "indonesia", "investment"]
+        },
+        {
+          category: "About",
+          title: "Our Team",
+          description: "Meet our experienced advisory team",
+          link: "about.html#our-team",
+          keywords: ["team", "advisors", "experience", "experts"]
+        },
+        {
+          category: "About",
+          title: "Our Approach",
+          description: "How we deliver world-class advisory services",
+          link: "about.html#our-approach",
+          keywords: ["approach", "methodology", "process", "how we work"]
+        },
+        {
+          category: "Contact",
+          title: "Contact Us",
+          description: "Get in touch with our team",
+          link: "contact-us.html",
+          keywords: ["contact", "get in touch", "consultation", "meeting"]
+        },
+        {
+          category: "Services",
+          title: "Infrastructure Finance",
+          description: "Project financing for infrastructure development",
+          link: "services.html#transaction-advisory",
+          keywords: ["infrastructure", "finance", "project", "development", "funding"]
+        },
+        {
+          category: "Services",
+          title: "Energy Sector Advisory",
+          description: "Renewable and conventional energy advisory",
+          link: "services.html",
+          keywords: ["energy", "renewable", "solar", "power", "advisory"]
+        },
+        {
+          category: "About",
+          title: "Why Africa",
+          description: "Understanding the African opportunity",
+          link: "about.html#why-africa",
+          keywords: ["africa", "opportunity", "emerging markets", "growth"]
         }
-      });
+      ];
 
-      submenuToggles.forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
-          e.preventDefault();
-          const submenu = toggle.nextElementSibling;
-          const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px';
-          submenu.style.maxHeight = isOpen ? '0' : submenu.scrollHeight + 'px';
-          toggle.textContent = toggle.textContent.includes('+')
-            ? toggle.textContent.replace('+', '−')
-            : toggle.textContent.replace('−', '+');
-        });
-      });
+      // Smart Search Implementation
+      class SmartSearch {
+        constructor(data, resultsPerPage = 5) {
+          this.data = data;
+          this.resultsPerPage = resultsPerPage;
+          this.currentPage = 1;
+          this.currentResults = [];
+        }
+
+        search(query) {
+          if (!query || query.length < 1) {
+            return [];
+          }
+
+          const normalizedQuery = query.toLowerCase().trim();
+          const results = [];
+
+          this.data.forEach(item => {
+            let score = 0;
+
+            // Exact title match
+            if (item.title.toLowerCase() === normalizedQuery) {
+              score += 100;
+            }
+            // Title contains query
+            else if (item.title.toLowerCase().includes(normalizedQuery)) {
+              score += 50;
+            }
+
+            // Description match
+            if (item.description.toLowerCase().includes(normalizedQuery)) {
+              score += 30;
+            }
+
+            // Category match
+            if (item.category.toLowerCase().includes(normalizedQuery)) {
+              score += 20;
+            }
+
+            // Keywords match
+            item.keywords.forEach(keyword => {
+              if (keyword.includes(normalizedQuery)) {
+                score += 10;
+              }
+              if (keyword === normalizedQuery) {
+                score += 20;
+              }
+            });
+
+            if (score > 0) {
+              results.push({ ...item, score });
+            }
+          });
+
+          // Sort by score
+          results.sort((a, b) => b.score - a.score);
+          
+          this.currentResults = results;
+          this.currentPage = 1;
+          
+          return results;
+        }
+
+        getPaginatedResults() {
+          const start = (this.currentPage - 1) * this.resultsPerPage;
+          const end = start + this.resultsPerPage;
+          return this.currentResults.slice(start, end);
+        }
+
+        getTotalPages() {
+          return Math.ceil(this.currentResults.length / this.resultsPerPage);
+        }
+
+        nextPage() {
+          if (this.currentPage < this.getTotalPages()) {
+            this.currentPage++;
+            return true;
+          }
+          return false;
+        }
+
+        prevPage() {
+          if (this.currentPage > 1) {
+            this.currentPage--;
+            return true;
+          }
+          return false;
+        }
+      }
+
+      const searchEngine = new SmartSearch(searchData);
 
       // Desktop Search
       const searchInput = document.getElementById('searchInput');
       const searchDropdown = document.getElementById('searchDropdown');
-      const searchResults = document.querySelectorAll('.search-result-item');
 
-      if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          const query = e.target.value.toLowerCase().trim();
+      function renderSearchResults(results, container, isMobile = false) {
+        container.innerHTML = '';
+
+        if (results.length === 0) {
+          container.innerHTML = '<div class="search-no-results">No results found</div>';
+          return;
+        }
+
+        const paginatedResults = searchEngine.getPaginatedResults();
+
+        paginatedResults.forEach(result => {
+          const resultItem = document.createElement('div');
+          resultItem.className = isMobile ? 'mobile-search-result' : 'search-result-item';
+          resultItem.setAttribute('data-link', result.link);
           
-          if (query.length > 0) {
-            searchDropdown.classList.add('active');
-            searchResults.forEach(result => {
-              const title = result.querySelector('.search-result-title').textContent.toLowerCase();
-              const desc = result.querySelector('.search-result-desc').textContent.toLowerCase();
-              result.style.display = (title.includes(query) || desc.includes(query)) ? 'block' : 'none';
-            });
-          } else {
-            searchDropdown.classList.remove('active');
-          }
+          resultItem.innerHTML = `
+            <div class="${isMobile ? 'mobile-search-result-category' : 'search-result-category'}">${result.category}</div>
+            <div class="${isMobile ? 'mobile-search-result-title' : 'search-result-title'}">${result.title}</div>
+            <div class="${isMobile ? 'mobile-search-result-desc' : 'search-result-desc'}">${result.description}</div>
+          `;
+          
+          resultItem.addEventListener('click', () => {
+            window.location.href = result.link;
+          });
+          
+          container.appendChild(resultItem);
         });
 
-        searchResults.forEach(result => {
-          result.addEventListener('click', () => {
-            const link = result.getAttribute('data-link');
-            if (link) window.location.href = link;
+        // Add pagination if needed NOt needed 
+        if (searchEngine.getTotalPages() > 1) {
+          // const pagination = document.createElement('div');
+          // pagination.className = 'search-pagination';
+          // pagination.innerHTML = `
+          //   <span>Page ${searchEngine.currentPage} of ${searchEngine.getTotalPages()}</span>
+          //   <div>
+          //     <button id="prevPage" ${searchEngine.currentPage === 1 ? 'disabled' : ''}>Previous</button>
+          //     <button id="nextPage" ${searchEngine.currentPage === searchEngine.getTotalPages() ? 'disabled' : ''}>Next</button>
+          //   </div>
+          // `;
+          
+          container.appendChild(pagination);
+          
+          document.getElementById('prevPage')?.addEventListener('click', () => {
+            if (searchEngine.prevPage()) {
+              renderSearchResults(searchEngine.currentResults, container, isMobile);
+            }
           });
+          
+          document.getElementById('nextPage')?.addEventListener('click', () => {
+            if (searchEngine.nextPage()) {
+              renderSearchResults(searchEngine.currentResults, container, isMobile);
+            }
+          });
+        }
+      }
+
+      if (searchInput) {
+        let searchTimeout;
+        searchInput.addEventListener('input', (e) => {
+          clearTimeout(searchTimeout);
+          searchTimeout = setTimeout(() => {
+            const query = e.target.value;
+            const results = searchEngine.search(query);
+            
+            if (query.trim().length > 0) {
+              searchDropdown.classList.add('active');
+              renderSearchResults(results, searchDropdown, false);
+            } else {
+              searchDropdown.classList.remove('active');
+            }
+          }, 300);
         });
 
         document.addEventListener('click', (e) => {
@@ -2443,31 +2450,123 @@ background:
       // Mobile Search
       const mobileSearchInput = document.getElementById('mobileSearchInput');
       const mobileSearchDropdown = document.getElementById('mobileSearchDropdown');
-      const mobileSearchResults = document.querySelectorAll('.mobile-search-result');
 
       if (mobileSearchInput) {
+        let mobileSearchTimeout;
         mobileSearchInput.addEventListener('input', (e) => {
-          const query = e.target.value.toLowerCase().trim();
-          
-          if (query.length > 0) {
-            mobileSearchDropdown.classList.add('active');
-            mobileSearchResults.forEach(result => {
-              const title = result.querySelector('.mobile-search-result-title').textContent.toLowerCase();
-              const desc = result.querySelector('.mobile-search-result-desc').textContent.toLowerCase();
-              result.style.display = (title.includes(query) || desc.includes(query)) ? 'block' : 'none';
-            });
-          } else {
-            mobileSearchDropdown.classList.remove('active');
-          }
-        });
-
-        mobileSearchResults.forEach(result => {
-          result.addEventListener('click', () => {
-            const link = result.getAttribute('data-link');
-            if (link) window.location.href = link;
-          });
+          clearTimeout(mobileSearchTimeout);
+          mobileSearchTimeout = setTimeout(() => {
+            const query = e.target.value;
+            const results = searchEngine.search(query);
+            
+            if (query.trim().length > 0) {
+              mobileSearchDropdown.classList.add('active');
+              renderSearchResults(results, mobileSearchDropdown, true);
+            } else {
+              mobileSearchDropdown.classList.remove('active');
+            }
+          }, 300);
         });
       }
+
+      // Count-up animation for stats
+      function animateCountUp(element) {
+        const target = parseFloat(element.getAttribute('data-target'));
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        const isDecimal = target % 1 !== 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          element.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
+          if (isDecimal && current === target) {
+            element.textContent += '+';
+          } else if (!isDecimal && current === target) {
+            element.textContent += '+';
+          }
+        }, 16);
+      }
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            
+            // Trigger count-up for stat values
+            if (entry.target.classList.contains('stat-value')) {
+              animateCountUp(entry.target);
+            }
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Observe stat values
+      document.querySelectorAll('.stat-value').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Mobile Menu
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+
+      mobileBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+        mobileBtn.innerHTML = mobileNav.classList.contains('active') ? '✕' : '&#9776;';
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+      });
+
+      document.addEventListener('click', (e) => {
+        if (mobileNav.classList.contains('active') && 
+            !mobileNav.contains(e.target) && 
+            !mobileBtn.contains(e.target)) {
+          mobileNav.classList.remove('active');
+          mobileBtn.innerHTML = '&#9776;';
+          document.body.style.overflow = '';
+        }
+      });
+
+      // Mobile submenu toggles
+      const submenuToggles = document.querySelectorAll('.submenu-toggle');
+      submenuToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          const submenuId = 'submenu-' + toggle.getAttribute('data-submenu');
+          const submenu = document.getElementById(submenuId);
+          const isActive = submenu.classList.contains('active');
+          
+          // Close all submenus
+          document.querySelectorAll('.mobile-submenu').forEach(sm => {
+            sm.classList.remove('active');
+          });
+          document.querySelectorAll('.submenu-toggle').forEach(st => {
+            st.classList.remove('active');
+          });
+          
+          // Toggle current submenu
+          if (!isActive) {
+            submenu.classList.add('active');
+            toggle.classList.add('active');
+          }
+        });
+      });
 
       // Current Year
       document.getElementById('currentYear').textContent = new Date().getFullYear();
